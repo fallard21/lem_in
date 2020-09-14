@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/12 00:36:17 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/14 22:25:22 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	queue_push(t_link **queue, t_room *room)
 			tmp = tmp->next;
 		tmp->next = link;
 	}
-	
-	//return (link);
 }
 
 t_room	*queue_pop(t_link **queue)
@@ -80,4 +78,5 @@ void	bfs_queue(t_room *start)
 			tmp = tmp->next;
 		}
 	}
+		//ft_printf("\n");
 }

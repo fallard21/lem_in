@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:07:49 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/12 00:38:26 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/14 22:25:05 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,17 +183,100 @@ void	counted_links(t_room *start)
 		tmp = start->links;
 		while (tmp)
 		{
-			tmp->room->input_links++;
-			start->output_links++;
+			if (tmp->room->level < start->level)
+				start->input_links++;
+			if (tmp->room->level > start->level)
+				start->output_links++;
 			tmp = tmp->next;
 		}
 		start = start->next;
 	}
 }
 
-void	find_fork()
+t_link	*del_list(t_link *prev, t_link **head, t_room *current)
 {
-	
+	t_link *del;
+
+	if (!(*head))
+		return (NULL);
+	if (!prev)
+	{
+		del = *head;
+		*head = (*head) ->next;
+		free(del);
+		current->output_links--;
+		return (*head);
+	}
+	else
+	{
+		del = prev->next;
+		prev->next = del->next;
+		free(del);
+		current->output_links--;
+		return (prev);
+	}
+}
+
+void	delete_link(t_room *head, char *name)
+{
+	t_link *tmp;
+	t_link *prev;
+
+	tmp = head->links;
+	prev = NULL;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->room->name, name))
+			tmp = del_list(prev, &head->links, head);
+		prev = tmp;
+		tmp = tmp->next;
+	}
+}
+
+void	del_dead_end(t_room *del)
+{
+	t_link *tmp;
+
+	tmp = del->links;
+	while (tmp)
+	{
+		ft_printf("\n1. room: %s, in: %d, out: %d\n", tmp->room->name, tmp->room->input_links, tmp->room->output_links);
+		delete_link(tmp->room, del->name);
+		ft_printf("2. room: %s, in: %d, out: %d\n", tmp->room->name, tmp->room->input_links, tmp->room->output_links);
+		
+		if (!tmp->room->output_links)
+			del_dead_end(tmp->room);
+		tmp = tmp->next;
+	}
+}
+
+void	find_dead_end(t_room *start)
+{
+	t_link *tmp;
+	//t_link *prev;
+
+	//prev = NULL;
+	start->visit = 1;
+	//ft_printf(" {1}%s{0} - ", start->name);
+	while (start)
+	{
+		if (!(start->level == 0 || start->level == INT_MAX))
+		{
+			if (start->output_links == 0)
+			{
+				del_dead_end(start);
+			}
+		}
+		start = start->next;
+	}
+		
+
+		//if (tmp->room->level > start->level && tmp->room->visit == 0)
+		//	find_fork(tmp->room);
+		//if (tmp->room->level != 0 && tmp->room->level != INT_MAX &&
+		//	!tmp->room->output_links)
+			//tmp = del_list(prev, &start->links, start);
+		//prev = tmp;
 }
 
 void	bfs_list(t_frame *frame)
@@ -207,7 +290,6 @@ void	bfs_list(t_frame *frame)
 	//print_all_info(frame->all);
 	
 	bfs_queue(frame->map);
-	//bfs(frame->all, level + 1);
 	ft_printf("{4} ---- BFS INIT LEVELS ----{0}\n"); print_all_info(frame->map);
 
 	del_unused_links(frame->map);
@@ -215,5 +297,9 @@ void	bfs_list(t_frame *frame)
 
 	counted_links(frame->map);
 	ft_printf("{4} ---- CALCULATE IN/OUT LINKS ----{0}\n"); print_all_info(frame->map);
+	
+	find_dead_end(frame->map);
+	printf("\n"); print_all_info(frame->map);
+	
 	free_all(frame->map);
 }

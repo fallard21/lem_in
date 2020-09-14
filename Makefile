@@ -3,7 +3,8 @@ NAME = lem_in
 CC = gcc -g
 CFLAG = 
 
-HEADER_NAME = lem_in.h
+HEADER_1 = struct.h
+HEADER_2 = lem_parser.h
 LIB_NAME = libft.a
 
 SRC_DIR = sources/
@@ -25,7 +26,7 @@ create_path.c \
 tmp_tools.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
-HEADER = $(addprefix $(INC_DIR), $(HEADER_NAME))
+HEADER = $(addprefix $(INC_DIR), $(HEADER_1))
 LIBFT = $(addprefix $(LIB_DIR), $(LIB_NAME))
 
 INCLUDES = -I $(INC_DIR) -I $(LIB_DIR)$(INC_DIR)
@@ -35,7 +36,7 @@ all: $(NAME)
 $(NAME): $(TMP)
 	$(CC) -o $(NAME) $(TMP) $(INCLUDES) -L $(LIB_DIR) -lft
 
-%.o:%.c $(HEADER)
+%.o:%.c
 	$(CC) $(INCLUDES) -c $< -o $@
 
 clean:
