@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 18:07:20 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/14 17:21:11 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/19 02:43:10 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,9 @@ void	free_all(t_room *start)
 		free(start);
 		start = next;
 	}
+}
+
+void	del_withname()
+{
+	return ;
 }

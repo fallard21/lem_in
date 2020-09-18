@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:54:33 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 23:49:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void		lem_error(char *str, t_frame *stor)
 {
-	lem_free(stor);
+	if (stor)
+		lem_free(stor);
 	if (!ft_strcmp(str, NOT_ENOUGH_ERR))
 		ft_putendl_fd(str, 0);
 	else if (errno == 0)
@@ -25,11 +26,36 @@ void		lem_error(char *str, t_frame *stor)
 	exit(EXIT_FAILURE);
 }
 
+void		free_paths(t_path *paths)
+{
+	t_link		*lev1;
+	t_path		*path_copy;
+	t_link		*lev1_copy;
+
+	if (!paths)
+		lem_error(MEM_FREE_ERR, NULL);
+	while (paths)
+	{
+		path_copy = paths;
+		lev1 = path_copy->start;
+		while (lev1)
+		{
+			lev1_copy = lev1;
+			lev1 = lev1->next;
+			free(lev1_copy);
+		}
+		paths = paths->next;
+		free(path_copy);
+	}
+}
+
 void		free_map(t_room *room)
 {
 	t_room		*tmp_room;
 	t_link		*tmp_link;
 
+	if (!room)
+		lem_error(MEM_FREE_ERR, NULL);
 	while (room)
 	{
 		free(room->name);
@@ -48,11 +74,14 @@ void		free_map(t_room *room)
 
 void		free_stor(t_frame *stor)
 {
+	if (!stor)
+		lem_error(MEM_FREE_ERR, NULL);
 	free(stor->start);
 	free(stor->end);
 	stor->input = NULL;
 	stor->map = NULL;
 	stor->map_copy = NULL;
+	stor->paths = NULL;
 	free(stor);
 }
 
@@ -60,6 +89,8 @@ void		free_input(t_input *input)
 {
 	t_input		*tmp;
 
+	if (!input)
+		lem_error(MEM_FREE_ERR, NULL);
 	while (input)
 	{
 		free(input->line);
@@ -72,12 +103,13 @@ void		free_input(t_input *input)
 
 void		lem_free(t_frame *stor)
 {
-	if (stor)
-	{
-		if (stor->input)
-			free_input(stor->input);
-		if (stor->map)
-			free_map(stor->map_copy);
-		free_stor(stor);
-	}
+	if (!stor)
+		lem_error(MEM_FREE_ERR, NULL);
+	if (stor->input)
+		free_input(stor->input);
+	if (stor->map)
+		free_map(stor->map_copy);
+	if (stor->paths)
+		free_paths(stor->paths);
+	free_stor(stor);
 }

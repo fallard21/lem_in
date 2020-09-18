@@ -70,3 +70,89 @@ void	print_room_list(t_frame *stor, t_room *room)
 		printf("end = %s  num_links = %d\n", stor->end->name, stor->end->num_links);
 	}
 }
+
+void		print_path(t_path *path, int ct)
+{
+	t_link		*copy;
+	int			i;
+
+	i = 0;
+	copy = path->start;
+	if (!path)
+		return;
+	printf("\n----- PRINT PATH #%d | len = %d -----\n", ct, path->len);
+	while (copy)
+	{
+		printf("room_%d = %s\tants = %d\n", i, copy->room->name, copy->room->ants);
+		copy = copy->next;
+		i++;
+	}
+}
+
+void		printf_path_rev(t_path * path, int ct)
+{
+	t_link		*copy;
+	int			i;
+
+	i = 0;
+	copy = path->end;
+	if (!path)
+		return;
+	printf("\n----- PRINT PATH REV #%d | len = %d -----\n", ct, path->len);
+	while (copy)
+	{
+		printf("room_%d = %s\tants = %d\n", i, copy->room->name, copy->room->ants);
+		copy = copy->prev;
+		i++;	
+	}
+}
+
+void		print_path_list(t_frame *stor)
+{
+	t_path		*copy;
+	int 		ct;
+
+	ct = 1;
+	copy = stor->paths;
+	if (!copy)
+		return;
+	while (copy)
+	{
+		// print_path(copy, ct);
+		printf_path_rev(copy, ct);
+		printf("----- ants_togo = %d -----\n", copy->ants_togo);
+		copy = copy->next;
+		ct++;
+	}
+}
+
+/*
+**	Funcs to emulate bsf levels
+**	Work only with correct map with no forks and unuseless links
+*/
+
+void		set_levels(t_frame *stor)
+{
+	t_room		*room;
+	t_link		*link;
+	int			i;
+
+	link = stor->start->links;
+	while (link)
+	{
+		i = 1;
+		room = link->room;
+		// printf("out | room->name = %s\n", room ? room->name : NULL);
+		while (room && ft_strcmp(room->name, stor->end->name))
+		{
+			// printf("room->name = %s\n", room->name);
+			// printf("room->next = %s\n", room->links->next->room->name);
+			room->level = i++;
+			room = room->links->next->room;
+		}
+		link = link->next;
+	}
+
+	// printf("\n***** IN SET LEVELS*****\n");
+	// print_room_list(stor, stor->map);
+}

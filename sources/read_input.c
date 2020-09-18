@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:55:11 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 22:56:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_input		*create_input_item(char *line)
 	return (item);
 }
 
-t_input		*read_input()
+t_input		*read_input(void)
 {
 	t_input		*input;
 	t_input		*tmp;
@@ -35,14 +35,14 @@ t_input		*read_input()
 	{
 		if (!input)
 		{
-			if ((!(input = create_input_item(line)) && get_next_line(0, NULL, 1))
-			|| !(tmp = input))
+			if ((!(input = create_input_item(line)) &&
+			get_next_line(0, NULL, 1)) || !(tmp = input))
 				return (NULL);
 		}
 		else
 		{
-			if ((!(tmp->next = create_input_item(line)) && get_next_line(0, NULL, 1))
-			|| !(tmp = tmp->next))
+			if ((!(tmp->next = create_input_item(line)) &&
+			get_next_line(0, NULL, 1)) || !(tmp = tmp->next))
 				return (NULL);
 		}
 	}

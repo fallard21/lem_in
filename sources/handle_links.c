@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:54:41 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 22:53:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_link		*create_link(t_room *room, t_frame *stor)
 		lem_error(LINKS_ERR, stor);
 	link->room = room;
 	link->next = NULL;
+	link->prev = NULL;
 	return (link);
-
-}	
+}
 
 void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 {
@@ -34,7 +34,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 		if (!(room1->links = create_link(room2, stor)))
 			lem_error(LINKS_ERR, stor);
 		room1->num_links++;
-		return;
+		return ;
 	}
 	while (link)
 	{
@@ -44,15 +44,15 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 		if (link->next)
 			link = link->next;
 		else
-			break;
+			break ;
 	}
 	room1->num_links++;
 	if (!(link->next = create_link(room2, stor)))
 		lem_error(LINKS_ERR, stor);
-	return;
+	return ;
 }
 
-void		find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor)
+void		find_rooms(t_room *room, char *r1, char *r2, t_frame *stor)
 {
 	t_room		*copy;
 	t_room		*room1;
@@ -75,7 +75,7 @@ void		find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor)
 	set_links(room2, room1, stor);
 }
 
-void		handle_links(t_room *room, char *line, t_frame *stor)
+int			handle_links(t_room *room, char *line, t_frame *stor)
 {
 	char		*room1;
 	char		*room2;
@@ -86,8 +86,10 @@ void		handle_links(t_room *room, char *line, t_frame *stor)
 		ft_free_splited(split);
 		lem_error(ALLOC_ERR, stor);
 	}
-	if (!(room1 = split[0]) || !(room2 = split[1]))
-		return;
+	if (!(room1 = split[0]) ||
+	!(room2 = split[1]))
+		lem_error(LINKS_ERR, stor);
 	find_rooms(room, room1, room2, stor);
 	ft_free_splited(split);
+	return (1);
 }

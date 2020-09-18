@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 16:25:08 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/15 16:06:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 # define LINKS_DUPL_ERR "ERROR: Duplicate links"
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
+# define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
+# define PATH_ERR		"ERROR: Path creation error"
+# define NO_PATHS_ERR	"ERROR: No paths constructed"
+# define ANTS_MOVE_ERR	"ERROR: Ants moving error"
+# define MOVE_RES_ERR	"ERROR: Not all ants have reached the end"
 
 /*
 **	Structures
@@ -49,12 +54,15 @@ struct				s_link
 {
 	t_room			*room;
 	t_link			*next;
+	t_link			*prev;
 };
 
 struct				s_room
 {
 	char			*name;
 	int				coord[2];
+	int				ants;
+	int				ant_name;
 	int				level;
 	int				num_links;
 	int				output_links;
@@ -66,9 +74,13 @@ struct				s_room
 
 struct				s_path
 {
-	t_room			*start;
+	t_link			*start;
+	t_link			*end;
 	t_path			*next;
+	int				on_work;
 	int				len;
+	int				ants_togo;
+	int				ants_pass;
 };
 
 struct				s_frame
@@ -77,10 +89,12 @@ struct				s_frame
 	t_room			*end;
 	int				cmd;
 	int				num_ants;
+	int				ant_name;
 	int				num_rooms;
 	t_input			*input;
 	t_room			*map;
 	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
+	t_path			*paths;
 };
 
 #endif

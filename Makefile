@@ -23,7 +23,9 @@ free_utils.c \
 handle_rooms.c \
 handle_links.c \
 create_path.c \
-tmp_tools.c
+tmp_tools.c \
+move_ants.c \
+move_ants_utils.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))

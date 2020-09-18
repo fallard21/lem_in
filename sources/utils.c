@@ -6,23 +6,34 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:55:25 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 02:00:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_parser.h"
 
-/*
-**	Validation funcs
-*/
+void		input_print_and_free(t_frame *stor)
+{
+	t_input		*input;
+
+	input = stor->input;
+	while (input)
+	{
+		ft_putendl_fd(input->line, 1);
+		input = input->next;
+	}
+	ft_putchar_fd('\n', 1);
+	free_input(stor->input);
+	stor->input = NULL;
+}
 
 int			is_valid_map(t_frame *stor)
 {
 	if (!stor)
 		return (0);
 	if (!stor->start || !stor->end || stor->start->num_links == 0 ||
-	stor->end->num_links == 0 || !stor->map || stor->num_rooms == 2 ||
+	stor->end->num_links == 0 || !stor->map || stor->num_rooms == 1 ||
 	stor->num_ants == 0)
 		return (0);
 	return (1);
@@ -38,10 +49,9 @@ int			is_valid_ants(char *str, t_frame *stor)
 }
 
 int			is_link(char *line, t_frame *stor)
-{	
+{
 	char	**split;
-
-	int res;
+	int		res;
 
 	res = 1;
 	if (!line)
@@ -62,7 +72,7 @@ int			is_hash(char *line, t_frame *stor)
 {
 	if (!line)
 		lem_error(READ_ERR, stor);
-	return (line[0] == '#'); 
+	return (line[0] == '#');
 }
 
 int			is_room_name(char *line)
