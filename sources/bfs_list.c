@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:07:49 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 06:49:39 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/20 17:00:54 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,7 +394,7 @@ void	bfs_list(t_frame *frame)
 	find_output_forks(frame->end);
 	//printf("\n"); print_all_info(frame->map);
 	
-	del_unused_links_v2(frame->map);
+	//del_unused_links_v2(frame->map);
 	//printf("\n"); print_all_info(frame->map);
 
 		
