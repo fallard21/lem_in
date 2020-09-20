@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/19 00:19:32 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/20 06:48:40 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ int			main(int ac, char **av)
 	{
 		stor = create_map();
 		bfs_list(stor);
+		ft_printf("\n"); print_patchs(stor->start);
 		// printf("{ 1 }\n");
-		//path = create_paths(stor);
+		path = create_paths(stor);
 		// printf("{ 2 }\n");
-		//handle_ants_move(stor);
+		handle_ants_move(stor);
 		// printf("{ 3 }\n");
 	}
 	// else

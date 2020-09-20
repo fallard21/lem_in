@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/19 01:54:32 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/20 06:04:38 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,12 @@ t_room	*queue_pop(t_link **queue);
 void	free_all(t_room *start);
 
 t_link	*check_path(t_room *current);
+t_link	*get_out_path(t_room *current);
 
+void	del_head(t_link **head, t_link **tmp);
+void	del_middle(t_link *prev, t_link **tmp);
+void	del_all_links(t_link **link);
+
+void	print_patchs(t_room *start);
 
 #endif
