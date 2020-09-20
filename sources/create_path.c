@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 15:26:13 by user             ###   ########.fr       */
+/*   Updated: 2020/09/20 21:47:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,16 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 	path_link->next = create_link(lev1->room, stor);
 	path_link->next->prev = path_link;
 	path_link = path_link->next;
-	deep_link = path_link->room->links->next;
+	deep_link = path_link->room->links->room->level == 0 ?
+	path_link->room->links->next : path_link->room->links;
 	while (deep_link && deep_link->room->level != INT_MAX)
 	{
 		path_link->next = create_link(deep_link->room, stor);
 		path->len++;
 		path_link->next->prev = path_link;
 		path_link = path_link->next;
-		deep_link = deep_link->room->links->next;
+		deep_link = deep_link->room->level < deep_link->room->links->room->level ?
+		deep_link->room->links : deep_link->room->links->next;
 	}
 	if (deep_link)
 		path_link->next = create_link(deep_link->room, stor);
@@ -97,7 +99,6 @@ t_path		*create_paths(t_frame *stor)
 	path = NULL;
 	if (!stor)
 		lem_error(PATH_ERR, NULL);
-	set_levels(stor);		// tmp func to set bfs levels	**** DELETE
 	lev1 = stor->start->links;
 	while (lev1 && ++paths_ct < stor->start->num_links)
 	{

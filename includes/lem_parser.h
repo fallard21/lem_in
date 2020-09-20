@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/20 06:04:38 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/20 21:35:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_path		*create_path_node(t_frame *stor);
 
 void		handle_ants_move(t_frame *stor);
 void		set_ants_on_paths(t_frame *stor);
-void		move_through_path(t_path *path, t_frame *stor);
+int			move_through_path(t_path *path, t_frame *stor);
 void		move_from_start(t_path * path, t_frame *stor);
 void		move_by_mid(t_link *link);
 void		move_to_end(t_link *link, t_path *path, t_frame *stor);

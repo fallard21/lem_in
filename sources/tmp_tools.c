@@ -34,6 +34,8 @@ void		print_room(t_room *room)
 	printf("y = %d\n", room->coord[1]);
 	printf("level = %d\n", room->level);
 	printf("num_links = %d\n", room->num_links);
+	printf("input links = %d\n", room->input_links);
+	printf("output links = %d\n", room->output_links);
 	printf("visit = %d\n", room->visit);
 	printf("is_link = %s\n", room->links ? "YES" : "NO");
 	
@@ -118,8 +120,8 @@ void		print_path_list(t_frame *stor)
 		return;
 	while (copy)
 	{
-		// print_path(copy, ct);
-		printf_path_rev(copy, ct);
+		print_path(copy, ct);
+		// printf_path_rev(copy, ct);
 		printf("----- ants_togo = %d -----\n", copy->ants_togo);
 		copy = copy->next;
 		ct++;

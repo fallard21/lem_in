@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/20 06:48:40 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/20 21:47:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ int			main(int ac, char **av)
 	{
 		stor = create_map();
 		bfs_list(stor);
-		ft_printf("\n"); print_patchs(stor->start);
-		// printf("{ 1 }\n");
+		// ft_printf("\n"); print_patchs(stor->start);
 		path = create_paths(stor);
-		// printf("{ 2 }\n");
 		handle_ants_move(stor);
-		// printf("{ 3 }\n");
+
 	}
 	// else
 	// 	lem_error(SMTH_HERE)
