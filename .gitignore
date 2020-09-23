@@ -1,0 +1,8 @@
+.vscode/
+lem-in
+lem_in
+*.out
+*.o
+*.a
+*.so
+*.log

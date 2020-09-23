@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 06:47:36 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/23 07:18:12 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void	bfs_queue(t_room *start)
 	queue = NULL;
 	count = 0;
 	queue_push(&queue, start);
-		//ft_printf("BFS\n");
+		ft_printf("BFS\n");
 	while (!is_empty(queue))
 	{
-			//ft_printf("%s\t", queue->room->name); / DELETE
-			//ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
+			ft_printf("%s\t", queue->room->name); // DELETE
+			ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
 		current = queue_pop(&queue);
 		tmp = current->links;
 		while (tmp)
@@ -80,5 +80,5 @@ void	bfs_queue(t_room *start)
 			tmp = tmp->next;
 		}
 	}
-		//ft_printf("\n");
+		ft_printf("\n");
 }

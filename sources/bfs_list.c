@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:07:49 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 17:00:54 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/23 01:21:02 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,38 +364,33 @@ void	reset_visits(t_room *start)
 
 void	bfs_list(t_frame *frame)
 {
-	//frame->ants = ANT;
-	//rooms_to_list(frame);
-	
-	//add_links(frame->map);
+		print_rooms(frame->map);
+		//print_all_info(frame->all);
+		//ft_printf("{1}%s{0}\n", frame->start->name);
 
-		//print_rooms(frame->map);
-	//print_all_info(frame->all);
-	//ft_printf("{1}%s{0}\n", frame->start->name);
-
-	bfs_queue(frame->start);
+	//bfs_queue(frame->start);
 		//ft_printf("{4} ---- BFS INIT LEVELS ----{0}\n"); print_all_info(frame->map);
 
-	del_unused_links(frame->map);
+	//del_unused_links(frame->map);
 		//ft_printf("{4} ---- DEL UNUSED LINKS ----{0}\n"); print_all_info(frame->map);
 
-	counted_links(frame->map);
+	//counted_links(frame->map);
 		//ft_printf("{4} ---- CALCULATE IN/OUT LINKS ----{0}\n"); print_all_info(frame->map);
 		//ft_printf("HERE2\n");
-	find_dead_end(frame->map);
+	//find_dead_end(frame->map);
 		
 		//printf("\n"); print_all_info(frame->map);
 	
-	find_input_forks(frame->map);
+	//find_input_forks(frame->map);
 		//printf("\n"); print_all_info(frame->map);
 	
-	reset_visits(frame->map);
+	//reset_visits(frame->map);
 	
-	find_output_forks(frame->end);
-	//printf("\n"); print_all_info(frame->map);
+	//find_output_forks(frame->end);
+		//printf("\n"); print_all_info(frame->map);
 	
-	//del_unused_links_v2(frame->map);
-	//printf("\n"); print_all_info(frame->map);
+	// del_unused_links_v2(frame->map);
+		//printf("\n"); print_all_info(frame->map);
 
 		
 	//free_all(frame->map);

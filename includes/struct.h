@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 16:06:01 by user             ###   ########.fr       */
+/*   Updated: 2020/09/23 03:39:31 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ struct				s_link
 	t_room			*room;
 	t_link			*next;
 	t_link			*prev;
+	int				edge_size;
 };
 
 struct				s_room
@@ -64,10 +65,13 @@ struct				s_room
 	int				ants;
 	int				ant_name;
 	int				level;
+	int				vertex_size;
 	int				num_links;
 	int				output_links;
 	int				input_links;
 	int				visit;
+	int				in;
+	int				out;
 	t_room			*next;
 	t_link			*links;
 };

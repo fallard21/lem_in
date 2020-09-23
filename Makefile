@@ -25,7 +25,8 @@ handle_links.c \
 create_path.c \
 tmp_tools.c \
 move_ants.c \
-move_ants_utils.c
+move_ants_utils.c \
+bellman_ford.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))

@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 06:23:30 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/23 07:45:56 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	print_all_info(t_room *room)
 		while (tmp_1)
 		{
 			if (!tmp_1->next)
-				ft_printf("{2}%s{1}(%10d){0}", tmp_1->room->name, tmp_1->room->level);
+				ft_printf("{2}%s{1}(%d){0}", tmp_1->room->name, tmp_1->room->level);
 			else
-				ft_printf("{2}%s{1}(%10d){0} -> ", tmp_1->room->name, tmp_1->room->level);
+				ft_printf("{2}%s{1}(%d){0} -> ", tmp_1->room->name, tmp_1->room->level);
 			tmp_1 = tmp_1->next;
 		}
 		tmp = tmp->next;
@@ -93,5 +93,36 @@ void	print_patchs(t_room *start)
 		}
 		tmp = tmp->next;
 		ft_printf("{0}\n\n");
+	}
+}
+
+void	print_suurb(t_room *start)
+{
+	t_link *tmp;
+
+	while (start)
+	{
+		if (ft_strcmp(start->name, "0") == 0)
+			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
+		else if (ft_strcmp(start->name, "99") == 0)
+			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
+		else
+		{
+			if (start->in)
+				ft_printf("(%2d){3}[%2s] : {0}", start->vertex_size, start->name);
+			else
+				ft_printf("(%2d){2}[%2s]': {0}", start->vertex_size, start->name);
+		}
+		tmp = start->links;
+		while (tmp)
+		{
+			if (tmp->room->in)
+				ft_printf("{3}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else
+				ft_printf("{2}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			tmp = tmp->next;
+		}
+		ft_printf("\n");
+		start = start->next;
 	}
 }
