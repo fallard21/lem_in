@@ -12,7 +12,6 @@ INC_DIR = includes/
 LIB_DIR = libft/
 
 SRC = print.c \
-bfs_list.c \
 del_list.c \
 bfs_queue.c \
 free_mem.c \

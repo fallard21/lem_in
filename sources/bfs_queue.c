@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/23 07:18:12 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/25 07:08:29 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_room	*queue_pop(t_link **queue)
 	return (room);
 }
 
-void	bfs_queue(t_room *start)
+int	bfs_queue(t_room *start)
 {
 	t_link	*queue;
 	t_link	*tmp;
@@ -72,6 +72,8 @@ void	bfs_queue(t_room *start)
 		tmp = current->links;
 		while (tmp)
 		{
+			if (tmp->room->level == INT_MAX)
+				return (1);
 			if (tmp->room->level == -1)
 			{
 				tmp->room->level = current->level + 1;
@@ -81,4 +83,5 @@ void	bfs_queue(t_room *start)
 		}
 	}
 		ft_printf("\n");
+	return (0);
 }

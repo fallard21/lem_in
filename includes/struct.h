@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/23 03:39:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/25 07:47:31 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_room		t_room;
 typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
+typedef struct s_prev		t_prev;
 
 struct				s_input
 {
@@ -72,8 +73,11 @@ struct				s_room
 	int				visit;
 	int				in;
 	int				out;
-	t_room			*next;
+	t_room			*prev;
 	t_link			*links;
+	t_link			*output;
+	t_link			*input;
+	t_room			*next;
 };
 
 struct				s_path
@@ -100,5 +104,12 @@ struct				s_frame
 	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
 	t_path			*paths;
 };
+
+struct				s_prev
+{
+	t_room			*room;
+	t_prev			*next;
+};
+
 
 #endif

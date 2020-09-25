@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:07:49 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/23 01:21:02 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/25 08:02:24 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,48 +89,6 @@ void	counted_links(t_room *start)
 			tmp = tmp->next;
 		}
 		start = start->next;
-	}
-}
-
-t_link	*del_list(t_link *prev, t_link **head, int *inout)
-{
-	t_link *del;
-
-	if (!(*head))
-		return (NULL);
-	if (!prev)
-	{
-		del = *head;
-		*head = (*head) ->next;
-		free(del);
-		(*inout)--;
-		return (*head);
-	}
-	else
-	{
-		del = prev->next;
-		prev->next = del->next;
-		free(del);
-		(*inout)--;
-		return (prev);
-	}
-}
-
-void	delete_link(t_room *head, char *name, int *inout)
-{
-	t_link *tmp;
-	t_link *prev;
-
-	tmp = head->links;
-	prev = NULL;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->room->name, name))
-			tmp = del_list(prev, &head->links, inout);
-		if (!tmp)
-			break;
-		prev = tmp;
-		tmp = tmp->next;
 	}
 }
 
