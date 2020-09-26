@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/25 07:47:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/27 02:26:21 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ struct				s_link
 	t_link			*next;
 	t_link			*prev;
 	int				edge_size;
+	int				status;
 };
 
 struct				s_room

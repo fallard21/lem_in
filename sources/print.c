@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/23 07:45:56 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/26 05:02:04 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,21 +103,30 @@ void	print_suurb(t_room *start)
 	while (start)
 	{
 		if (ft_strcmp(start->name, "0") == 0)
-			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
+			ft_printf("(%10d){1}[%2s] : {0}", start->vertex_size, start->name);
 		else if (ft_strcmp(start->name, "99") == 0)
-			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
+			ft_printf("(%10d){1}[%2s] : {0}", start->vertex_size, start->name);
 		else
 		{
 			if (start->in)
-				ft_printf("(%2d){3}[%2s] : {0}", start->vertex_size, start->name);
+				ft_printf("(%10d){3}[%2s] : {0}", start->vertex_size, start->name);
 			else
-				ft_printf("(%2d){2}[%2s]': {0}", start->vertex_size, start->name);
+				ft_printf("(%10d){2}[%2s]': {0}", start->vertex_size, start->name);
 		}
-		tmp = start->links;
+		tmp = start->output;
 		while (tmp)
 		{
 			if (tmp->room->in)
 				ft_printf("{3}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else
+				ft_printf("{3}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			tmp = tmp->next;
+		}
+		tmp = start->input;
+		while (tmp)
+		{
+			if (tmp->room->in)
+				ft_printf("{2}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
 			else
 				ft_printf("{2}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
 			tmp = tmp->next;
