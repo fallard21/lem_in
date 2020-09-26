@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 16:06:01 by user             ###   ########.fr       */
+/*   Updated: 2020/09/26 18:28:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define ANTS_MOVE_ERR	"ERROR: Ants moving error"
 # define MOVE_RES_ERR	"ERROR: Not all ants have reached the end"
 
+# define IN 1
+# define OUT 2
+
 /*
 **	Structures
 */
@@ -43,6 +46,7 @@ typedef struct s_room		t_room;
 typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
+typedef struct s_prev		t_prev;
 
 struct				s_input
 {
@@ -55,6 +59,7 @@ struct				s_link
 	t_room			*room;
 	t_link			*next;
 	t_link			*prev;
+	int				edge_size;
 };
 
 struct				s_room
@@ -64,12 +69,17 @@ struct				s_room
 	int				ants;
 	int				ant_name;
 	int				level;
+	int				vertex_size;
 	int				num_links;
 	int				output_links;
 	int				input_links;
 	int				visit;
-	t_room			*next;
+	int				suur_type;
+	t_room			*prev;
 	t_link			*links;
+	t_link			*output;
+	t_link			*input;
+	t_room			*next;
 };
 
 struct				s_path
@@ -96,5 +106,12 @@ struct				s_frame
 	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
 	t_path			*paths;
 };
+
+struct				s_prev
+{
+	t_room			*room;
+	t_prev			*next;
+};
+
 
 #endif

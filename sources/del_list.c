@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 18:07:20 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 05:36:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/25 08:04:18 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,42 @@ void	free_all(t_room *start)
 	}
 }
 
-void	del_withname()
+t_link	*del_list(t_link *prev, t_link **head)
 {
-	return ;
+	t_link *del;
+
+	if (!(*head))
+		return (NULL);
+	if (!prev)
+	{
+		del = *head;
+		*head = (*head) ->next;
+		free(del);
+		return (*head);
+	}
+	else
+	{
+		del = prev->next;
+		prev->next = del->next;
+		free(del);
+		return (prev);
+	}
+}
+
+void	delete_link(t_room *head, char *name)
+{
+	t_link *tmp;
+	t_link *prev;
+
+	tmp = head->links;
+	prev = NULL;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->room->name, name))
+			tmp = del_list(prev, &head->links);
+		if (!tmp)
+			break;
+		prev = tmp;
+		tmp = tmp->next;
+	}
 }

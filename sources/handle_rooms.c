@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/21 01:29:53 by user             ###   ########.fr       */
+/*   Updated: 2020/09/27 01:34:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,13 @@ static void		set_room_params(t_room *room, char **split)
 	room->output_links = 0;
 	room->input_links = 0;
 	room->visit = 0;
+	room->suur_type = 0;
+	room->vertex_size = 0;
 	room->next = NULL;
+	room->prev = NULL;
 	room->links = NULL;
+	room->input = NULL;
+	room->output = NULL;
 }
 
 t_room			*create_room(t_frame *stor, char *line)

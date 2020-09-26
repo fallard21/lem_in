@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_queue.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 06:47:36 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/26 18:54:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_room	*queue_pop(t_link **queue)
 	return (room);
 }
 
-void	bfs_queue(t_room *start)
+int	bfs_queue(t_room *start)
 {
 	t_link	*queue;
 	t_link	*tmp;
@@ -63,15 +63,17 @@ void	bfs_queue(t_room *start)
 	queue = NULL;
 	count = 0;
 	queue_push(&queue, start);
-		//ft_printf("BFS\n");
+		// ft_printf("BFS\n");
 	while (!is_empty(queue))
 	{
-			//ft_printf("%s\t", queue->room->name); / DELETE
-			//ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
+			// ft_printf("%s\t", queue->room->name); // DELETE
+			// ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
 		current = queue_pop(&queue);
 		tmp = current->links;
 		while (tmp)
 		{
+			if (tmp->room->level == INT_MAX)
+				return (1);
 			if (tmp->room->level == -1)
 			{
 				tmp->room->level = current->level + 1;
@@ -80,5 +82,6 @@ void	bfs_queue(t_room *start)
 			tmp = tmp->next;
 		}
 	}
-		//ft_printf("\n");
+		ft_printf("\n");
+	return (0);
 }

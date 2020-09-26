@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:07:49 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/20 17:05:12 by user             ###   ########.fr       */
+/*   Updated: 2020/09/25 08:02:24 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,48 +89,6 @@ void	counted_links(t_room *start)
 			tmp = tmp->next;
 		}
 		start = start->next;
-	}
-}
-
-t_link	*del_list(t_link *prev, t_link **head, int *inout)
-{
-	t_link *del;
-
-	if (!(*head))
-		return (NULL);
-	if (!prev)
-	{
-		del = *head;
-		*head = (*head) ->next;
-		free(del);
-		(*inout)--;
-		return (*head);
-	}
-	else
-	{
-		del = prev->next;
-		prev->next = del->next;
-		free(del);
-		(*inout)--;
-		return (prev);
-	}
-}
-
-void	delete_link(t_room *head, char *name, int *inout)
-{
-	t_link *tmp;
-	t_link *prev;
-
-	tmp = head->links;
-	prev = NULL;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->room->name, name))
-			tmp = del_list(prev, &head->links, inout);
-		if (!tmp)
-			break;
-		prev = tmp;
-		tmp = tmp->next;
 	}
 }
 
@@ -364,38 +322,33 @@ void	reset_visits(t_room *start)
 
 void	bfs_list(t_frame *frame)
 {
-	//frame->ants = ANT;
-	//rooms_to_list(frame);
-	
-	//add_links(frame->map);
+		print_rooms(frame->map);
+		//print_all_info(frame->all);
+		//ft_printf("{1}%s{0}\n", frame->start->name);
 
-		//print_rooms(frame->map);
-	//print_all_info(frame->all);
-	//ft_printf("{1}%s{0}\n", frame->start->name);
-
-	bfs_queue(frame->start);
+	//bfs_queue(frame->start);
 		//ft_printf("{4} ---- BFS INIT LEVELS ----{0}\n"); print_all_info(frame->map);
 
-	del_unused_links(frame->map);
+	//del_unused_links(frame->map);
 		//ft_printf("{4} ---- DEL UNUSED LINKS ----{0}\n"); print_all_info(frame->map);
 
-	counted_links(frame->map);
+	//counted_links(frame->map);
 		//ft_printf("{4} ---- CALCULATE IN/OUT LINKS ----{0}\n"); print_all_info(frame->map);
 		//ft_printf("HERE2\n");
-	find_dead_end(frame->map);
+	//find_dead_end(frame->map);
 		
 		//printf("\n"); print_all_info(frame->map);
 	
-	find_input_forks(frame->map);
+	//find_input_forks(frame->map);
 		//printf("\n"); print_all_info(frame->map);
 	
-	reset_visits(frame->map);
+	//reset_visits(frame->map);
 	
-	find_output_forks(frame->end);
-	//printf("\n"); print_all_info(frame->map);
+	//find_output_forks(frame->end);
+		//printf("\n"); print_all_info(frame->map);
 	
 	// del_unused_links_v2(frame->map);
-	//printf("\n"); print_all_info(frame->map);
+		//printf("\n"); print_all_info(frame->map);
 
 		
 	//free_all(frame->map);

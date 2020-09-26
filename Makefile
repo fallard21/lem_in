@@ -12,7 +12,6 @@ INC_DIR = includes/
 LIB_DIR = libft/
 
 SRC = print.c \
-bfs_list.c \
 del_list.c \
 bfs_queue.c \
 free_mem.c \
@@ -26,7 +25,8 @@ create_path.c \
 tmp_tools.c \
 move_ants.c \
 move_ants_utils.c \
-normalize_graph.c
+direct_graph.c \
+bellman_ford.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))
