@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 02:01:43 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 02:23:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,26 +140,41 @@ void		redirect_start(t_frame *stor)
 	}
 }
 
+void		redirect_end_input(t_link **head, t_link *link, t_frame *stor)
+{
+	if (!stor->end->input)
+	{
+		stor->end->input = create_link(link->room->next, stor, 1);
+		(*head) = stor->end->input;
+	}
+	else
+	{
+		stor->end->input->next = create_link(link->room->next, stor, 1);
+		stor->end->input = stor->end->input->next;
+	}
+}
+
 void		redirect_end(t_frame *stor)
 {
 	t_link		*link;
-	t_link		*inp_head;
+	t_link		*head;
 	t_link		*tmp;
 
 	stor->end->input_links = stor->end->num_links;
 	link = stor->end->links;
 	while (link)
 	{
-		if (!stor->end->input)
-		{
-			stor->end->input = create_link(link->room->next, stor, 1);
-			inp_head = stor->end->input;
-		}
-		else
-		{
-			stor->end->input->next = create_link(link->room->next, stor, 1);
-			stor->end->input = stor->end->input->next;
-		}
+		// if (!stor->end->input)
+		// {
+		// 	stor->end->input = create_link(link->room->next, stor, 1);
+		// 	head = stor->end->input;
+		// }
+		// else
+		// {
+		// 	stor->end->input->next = create_link(link->room->next, stor, 1);
+		// 	stor->end->input = stor->end->input->next;
+		// }
+		redirect_end_input(&head, link, stor);
 		if (!link->room->next->output)
 			link->room->next->output = create_link(stor->end, stor, 1);
 		else
@@ -172,7 +187,7 @@ void		redirect_end(t_frame *stor)
 		link->room->next->output_links++;
 		link = link->next;
 	}
-	stor->end->input = inp_head;
+	stor->end->input = head;
 }
 
 void		redirect_output_links(t_room *room, t_frame *stor)
@@ -247,5 +262,5 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	// print_room_list(stor, stor->map);
+	print_room_list(stor, stor->map);
 }

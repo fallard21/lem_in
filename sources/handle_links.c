@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 01:59:14 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 02:20:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 			break ;
 	}
 	room1->num_links++;
-	if (!(link->next = create_link(room2, stor, 0)))
+	if (!(link->next = create_link(room2, stor, room1->level == 0 ? 1 : 0)))
 		lem_error(LINKS_ERR, stor);
 	return ;
 }
