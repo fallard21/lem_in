@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 00:15:06 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 01:33:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 		}
 		else
 		{
-			room->input->next = create_link(link->room->next, stor, 0);
+			room->input->next = create_link(link->room->next, stor, 1);
 			room->input = room->input->next;
 		}
 		room->input_links++;

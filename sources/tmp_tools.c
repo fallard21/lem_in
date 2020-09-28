@@ -37,6 +37,7 @@ void		print_room(t_room *room)
 	printf("x = %d\n", room->coord[0]);
 	printf("y = %d\n", room->coord[1]);
 	printf("level = %d\n", room->level);
+	printf("vertex_size = %d\n", room->vertex_size);
 	printf("num_links = %d\n", room->num_links);
 	printf("input links = %d\n", room->input_links);
 	printf("output links = %d\n", room->output_links);
@@ -59,7 +60,7 @@ void		print_room(t_room *room)
 		out = room->output;
 		while (out)
 		{
-			printf("room->output->name = %s\t suur = %d\n", out->room->name, out->room->suur_type);
+			printf("room->output->name = %s\t suur = %d edge_size = %d\n", out->room->name, out->room->suur_type, out->edge_size);
 			out = out->next;
 		}
 	}
@@ -70,7 +71,7 @@ void		print_room(t_room *room)
 		in = room->input;
 		while (in)
 		{
-			printf("room->input->name = %s\t suur = %d\n", in->room->name, in->room->suur_type);
+			printf("room->input->name = %s\t suur = %d edge_size = %d\n", in->room->name, in->room->suur_type, in->edge_size);
 			in = in->next;
 		}
 	}
