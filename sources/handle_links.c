@@ -6,22 +6,24 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/27 00:57:18 by user             ###   ########.fr       */
+/*   Updated: 2020/09/28 22:53:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_parser.h"
 
-t_link		*create_link(t_room *room, t_frame *stor)
+t_link		*create_link(t_room *room, t_frame *stor, int weight)
 {
 	t_link	*link;
 
-	if (!(link = ft_calloc(1, sizeof(t_room))))
+	if (!(link = ft_calloc(1, sizeof(t_link))))
 		lem_error(LINKS_ERR, stor);
 	link->room = room;
 	link->next = NULL;
 	link->prev = NULL;
+	link->edge_size = weight;
+	link->status = 0;
 	return (link);
 }
 
@@ -31,7 +33,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 
 	if (!(link = room1->links))
 	{
-		if (!(room1->links = create_link(room2, stor)))
+		if (!(room1->links = create_link(room2, stor, 0)))
 			lem_error(LINKS_ERR, stor);
 		room1->num_links++;
 		return ;
@@ -47,7 +49,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 			break ;
 	}
 	room1->num_links++;
-	if (!(link->next = create_link(room2, stor)))
+	if (!(link->next = create_link(room2, stor, 0)))
 		lem_error(LINKS_ERR, stor);
 	return ;
 }

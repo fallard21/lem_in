@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/27 02:25:15 by user             ###   ########.fr       */
+/*   Updated: 2020/09/28 22:12:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ int			is_valid_map(t_frame *stor);
 int			handle_links(t_room *room, char *line, t_frame *stor);
 void		find_rooms(t_room *room, char *r1, char *r2, t_frame *stor);
 void		set_links(t_room *room1, t_room *room2, t_frame *stor);
-t_link		*create_link(t_room *room, t_frame *stor);
+t_link		*create_link(t_room *room, t_frame *stor, int weight);
 
 void		lem_error(char *str, t_frame *stor);
 void		lem_free(t_frame *stor);
 void		free_input(t_input *input);
 void		free_stor(t_frame *stor);
 void		free_map(t_room *room);
-void		del_room(t_room *room);
+void		del_room(t_room **room);
 void		free_paths(t_path *paths);
 void		input_print_and_free(t_frame *stor);
 
