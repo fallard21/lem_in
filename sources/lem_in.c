@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 00:58:41 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/29 08:39:47 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			main(int ac, char **av)
 		
 		stor = create_map();
 		set_direct_graph(stor);
+
 		suurballe(stor);
 			// ft_printf("\n"); print_patchs(stor->start);
 		//path = create_paths(stor);

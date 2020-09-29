@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direct_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 02:01:43 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 07:41:48 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void		redirect_start(t_frame *stor)
 		else
 		{
 			tmp = link->room->input;
-			while (tmp->next)
+			while (tmp && tmp->next)
 				tmp = tmp->next;
 			tmp->next = create_link(stor->start, stor, 1);
 		}

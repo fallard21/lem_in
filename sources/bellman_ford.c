@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/29 05:13:37 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/29 08:50:56 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ t_prev	*restore_path(t_room *end)
 	}
 
 	/////////////////////
-	
+	/*
 	t_prev *tmp_p = p;
 	ft_printf("\npath %d: ", global);
 	global++;
@@ -242,7 +242,7 @@ t_prev	*restore_path(t_room *end)
 		tmp_p = tmp_p->next;
 	}
 	ft_printf("\n\n");
-	
+	*/
 	///////////////////////
 	return (p);
 }
@@ -284,12 +284,17 @@ void	out_to_in(t_room *current, char *name)
 		prev = tmp;
 		tmp = tmp->next;
 	}
+	if (tmp->status)
+	{
+		tmp->status = 0;
+		return ;
+	}
+
 	if (!prev)
 		current->output = tmp->next;
 	else
 		prev->next = tmp->next;
 	
-
 	prev = current->input;
 	while (prev && prev->next)
 		prev = prev->next;
@@ -317,12 +322,15 @@ void	in_to_out(t_room *current, char *name)
 		prev = tmp;
 		tmp = tmp->next;
 	}
+	if (tmp->status)
+	{
+		tmp->status = 0;
+		return ;
+	}
 	if (!prev)
 		current->input = tmp->next;
 	else
 		prev->next = tmp->next;
-
-
 
 	prev = current->output;
 	while (prev && prev->next)
@@ -403,40 +411,11 @@ void	reinit_sizes(t_room *start)
 	start->vertex_size = 0;
 }
 
-void	del_opposite_edges(t_room *map)
-{
-	t_room *current;
-	t_link *out;
-	t_link *in;
-
-	current = map;
-	while (current)
-	{
-		out = current->output;
-		while (out)
-		{
-			if (current->level == 0 || current->level == INT_MAX)
-				break;
-			in = current->input;
-			while (in)
-			{
-				if (ft_strcmp(in->room->name, out->room->name) == 0)
-				{
-					in->status = 0;
-					out->status = 0;
-				}
-				in = in->next;
-			}
-			out = out->next;
-		}
-	}
-
-}
-
 void	suurballe(t_frame *frame)
 {
 	t_prev	*p;
 
+	
 	while (bellman_ford(frame, frame->start) == 0)
 	{
 		p = restore_path(frame->end);
@@ -444,8 +423,8 @@ void	suurballe(t_frame *frame)
 		reinit_sizes(frame->map);
 		// free (p);
 	}
-
-
+	//print_suurb(frame->map);
+	//print_patchs(frame->end);
 	//bfs_queue(frame->start);
 	//print_all_info(frame->start);
 	//frame->start->vertex_size = 0;

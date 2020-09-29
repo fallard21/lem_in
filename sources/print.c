@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/29 02:51:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/29 08:47:01 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,6 @@ void	print_all_info(t_room *room)
 	ft_printf("{4}----------------------- END -----------------------{0}\n\n");
 }
 
-void	print_patchs(t_room *start)
-{
-	t_link *link;
-	t_link	*tmp;
-	t_room	*room;
-	int i = 0;
-	tmp = start->links;
-	while (tmp)
-	{
-		(i++ % 2) ? ft_printf("{3}") : ft_printf("{2}");
-		ft_printf("%s -> %s -> ", start->name, tmp->room->name);
-		room = tmp->room;
-		while (room->level != INT_MAX)
-		{
-			link = room->links;
-			while (link)
-			{
-				if (link->room->level > room->level)
-					break;
-				link = link->next;
-			}
-			ft_printf("%s -> ", link->room->name);
-			room = link->room;
-		}
-		tmp = tmp->next;
-		ft_printf("{0}\n\n");
-	}
-}
-
 void	print_suurb(t_room *start)
 {
 	t_link *tmp;
@@ -140,5 +111,37 @@ void	print_suurb(t_room *start)
 		}
 		ft_printf("\n");
 		start = start->next;
+	}
+}
+
+
+void	print_patchs(t_room *end)
+{
+	t_link *link;
+	t_link	*tmp;
+	t_room	*room;
+	int i = 1;
+
+	tmp = end->output;
+	while (tmp)
+	{
+		ft_printf("patch %d: %s -> ", i, end->name);
+		(i++ % 2) ? ft_printf("{3}") : ft_printf("{2}");
+		room = tmp->room;
+		ft_printf("%s -> ", tmp->room->name);
+		while (room->level != 0)
+		{
+			link = room->output;
+			while (link)
+			{
+				if (link->status == 1)
+					break;
+				link = link->next;
+			}
+			ft_printf("%s -> ", link->room->name);
+			room = link->room;
+		}
+		tmp = tmp->next;
+		ft_printf("{0}\n\n");
 	}
 }
