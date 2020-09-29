@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/29 08:47:01 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/29 16:37:57 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,10 @@ void	print_patchs(t_room *end)
 	tmp = end->output;
 	while (tmp)
 	{
-		ft_printf("patch %d: %s -> ", i, end->name);
+		ft_printf("patch %d: %s", i, end->name);
 		(i++ % 2) ? ft_printf("{3}") : ft_printf("{2}");
 		room = tmp->room;
-		ft_printf("%s -> ", tmp->room->name);
+		ft_printf(" <- %s", tmp->room->name);
 		while (room->level != 0)
 		{
 			link = room->output;
@@ -138,7 +138,7 @@ void	print_patchs(t_room *end)
 					break;
 				link = link->next;
 			}
-			ft_printf("%s -> ", link->room->name);
+			ft_printf(" <- %s", link->room->name);
 			room = link->room;
 		}
 		tmp = tmp->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/28 22:12:26 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 08:41:48 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	del_head(t_link **head, t_link **tmp);
 void	del_middle(t_link *prev, t_link **tmp);
 void	del_all_links(t_link **link);
 
-void	print_patchs(t_room *start);
+void	print_patchs(t_room *end);
 
 
 void	suurballe(t_frame *frame);
