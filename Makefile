@@ -26,6 +26,8 @@ tmp_tools.c \
 move_ants.c \
 move_ants_utils.c \
 direct_graph.c \
+duplicate_rooms.c \
+redirect_links.c \
 bellman_ford.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
