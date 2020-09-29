@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/27 02:26:21 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/28 01:34:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define NO_PATHS_ERR	"ERROR: No paths constructed"
 # define ANTS_MOVE_ERR	"ERROR: Ants moving error"
 # define MOVE_RES_ERR	"ERROR: Not all ants have reached the end"
+
+# define IN 1
+# define OUT 2
 
 /*
 **	Structures
@@ -72,8 +75,7 @@ struct				s_room
 	int				output_links;
 	int				input_links;
 	int				visit;
-	int				in;
-	int				out;
+	int				suur_type;
 	t_room			*prev;
 	t_link			*links;
 	t_link			*output;

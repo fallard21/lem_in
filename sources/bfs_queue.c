@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_queue.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/25 07:08:29 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/28 18:27:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int	bfs_queue(t_room *start)
 	queue = NULL;
 	count = 0;
 	queue_push(&queue, start);
-		ft_printf("BFS\n");
+		// ft_printf("BFS\n");
 	while (!is_empty(queue))
 	{
-			ft_printf("%s\t", queue->room->name); // DELETE
-			ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
+			// ft_printf("%s\t", queue->room->name); // DELETE
+			// ft_printf("%d: q = (", count++); print_links(queue);	// DELETE
 		current = queue_pop(&queue);
 		tmp = current->links;
 		while (tmp)

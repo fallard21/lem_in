@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/24 20:56:15 by fallard          ###   ########.fr       */
+/*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
+/*   Updated: 2020/09/29 00:58:41 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,27 @@
 /*
 **	TODO:
 **		1. Написать буфферизированный вывод?
+**		
+**		
 **
 */
 
 int			main(int ac, char **av)
 {
-	t_frame		stor;
+	t_frame		*stor;
 	t_path		*path;
 
-	ft_memset(&stor, 0, sizeof(stor));
+	// ft_memset(&stor, 0, sizeof(stor));
 	errno = 0;
 	//  if (ac >= 2) 	// Here is to handle possible bonus-flags
 	//  {				// --help, --verbose, --debug, etc
 	//  }
 	 if (ac == 1)
 	{
-		suurballe(&stor);
-		//stor = create_map();
-		//bfs_list(&stor);
+		
+		stor = create_map();
+		set_direct_graph(stor);
+		suurballe(stor);
 			// ft_printf("\n"); print_patchs(stor->start);
 		//path = create_paths(stor);
 		//handle_ants_move(stor);

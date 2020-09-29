@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/25 08:03:59 by fallard          ###   ########.fr       */
+/*   Updated: 2020/09/28 22:12:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ int			is_valid_map(t_frame *stor);
 int			handle_links(t_room *room, char *line, t_frame *stor);
 void		find_rooms(t_room *room, char *r1, char *r2, t_frame *stor);
 void		set_links(t_room *room1, t_room *room2, t_frame *stor);
-t_link		*create_link(t_room *room, t_frame *stor);
+t_link		*create_link(t_room *room, t_frame *stor, int weight);
 
 void		lem_error(char *str, t_frame *stor);
 void		lem_free(t_frame *stor);
 void		free_input(t_input *input);
 void		free_stor(t_frame *stor);
 void		free_map(t_room *room);
+void		del_room(t_room **room);
 void		free_paths(t_path *paths);
 void		input_print_and_free(t_frame *stor);
 
@@ -81,6 +82,12 @@ void		move_by_mid(t_link *link);
 void		move_to_end(t_link *link, t_path *path, t_frame *stor);
 void		print_ant_action(int ant_name, char *room_name);	// USE printf - refactore to ft_printf
 void		move_simple_path(t_path *path, t_frame *stor);
+
+/*
+**	Functions to set direct graph
+*/
+
+void		set_direct_graph(t_frame *stor);
 
 /*
 **	JUST FOR TESTING ********************** DELETE

@@ -30,26 +30,51 @@ void		print_room(t_room *room)
 		return;
 	printf("\n---PRINT ROOM---\n");
 	printf("name = %s\n", room->name);
+	if (room->suur_type != 0)
+		printf("suur type = %s\n", room->suur_type == 1 ? "IN" : "OUT");
+	else
+		printf("suur type = %s\n", "None");
 	printf("x = %d\n", room->coord[0]);
 	printf("y = %d\n", room->coord[1]);
 	printf("level = %d\n", room->level);
+	printf("vertex_size = %d\n", room->vertex_size);
 	printf("num_links = %d\n", room->num_links);
 	printf("input links = %d\n", room->input_links);
 	printf("output links = %d\n", room->output_links);
 	printf("visit = %d\n", room->visit);
 	printf("is_link = %s\n", room->links ? "YES" : "NO");
-	
 	t_link	*lcopy;
 	if (room->links)
 	{
 		lcopy = room->links;
 		while (lcopy)
 		{
-			printf("room->links->name = %s\n", lcopy->room->name);
+			printf("room->links->name = %s\n", lcopy ? lcopy->room->name : NULL);
 			lcopy = lcopy->next;
 		}
 	}
-
+	t_link	*out;
+	if (room->output)
+	{
+		printf("room output ct = %d\n", room->output_links);
+		out = room->output;
+		while (out)
+		{
+			printf("room->output->name = %s\t suur = %d edge_size = %d\n", out->room->name, out->room->suur_type, out->edge_size);
+			out = out->next;
+		}
+	}
+	t_link *in;
+	if (room->input)
+	{
+		printf("room input ct = %d\n", room->input_links);
+		in = room->input;
+		while (in)
+		{
+			printf("room->input->name = %s\t suur = %d edge_size = %d\n", in->room->name, in->room->suur_type, in->edge_size);
+			in = in->next;
+		}
+	}
 }
 
 void	print_room_list(t_frame *stor, t_room *room)

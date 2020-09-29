@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 22:49:43 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 01:32:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		get_start_end_room(t_frame *stor, t_room *room)
 		stor->start = room;
 		room->ants = stor->num_ants;
 		room->level = 0;
+		room->vertex_size = 0;
 		stor->cmd = NO_SIG;
 	}
 	if (stor->cmd == END_SIG)
@@ -50,8 +51,13 @@ static void		set_room_params(t_room *room, char **split)
 	room->output_links = 0;
 	room->input_links = 0;
 	room->visit = 0;
+	room->suur_type = 0;
+	room->vertex_size = INT_MAX;
 	room->next = NULL;
+	room->prev = NULL;
 	room->links = NULL;
+	room->input = NULL;
+	room->output = NULL;
 }
 
 t_room			*create_room(t_frame *stor, char *line)

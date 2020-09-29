@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/09/20 23:17:03 by user             ###   ########.fr       */
+/*   Updated: 2020/09/21 22:28:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void		handle_ants_move(t_frame *stor)
 		lem_error(ANTS_MOVE_ERR, stor);
 	path_copy = stor->paths;
 	set_ants_on_paths(stor);
-	print_path_list(stor);
-	return ;
+	// print_path_list(stor);
+	// return ;
 	while (stor->end->ants < stor->num_ants)
 	{
 		is_used = 0;
