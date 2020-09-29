@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 15:13:29 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 17:38:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ t_room		*create_out_room(t_room *room)
 	new->coord[1] = room->coord[1];
 	set_out_room_params(new, room);
 	return (new);
+}
+
+int			check_only_start_end(t_room *room)
+{
+	t_link	*link;
+
+	link = room->links;
+	if (room->num_links == 2 &&
+	(link->room->level == 0 || link->room->level == INT_MAX) &&
+	(link->next->room->level == 0 || link->next->room->level == INT_MAX))
+		return (1);
+	return (0);
 }
 
 int			check_skiping(t_room *room, int check_links)
@@ -129,7 +141,7 @@ void		redirect_start(t_frame *stor)
 		if (!link->room->input || link->room->num_links == 1)
 			link->room->input = create_link(stor->start, stor, 1);
 		else
-		{
+		{				
 			tmp = link->room->input;
 			while (tmp && tmp->next)
 				tmp = tmp->next;
@@ -192,6 +204,8 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 	link = room->links;
 	out->input = create_link(room, stor, 0);
 	out->input_links++;
+	if (check_only_start_end(room))
+		return ;
 	while (link)
 	{
 		if (!(link = check_skiping(link->room, 0) ? link->next : link))
@@ -214,6 +228,8 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 	link = room->links;
 	room->output = create_link(room->next, stor, 0);
 	room->output_links++;
+	if (check_only_start_end(room))
+		return ;
 	while (link)
 	{
 		if (!(link = check_skiping(link->room, 0) ? link->next : link))
@@ -246,5 +262,5 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	// print_room_list(stor, stor->map);
+	print_room_list(stor, stor->map);
 }

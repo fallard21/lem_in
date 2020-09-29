@@ -94,6 +94,17 @@ start-3
 
 
 
+20
+##start
+start 0 0 
+##end
+end 1 1 
+middle 2 2 
+start-middle
+middle-end
+
+
+
 40
 ##start
 0 0 0
