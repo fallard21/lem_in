@@ -54,7 +54,7 @@ void		print_room(t_room *room)
 		}
 	}
 	t_link	*out;
-	if (room->output)
+	if (room->output && room->output_links)
 	{
 		printf("room output ct = %d\n", room->output_links);
 		out = room->output;
@@ -65,15 +65,16 @@ void		print_room(t_room *room)
 		}
 	}
 	t_link *in;
-	if (room->input)
+	if (room->input && room->input_links)
 	{
 		printf("room input ct = %d\n", room->input_links);
 		in = room->input;
 		while (in)
 		{
 			printf("room->input->name = %s\t suur = %d edge_size = %d\n", in->room->name, in->room->suur_type, in->edge_size);
-			in = in->next;
+			in = in ? in->next : NULL;
 		}
+		// printf("check\n");
 	}
 }
 
