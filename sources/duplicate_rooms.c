@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 17:46:18 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 21:45:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,27 @@ void		skip_room(t_frame *stor, t_room **map, int frst)
 	t_room		*tmp;
 	t_room		*copy;
 
+	printf("skip start map = %s\n", (*map) ? (*map)->name : NULL);
 	tmp = frst ? (*map) : (*map)->next;
+	printf("\nskip before | tmp = %s\n", tmp ? tmp->name : NULL);
 	while(tmp && check_skiping(tmp, 1))
 	{
+		printf("skip in loop | tmp = %s\n", tmp ? tmp->name : NULL);
 		if (tmp && !tmp->links)
 		{
+			printf("{ 1 }\n");
 			copy = tmp;
 			tmp = tmp->next;
 			del_room(&copy);
 			stor->num_rooms--;
 		}
 		if (tmp && (tmp->level == INT_MAX || tmp->level == 0))
+		{
+			printf("{ 2 }\n");
 			tmp = tmp->next;
+		}
 	}
+	printf("skip after | tmp = %s\n", tmp ? tmp->name : NULL);
 	if (frst)
 		(*map) = tmp;
 	else
@@ -87,15 +95,22 @@ void		duplicate_rooms(t_frame *stor)
 	t_room		*head;
 
 	if (stor->map && check_skiping(stor->map, 1))
+	{
+		printf("skip first room\n");
 		skip_room(stor, &stor->map, 1);
+		
+	}
 	head = stor->map;
 	while (stor->map)
 	{
+		printf("start loop | name = %s\n", stor->map ? stor->map->name : NULL);
 		if (stor->map->next && check_skiping(stor->map->next, 1))
 			skip_room(stor, &stor->map, 0);
 		else if (stor->map && split_room(stor, &stor->map))
 			break ;
+		printf("end loop | name = %s\n", stor->map ? stor->map->name : NULL);
 	}
+	printf("head = %s\n", head ? head->name : NULL);
 	stor->num_rooms = (stor->num_rooms * 2) - 2;
 	if (stor->num_rooms == 2)
 		return ;
