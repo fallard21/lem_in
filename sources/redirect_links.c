@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 17:50:13 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 23:05:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 		link = link->next;
 	}
 	out->output = head_out;
+	if (!room->input_links)
+		room->input = NULL;
 }
 
 void		redirect_input_links(t_room *room, t_frame *stor)

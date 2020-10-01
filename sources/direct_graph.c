@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 21:54:00 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 22:52:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	print_room_list(stor, stor->map);
+	// print_room_list(stor, stor->map);
 }
