@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 17:46:18 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 21:56:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		duplicate_rooms(t_frame *stor)
 	t_room		*head;
 
 	if (stor->map && check_skiping(stor->map, 1))
-		skip_room(stor, &stor->map, 1);
+			skip_room(stor, &stor->map, 1);
 	head = stor->map;
 	while (stor->map)
 	{

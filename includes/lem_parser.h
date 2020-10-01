@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 13:08:56 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/01 23:26:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void		move_simple_path(t_path *path, t_frame *stor);
 */
 
 void		set_direct_graph(t_frame *stor);
+void		set_simplest_grapth(t_frame *stor);
 int			check_only_start_end(t_room *room);
 int			check_skiping(t_room *room, int check_links);
 void		duplicate_rooms(t_frame *stor);
