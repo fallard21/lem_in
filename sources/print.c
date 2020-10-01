@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/26 18:51:56 by user             ###   ########.fr       */
+/*   Created: 2020/10/01 23:30:01 by user              #+#    #+#             */
+/*   Updated: 2020/10/01 23:30:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,62 +67,81 @@ void	print_all_info(t_room *room)
 	ft_printf("{4}----------------------- END -----------------------{0}\n\n");
 }
 
-void	print_patchs(t_room *start)
+void	print_suurb(t_room *start)
+{
+	t_link *tmp;
+
+	while (start)
+	{
+		if (ft_strcmp(start->name, "0") == 0)
+			ft_printf("(%10d){1}[%2s] : {0}", start->vertex_size, start->name);
+		else if (ft_strcmp(start->name, "99") == 0)
+			ft_printf("(%10d){1}[%2s] : {0}", start->vertex_size, start->name);
+		else
+		{
+			if (start->suur_type == 1)
+				ft_printf("(%10d){3}[%2s] : {0}", start->vertex_size, start->name);
+			else if (start->suur_type == 2)
+				ft_printf("(%10d){2}[%2s]': {0}", start->vertex_size, start->name);
+			else
+				ft_printf("(%10d){1}[%2s]: {0}", start->vertex_size, start->name);
+		}	
+		tmp = start->output;
+		while (tmp)
+		{
+			if (tmp->room->suur_type == 1)
+				ft_printf("{3}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else if (tmp->room->suur_type == 2)
+				ft_printf("{3}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else
+				ft_printf("{1}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			tmp = tmp->next;
+		}
+		tmp = start->input;
+		ft_printf(" | ");
+		while (tmp)
+		{
+			if (tmp->room->suur_type == 1)
+				ft_printf("{2}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else if (tmp->room->suur_type == 2)
+				ft_printf("{2}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			else
+				ft_printf("{1}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
+			tmp = tmp->next;
+		}
+		ft_printf("\n");
+		start = start->next;
+	}
+}
+
+
+void	print_patchs(t_room *end)
 {
 	t_link *link;
 	t_link	*tmp;
 	t_room	*room;
-	int i = 0;
-	tmp = start->links;
+	int i = 1;
+
+	tmp = end->output;
 	while (tmp)
 	{
+		ft_printf("patch %d: %s", i, end->name);
 		(i++ % 2) ? ft_printf("{3}") : ft_printf("{2}");
-		ft_printf("%s -> %s -> ", start->name, tmp->room->name);
 		room = tmp->room;
-		while (room->level != INT_MAX)
+		ft_printf(" <- %s", tmp->room->name);
+		while (room->level != 0)
 		{
-			link = room->links;
+			link = room->output;
 			while (link)
 			{
-				if (link->room->level > room->level)
+				if (link->status == 1)
 					break;
 				link = link->next;
 			}
-			ft_printf("%s -> ", link->room->name);
+			ft_printf(" <- %s", link->room->name);
 			room = link->room;
 		}
 		tmp = tmp->next;
 		ft_printf("{0}\n\n");
 	}
 }
-
-// void	print_suurb(t_room *start)
-// {
-// 	t_link *tmp;
-
-// 	while (start)
-// 	{
-// 		if (ft_strcmp(start->name, "0") == 0)
-// 			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
-// 		else if (ft_strcmp(start->name, "99") == 0)
-// 			ft_printf("(%2d){1}[%2s] : {0}", start->vertex_size, start->name);
-// 		else
-// 		{
-// 			if (start->in)
-// 				ft_printf("(%2d){3}[%2s] : {0}", start->vertex_size, start->name);
-// 			else
-// 				ft_printf("(%2d){2}[%2s]': {0}", start->vertex_size, start->name);
-// 		}
-// 		tmp = start->links;
-// 		while (tmp)
-// 		{
-// 			if (tmp->room->in)
-// 				ft_printf("{3}[%s]{0}(%d) -> ", tmp->room->name, tmp->edge_size);
-// 			else
-// 				ft_printf("{2}[%s']{0}(%d) -> ", tmp->room->name, tmp->edge_size);
-// 			tmp = tmp->next;
-// 		}
-// 		ft_printf("\n");
-// 		start = start->next;
-// 	}
-// }
