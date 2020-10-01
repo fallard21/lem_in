@@ -8,6 +8,14 @@ r12 7 4
 end-r12
 end-start
 
+## start - end map
+123
+##end
+end 8 4
+##start
+start 4 2
+r12 7 4
+end-start
 
 
 ## mid map
@@ -99,10 +107,12 @@ start-3
 start 0 0 
 ##end
 end 1 1 
-middle 2 2 
+middle 2 2
+middle2 3 3 
 start-middle
 middle-end
-
+start-middle2
+middle2-end
 
 
 40
