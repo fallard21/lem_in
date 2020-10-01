@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 08:41:48 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/01 13:08:56 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,21 @@ void		move_simple_path(t_path *path, t_frame *stor);
 */
 
 void		set_direct_graph(t_frame *stor);
+int			check_only_start_end(t_room *room);
+int			check_skiping(t_room *room, int check_links);
+void		duplicate_rooms(t_frame *stor);
+int			split_room(t_frame *stor, t_room **map);
+void		skip_room(t_frame *stor, t_room **map, int frst);
+t_room		*create_out_room(t_room *room);
+void		set_out_room_params(t_room *new, t_room *room);
+void		redirect_input_links(t_room *room, t_frame *stor);
+void		redirect_output_links(t_room *room, t_frame *stor);
+void		redirect_end(t_frame *stor);
+void		redirect_end_input(t_link **head, t_link *link, t_frame *stor);
+void		redirect_start(t_frame *stor);
+
+
+
 
 /*
 **	JUST FOR TESTING ********************** DELETE
@@ -116,7 +131,7 @@ void	del_links(t_room *room, t_link **head);
 void	del_all_links(t_link **link);
 
 void	ft_exit(char *error);
-void	free_link(t_link **link);
+t_link	*free_link(t_link **link);
 void	free_room(t_room **room);
 
 int		bfs_queue(t_room *start);
@@ -133,12 +148,12 @@ void	del_head(t_link **head, t_link **tmp);
 void	del_middle(t_link *prev, t_link **tmp);
 void	del_all_links(t_link **link);
 
-void	print_patchs(t_room *end);
+void	print_patchs(t_room *start);
 
 
 void	suurballe(t_frame *frame);
 void	print_suurb(t_room *start);
 
-
+void	get_path(t_frame *frame);
 
 #endif

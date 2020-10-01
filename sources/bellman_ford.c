@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/29 16:30:01 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/01 12:05:37 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,28 +67,28 @@ t_prev	*restore_path(t_room *end)
 	return (p);
 }
 
-void	add_rev_edge(t_room *from, t_room *to, int size)
-{
-	t_link	*tmp;
+// void	add_rev_edge(t_room *from, t_room *to, int size)
+// {
+// 	t_link	*tmp;
 
-	if (!from->output)
-	{
-		from->output = ft_calloc(1,sizeof(t_link));
-		from->output->room = to;
-		from->output->edge_size = size * -1;;
-		from->output->status = 1;
-	}
-	else
-	{
-		tmp = from->output;
-		while (tmp && tmp->next)
-			tmp = tmp->next;
-		tmp->next = ft_calloc(1,sizeof(t_link));
-		tmp->next->room = to;
-		tmp->next->edge_size = size * -1;
-		tmp->next->status = 1;
-	}
-}
+// 	if (!from->output)
+// 	{
+// 		from->output = ft_calloc(1,sizeof(t_link));
+// 		from->output->room = to;
+// 		from->output->edge_size = size * -1;;
+// 		from->output->status = 1;
+// 	}
+// 	else
+// 	{
+// 		tmp = from->output;
+// 		while (tmp && tmp->next)
+// 			tmp = tmp->next;
+// 		tmp->next = ft_calloc(1,sizeof(t_link));
+// 		tmp->next->room = to;
+// 		tmp->next->edge_size = size * -1;
+// 		tmp->next->status = 1;
+// 	}
+// }
 
 void	out_to_in(t_room *current, char *name)
 {
@@ -234,7 +234,9 @@ void	suurballe(t_frame *frame)
 {
 	t_prev	*p;
 	int i = 0;
-	ft_printf("KEK\n");
+
+	//ft_printf("KEK\n");
+	print_suurb(frame->map);
 	while (bellman_ford(frame, frame->start) == 0)
 	{
 		i++;
@@ -246,16 +248,7 @@ void	suurballe(t_frame *frame)
 	//print_suurb(frame->map);
 	print_patchs(frame->end);
 	ft_printf("LINES: %d\n", i);
-	//bfs_queue(frame->start);
-	//print_all_info(frame->start);
-	//frame->start->vertex_size = 0;
-
-	/*
-	bellman_ford(frame, frame->start);
-	p = restore_path(frame->end);
-	reverse_path(p, frame->start);
-		print_suurb(frame->start)
-	*/
+	get_path(frame);
 	return ;
 }
 

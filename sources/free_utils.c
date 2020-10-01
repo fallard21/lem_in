@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 13:39:47 by user             ###   ########.fr       */
+/*   Updated: 2020/09/29 15:37:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		lem_error(char *str, t_frame *stor)
 	if (stor)
 		lem_free(stor);
 	if (!ft_strcmp(str, NOT_ENOUGH_ERR))
-		ft_putendl_fd(str, 0);
+		ft_putendl_fd(str, 2);
 	else if (errno == 0)
 		perror(str);
 	else
