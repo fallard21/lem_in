@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 07:02:24 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 14:55:45 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,9 @@ void	get_path(t_frame *frame)
 		next = links->next;
 		if (!(*tmp = ft_calloc(1, sizeof(t_path))))
 			lem_error(ALLOC_ERR, frame);
-		links->next = NULL;
+		if (!(links->next = ft_calloc(1, sizeof(t_link))))
+			lem_error(ALLOC_ERR, frame);
+		links->next->room = frame->end;
 		(*tmp)->end = links;
 		(*tmp)->start = links;
 		if (init_link_list(links, &(*tmp)->start, &(*tmp)->len))
