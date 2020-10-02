@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/01 09:30:43 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 17:37:41 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,19 @@ void	print_patchs(t_room *end)
 		tmp = tmp->next;
 		ft_printf("{0}\n\n");
 	}
+}
+
+void	print_recovery(t_recovery *rec)
+{
+	while (rec)
+	{
+		if (rec->room->suur_type == 1)
+			ft_printf("%s -> ", rec->room->name);
+		else if (rec->room->suur_type == 2)
+			ft_printf("%s' -> ", rec->room->name);
+		else
+			ft_printf("%s -> ", rec->room->name);
+		rec = rec->next;
+	}
+	ft_printf("\n");
 }

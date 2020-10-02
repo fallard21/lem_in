@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 07:07:43 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 17:34:49 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	print_all_info(t_room *room);
 
 
 void	bfs_list(t_frame *frame);
-void	delete_link(t_room *head, char *name);
+void	delete_link(t_room *head, t_link *where, char *name);
 void	del_links(t_room *room, t_link **head);
 void	del_all_links(t_link **link);
 
@@ -158,5 +158,7 @@ void	print_suurb(t_room *start);
 void	get_path(t_frame *frame);
 
 t_path	*sort_path(t_path *head);
+
+void	print_recovery(t_recovery *rec);
 
 #endif

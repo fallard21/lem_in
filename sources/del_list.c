@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 18:07:20 by fallard           #+#    #+#             */
-/*   Updated: 2020/09/25 08:04:18 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 17:14:42 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,12 @@ t_link	*del_list(t_link *prev, t_link **head)
 	}
 }
 
-void	delete_link(t_room *head, char *name)
+void	delete_link(t_room *head, t_link *where, char *name)
 {
 	t_link *tmp;
 	t_link *prev;
 
-	tmp = head->links;
+	tmp = where;
 	prev = NULL;
 	while (tmp)
 	{

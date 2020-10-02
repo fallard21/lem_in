@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 07:01:10 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 16:32:40 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ struct				s_room
 	char			*name;
 	int				coord[2];
 	int				ants;
+	int				check;
 	int				ant_name;
 	int				level;
 	int				vertex_size;
