@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 06:25:59 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 07:09:07 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ int			check_skiping(t_room *room, int check_links)
 	return (0);
 }
 
+void		set_simplest_grapth(t_frame *stor)
+{
+	stor->start->output = create_link(stor->end, stor, 1);
+	stor->start->output_links++;
+	stor->end->input = create_link(stor->start, stor, 1);
+	stor->end->input_links++;
+	stor->end->next = NULL;
+	stor->map = stor->start;
+	stor->map->next = stor->end;
+}
+
 // Обработать случай для графа из двух комнат start-end. Сразу отправляем в печать
 
 void		set_direct_graph(t_frame *stor)
@@ -45,10 +56,7 @@ void		set_direct_graph(t_frame *stor)
 	duplicate_rooms(stor);
 	if (stor->num_rooms == 2)
 	{
-		stor->start->output = create_link(stor->end, stor, 1);
-		stor->start->output_links++;
-		stor->end->input = create_link(stor->start, stor, 1);
-		stor->end->input_links++;
+		set_simplest_grapth(stor);
 		return ;
 	}
 	copy = stor->map->next;

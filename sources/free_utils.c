@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 15:37:12 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 22:57:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,20 @@ void		free_paths(t_path *paths)
 
 void		del_room(t_room **room)
 {
+	t_link		*tmp_link;
+
 	if (!(*room))
 		lem_error(MEM_FREE_ERR, NULL);
 	if ((*room)->links)
 	free((*room)->name);
 	(*room)->next = NULL;
 	(*room)->prev = NULL;
+	while((*room)->links)
+	{
+		tmp_link = (*room)->links;
+		(*room)->links = (*room)->links->next;
+		free(tmp_link);
+	}
 	(*room)->links = NULL;
 	(*room)->input = NULL;
 	(*room)->output = NULL;
