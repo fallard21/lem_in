@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 14:07:49 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 06:39:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,7 @@ void	suurballe(t_frame *frame);
 void	print_suurb(t_room *start);
 
 void	get_path(t_frame *frame);
+
+t_path	*sort_path(t_path *head);
 
 #endif

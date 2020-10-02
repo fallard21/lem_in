@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direct_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 17:51:18 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 06:25:59 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,13 @@ void		set_direct_graph(t_frame *stor)
 
 	duplicate_rooms(stor);
 	if (stor->num_rooms == 2)
+	{
+		stor->start->output = create_link(stor->end, stor, 1);
+		stor->start->output_links++;
+		stor->end->input = create_link(stor->start, stor, 1);
+		stor->end->input_links++;
 		return ;
+	}
 	copy = stor->map->next;
 	while (copy && copy->level != INT_MAX)
 	{
@@ -54,5 +60,5 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	// print_room_list(stor, stor->map);
+	//print_room_list(stor, stor->map);
 }
