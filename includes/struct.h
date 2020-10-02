@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/28 01:34:41 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 07:01:10 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_room		t_room;
 typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
-typedef struct s_prev		t_prev;
+typedef struct s_recovery	t_recovery;
 
 struct				s_input
 {
@@ -108,10 +108,10 @@ struct				s_frame
 	t_path			*paths;
 };
 
-struct				s_prev
+struct				s_recovery
 {
 	t_room			*room;
-	t_prev			*next;
+	t_recovery		*next;
 };
 
 

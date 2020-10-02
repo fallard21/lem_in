@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 23:29:39 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 13:40:00 by user             ###   ########.fr       */
+/*   Created: 2020/10/02 14:17:39 by user              #+#    #+#             */
+/*   Updated: 2020/10/02 14:17:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ int			main(int ac, char **av)
 		set_direct_graph(stor);
 
 		suurballe(stor);
-		// print_path_list(stor);
+		print_path_list(stor);
 			// ft_printf("\n"); print_patchs(stor->start);
 		//path = create_paths(stor);
-		// handle_ants_move(stor);
 
-
-
+		//handle_ants_move(stor);
 	}
 	// else
 	// 	lem_error(SMTH_HERE)

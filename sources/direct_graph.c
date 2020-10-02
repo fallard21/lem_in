@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direct_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 22:52:32 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 07:09:07 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	// print_room_list(stor, stor->map);
+	//print_room_list(stor, stor->map);
 }

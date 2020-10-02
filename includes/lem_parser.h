@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 23:27:35 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 23:27:37 by user             ###   ########.fr       */
+/*   Created: 2020/10/02 14:16:52 by user              #+#    #+#             */
+/*   Updated: 2020/10/02 14:16:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef LEM_PARSER_H
 # define LEM_PARSER_H
@@ -134,7 +132,7 @@ void	del_links(t_room *room, t_link **head);
 void	del_all_links(t_link **link);
 
 void	ft_exit(char *error);
-t_link	*free_link(t_link **link);
+int		free_link(t_link **link);
 void	free_room(t_room **room);
 
 int		bfs_queue(t_room *start);
@@ -158,5 +156,7 @@ void	suurballe(t_frame *frame);
 void	print_suurb(t_room *start);
 
 void	get_path(t_frame *frame);
+
+t_path	*sort_path(t_path *head);
 
 #endif

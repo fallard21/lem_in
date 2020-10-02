@@ -6,12 +6,72 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 00:23:12 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 14:15:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_parser.h"
+
+void	ft_print_path(t_path *p)
+{
+	t_link *tmp;
+
+	while (p)
+	{
+		ft_printf("len: %d\n", p->len);
+		tmp = NULL; 
+		tmp = p->start;
+		print_links(p->start);
+		while (tmp)
+		{
+			ft_printf("link: %-10s ", tmp->room->name);
+
+			if (tmp->prev)
+				ft_printf("prev: %-10s ", tmp->prev->room->name);
+			else
+				ft_printf("prev: %-10s ", NULL);
+
+			if (tmp->next)
+				ft_printf("next: %-10s ", tmp->next->room->name);
+			else
+				ft_printf("next: %-10s ", NULL);
+	
+			tmp = tmp->next;
+			ft_printf("\n");
+		}
+		p = p->next;
+		ft_printf("\n\n");
+	}
+}
+
+t_path	*sort_path(t_path *head)
+{
+	t_path *new_head;
+	t_path *tmp;
+	t_path *current;
+
+	new_head = NULL;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		if (!new_head || tmp->len < new_head->len)
+		{
+			tmp->next = new_head;
+			new_head = tmp;
+		}
+		else
+		{
+			current = new_head;
+			while (current->next && !(tmp->len < current->next->len))
+				current = current->next;
+			tmp->next = current->next;
+			current->next = tmp;
+		}
+	}
+	return (new_head);
+}
 
 t_link	*get_status_link(t_link *link)
 {
@@ -27,7 +87,7 @@ t_link	*get_status_link(t_link *link)
 	return (res);
 }
 
-int	insert_link(t_link **head, t_room *room, t_link *prev)
+int		insert_link(t_link **head, t_room *room)
 {
 	t_link	*tmp;
 
@@ -36,66 +96,66 @@ int	insert_link(t_link **head, t_room *room, t_link *prev)
 		if (!(*head = ft_calloc(1, sizeof(t_link))))
 			return (1);
 		(*head)->room = room;
-		(*head)->prev = prev;
 	}
 	else
 	{
 		if (!(tmp = ft_calloc(1, sizeof(t_link))))
 			return (1);
 		tmp->room = room;
-		tmp->prev = prev;
 		tmp->next = *head;
 		*head = tmp;
 	}
 	return (0);
 }
 
-t_link	*get_link_list(t_frame *frame, t_link *link)
+int		init_link_list(t_link *link, t_link **path, int *len)
 {
-	t_link *res;
 	t_room *current;
 	t_link *tmp;
 	t_link *prev;
 
-	res = NULL;
-	prev = NULL;
+	prev = *path;
 	current = link->room;
 	while (1)
 	{
 		if (!(tmp = get_status_link(current->output)))
 			break ;
-		if (res && ft_strcmp(tmp->room->name, res->room->name) == 0)
+		if (ft_strcmp(tmp->room->name, (*path)->room->name) == 0)
 		{
 			current = tmp->room;
 			continue ;
 		}
-		if (insert_link(&res, tmp->room, prev))
-			return (free_link(&res));
-		prev = res;
+		if (insert_link(path, tmp->room))
+			return (free_link(path));
+		(*len)++;
+		prev->prev = *path;
+		prev = *path;
 		current = tmp->room;
 	}
-	return (res);
+	return (0);
 }
 
 void	get_path(t_frame *frame)
 {
 	t_path **tmp;
 	t_link	*links;
+	t_link *next;
 
 	tmp = &frame->paths;
 	links = frame->end->output;
 	while (links)
 	{
+		next = links->next;
 		if (!(*tmp = ft_calloc(1, sizeof(t_path))))
 			lem_error(ALLOC_ERR, frame);
+		links->next = NULL;
 		(*tmp)->end = links;
-			ft_printf("{1}%s{0}\n", links->room->name); // DEL
-
-		if (!((*tmp)->start = get_link_list(frame, links)))
+		(*tmp)->start = links;
+		if (init_link_list(links, &(*tmp)->start, &(*tmp)->len))
 			lem_error(ALLOC_ERR, frame);
-
-			print_links((*tmp)->start);	// DEL
 		tmp = &(*tmp)->next;
-		links = links->next;
+		links = next;
 	}
+	frame->paths = sort_path(frame->paths);
+		ft_print_path(frame->paths);	// DELETE
 }

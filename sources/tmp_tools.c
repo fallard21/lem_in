@@ -82,6 +82,7 @@ void	print_room_list(t_frame *stor, t_room *room)
 {
 	t_room	*copy;
 
+	printf("we are here\n");
 	if (!room)
 		return;
 	copy = room;

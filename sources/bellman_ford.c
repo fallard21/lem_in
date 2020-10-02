@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/01 23:50:19 by user             ###   ########.fr       */
+/*   Created: 2020/10/02 14:15:38 by user              #+#    #+#             */
+/*   Updated: 2020/10/02 14:16:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,80 +15,56 @@
 
 static int global = 1;
 
-void	insert_p(t_prev **head, t_room *room)
+t_recovery	*free_prev_list(t_recovery **head)
 {
-	t_prev	*tmp;
+	t_recovery	*next;
+
+	while (*head)
+	{
+		next = (*head)->next;
+		free(*head);
+		*head = next;
+	}
+	return (NULL);
+}
+
+int		insert_recovery(t_recovery **head, t_room *room)
+{
+	t_recovery	*tmp;
 
 	if (*head == NULL)
 	{
-		*head = ft_calloc(1, sizeof(t_prev));
+		if (!(*head = ft_calloc(1, sizeof(t_recovery))))
+			return (1);
 		(*head)->room = room;
 	}
 	else
 	{
-		tmp = ft_calloc(1, sizeof(t_prev));
+		if (!(tmp = ft_calloc(1, sizeof(t_recovery))))
+			return (1);
 		tmp->room = room;
 		tmp->next = *head;
 		*head = tmp;
 	}
+	return (0);
 }
 
-t_prev	*restore_path(t_room *end)
+t_recovery	*restore_path(t_room *end)
 {
 	t_room *tmp;
-	t_prev *p;
+	t_recovery *p;
 	
 	p = NULL;
 	tmp = end;
 	while (tmp)
 	{
-		insert_p(&p, tmp);
+		if (insert_recovery(&p, tmp) == 1)
+			return (free_prev_list(&p));
 		tmp = tmp->prev;
 	}
 
-	/////////////////////
-	/*
-	t_prev *tmp_p = p;
-	ft_printf("\npath %d: ", global);
-	global++;
-	while (tmp_p)
-	{
-		if (tmp_p->room->suur_type == 1)
-			ft_printf("{3}%s -> {0}", tmp_p->room->name);
-		else if (tmp_p->room->suur_type == 2)
-			ft_printf("{2}%s' -> {0}", tmp_p->room->name);
-		else
-			ft_printf("{1}%s -> {0}", tmp_p->room->name);
-		tmp_p = tmp_p->next;
-	}
-	ft_printf("\n\n");
-	*/
-	///////////////////////
 	return (p);
 }
-
-// void	add_rev_edge(t_room *from, t_room *to, int size)
-// {
-// 	t_link	*tmp;
-
-// 	if (!from->output)
-// 	{
-// 		from->output = ft_calloc(1,sizeof(t_link));
-// 		from->output->room = to;
-// 		from->output->edge_size = size * -1;;
-// 		from->output->status = 1;
-// 	}
-// 	else
-// 	{
-// 		tmp = from->output;
-// 		while (tmp && tmp->next)
-// 			tmp = tmp->next;
-// 		tmp->next = ft_calloc(1,sizeof(t_link));
-// 		tmp->next->room = to;
-// 		tmp->next->edge_size = size * -1;
-// 		tmp->next->status = 1;
-// 	}
-// }
 
 void	out_to_in(t_room *current, char *name)
 {
@@ -165,7 +141,7 @@ void	in_to_out(t_room *current, char *name)
 	tmp->status = 1;
 }
 
-void	reverse_path(t_prev *p, t_room *current) //
+void	reverse_path(t_recovery *p, t_room *current) //
 {
 	t_link *tmp;
 	t_room *next;
@@ -232,23 +208,21 @@ void	reinit_sizes(t_room *start)
 
 void	suurballe(t_frame *frame)
 {
-	t_prev	*p;
-	int i = 0;
+	t_recovery	*p;
 
-	//ft_printf("KEK\n");
-	// print_suurb(frame->map);
+	p = NULL;
 	while (bellman_ford(frame, frame->start) == 0)
 	{
-		i++;
-		p = restore_path(frame->end);
+		if (!(p = restore_path(frame->end)))
+			lem_error(ALLOC_ERR, frame);
 		reverse_path(p,  frame->start);
 		reinit_sizes(frame->map);
-		// free (p);
+		free_prev_list(&p);
 	}
-	print_suurb(frame->map);
-	print_patchs(frame->end);
-	ft_printf("LINES: %d\n", i);
+	//print_suurb(frame->map);
+	//print_patchs(frame->end);
 	get_path(frame);
+	
 	return ;
 }
 
