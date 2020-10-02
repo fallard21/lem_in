@@ -26,3 +26,7 @@ r8-end
 start-r9
 r9-r10
 r10-end
+
+start - r1 - r6 - r4 - end
+start - r2 - r7 - r5 - r3 - r8 - end
+start - r9 - r10 - end

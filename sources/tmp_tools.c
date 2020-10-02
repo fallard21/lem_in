@@ -147,7 +147,7 @@ void		print_path_list(t_frame *stor)
 	while (copy)
 	{
 		print_path(copy, ct);
-		// printf_path_rev(copy, ct);
+		printf_path_rev(copy, ct);
 		printf("----- ants_togo = %d -----\n", copy->ants_togo);
 		copy = copy->next;
 		ct++;

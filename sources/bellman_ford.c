@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/01 23:29:03 by user             ###   ########.fr       */
+/*   Updated: 2020/10/01 23:50:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ void	suurballe(t_frame *frame)
 	int i = 0;
 
 	//ft_printf("KEK\n");
-	print_suurb(frame->map);
+	// print_suurb(frame->map);
 	while (bellman_ford(frame, frame->start) == 0)
 	{
 		i++;
@@ -245,7 +245,7 @@ void	suurballe(t_frame *frame)
 		reinit_sizes(frame->map);
 		// free (p);
 	}
-	//print_suurb(frame->map);
+	print_suurb(frame->map);
 	print_patchs(frame->end);
 	ft_printf("LINES: %d\n", i);
 	get_path(frame);
