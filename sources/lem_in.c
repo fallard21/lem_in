@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/29 08:39:47 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/02 14:13:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int			main(int ac, char **av)
 			// ft_printf("\n"); print_patchs(stor->start);
 		//path = create_paths(stor);
 		//handle_ants_move(stor);
-
 	}
 	// else
 	// 	lem_error(SMTH_HERE)
