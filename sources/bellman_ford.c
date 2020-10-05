@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bellman_ford.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/02 14:15:38 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 14:16:22 by user             ###   ########.fr       */
+/*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
+/*   Updated: 2020/10/02 18:45:15 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,36 @@
 #include "lem_parser.h"
 
 static int global = 1;
+
+void	check_alg(t_frame *frame)
+{
+	t_room *start;
+	t_path *p_tmp;
+	t_link *l_tmp;
+
+	p_tmp = frame->paths;
+	while (p_tmp)
+	{
+		l_tmp = p_tmp->start;
+		while (l_tmp)
+		{
+			if (l_tmp->room->level == 0 || l_tmp->room->level == INT_MAX)
+			{
+				l_tmp = l_tmp->next;
+				continue ;
+			}
+			if (l_tmp->room->check == 5)
+			{
+				ft_printf("%s\n",l_tmp->room->name);
+				ft_printf("ERROR!!!!!\n");
+				exit (1);
+			}
+			l_tmp->room->check = 5;
+			l_tmp = l_tmp->next;
+		}
+		p_tmp = p_tmp->next;
+	}
+}
 
 t_recovery	*free_prev_list(t_recovery **head)
 {
@@ -52,18 +82,18 @@ int		insert_recovery(t_recovery **head, t_room *room)
 t_recovery	*restore_path(t_room *end)
 {
 	t_room *tmp;
-	t_recovery *p;
+	t_recovery *rec;
 	
-	p = NULL;
+	rec = NULL;
 	tmp = end;
 	while (tmp)
 	{
-		if (insert_recovery(&p, tmp) == 1)
-			return (free_prev_list(&p));
+		if (insert_recovery(&rec, tmp) == 1)
+			return (free_prev_list(&rec));
 		tmp = tmp->prev;
 	}
-
-	return (p);
+	//print_recovery(rec);
+	return (rec);
 }
 
 void	out_to_in(t_room *current, char *name)
@@ -79,11 +109,6 @@ void	out_to_in(t_room *current, char *name)
 			break ;
 		prev = tmp;
 		tmp = tmp->next;
-	}
-	if (tmp->status)
-	{
-		tmp->status = 0;
-		return ;
 	}
 
 	if (!prev)
@@ -101,7 +126,7 @@ void	out_to_in(t_room *current, char *name)
 	
 	tmp->next  = NULL;
 	tmp->edge_size = tmp->edge_size * -1;
-	tmp->status = 1;
+	tmp->status = (tmp->status) ? 0 : 1;
 }
 
 void	in_to_out(t_room *current, char *name)
@@ -118,11 +143,6 @@ void	in_to_out(t_room *current, char *name)
 		prev = tmp;
 		tmp = tmp->next;
 	}
-	if (tmp->status)
-	{
-		tmp->status = 0;
-		return ;
-	}
 	if (!prev)
 		current->input = tmp->next;
 	else
@@ -138,7 +158,7 @@ void	in_to_out(t_room *current, char *name)
 	
 	tmp->next = NULL;
 	tmp->edge_size = tmp->edge_size * -1;
-	tmp->status = 1;
+	tmp->status = (tmp->status) ? 0 : 1;
 }
 
 void	reverse_path(t_recovery *p, t_room *current) //
@@ -148,10 +168,12 @@ void	reverse_path(t_recovery *p, t_room *current) //
 
 	while (p && p->next)
 	{
+			//ft_printf("%s -> ", p->room->name);
 		out_to_in(p->room, p->next->room->name);
 		in_to_out(p->next->room, p->room->name);
 		p = p->next;
 	}
+		//ft_printf("\n");
 }
 
 int		bellman_ford(t_frame *frame, t_room *start)
@@ -209,10 +231,11 @@ void	reinit_sizes(t_room *start)
 void	suurballe(t_frame *frame)
 {
 	t_recovery	*p;
-
+	int i = 0;
 	p = NULL;
 	while (bellman_ford(frame, frame->start) == 0)
 	{
+		i++;
 		if (!(p = restore_path(frame->end)))
 			lem_error(ALLOC_ERR, frame);
 		reverse_path(p,  frame->start);
@@ -221,8 +244,11 @@ void	suurballe(t_frame *frame)
 	}
 	//print_suurb(frame->map);
 	//print_patchs(frame->end);
+
 	get_path(frame);
-	
+	//print_suurb(frame->start);
+	//check_alg(frame);
+	//ft_printf("LINES: %d\n", i);
 	return ;
 }
 

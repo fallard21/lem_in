@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/02 14:16:52 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 14:16:55 by user             ###   ########.fr       */
+/*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
+/*   Updated: 2020/10/05 16:35:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void		print_room_list(t_frame *stor, t_room *room);
 void		print_path(t_path *path, int ct);
 void		print_path_list(t_frame *stor);
 void		set_levels(t_frame *stor);			// emulate bfs levels
+void		cur_state(t_path *path, t_frame *stor);
 
 
 
@@ -127,7 +128,7 @@ void	print_all_info(t_room *room);
 
 
 void	bfs_list(t_frame *frame);
-void	delete_link(t_room *head, char *name);
+void	delete_link(t_room *head, t_link *where, char *name);
 void	del_links(t_room *room, t_link **head);
 void	del_all_links(t_link **link);
 
@@ -158,5 +159,7 @@ void	print_suurb(t_room *start);
 void	get_path(t_frame *frame);
 
 t_path	*sort_path(t_path *head);
+
+void	print_recovery(t_recovery *rec);
 
 #endif

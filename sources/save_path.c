@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 14:15:05 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 18:44:58 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,9 @@ void	get_path(t_frame *frame)
 		next = links->next;
 		if (!(*tmp = ft_calloc(1, sizeof(t_path))))
 			lem_error(ALLOC_ERR, frame);
-		links->next = NULL;
+		if (!(links->next = ft_calloc(1, sizeof(t_link))))
+			lem_error(ALLOC_ERR, frame);
+		links->next->room = frame->end;
 		(*tmp)->end = links;
 		(*tmp)->start = links;
 		if (init_link_list(links, &(*tmp)->start, &(*tmp)->len))
@@ -157,5 +159,5 @@ void	get_path(t_frame *frame)
 		links = next;
 	}
 	frame->paths = sort_path(frame->paths);
-		ft_print_path(frame->paths);	// DELETE
+		//ft_print_path(frame->paths);	// DELETE
 }

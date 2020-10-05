@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 14:17:39 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 14:17:41 by user             ###   ########.fr       */
+/*   Updated: 2020/10/02 21:49:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,21 @@ int			main(int ac, char **av)
 		set_direct_graph(stor);
 
 		suurballe(stor);
-		print_path_list(stor);
-			// ft_printf("\n"); print_patchs(stor->start);
-		//path = create_paths(stor);
 
-		//handle_ants_move(stor);
+
+		// ft_printf("\n"); print_patchs(stor->start);
+		// path = create_paths(stor);
+		// print_path_list(stor);
+		handle_ants_move(stor);
+
+		// t_link *l = stor->paths->start;
+		// while(l)
+		// {
+		// 	printf("room = %s\t next = %s\t prev = %s\n",
+		// 	l->room->name, l->next ? l->next->room->name : NULL,
+		// 	l->prev ? l->prev->room->name : NULL);
+		// 	l = l->next;
+		// }
 	}
 	// else
 	// 	lem_error(SMTH_HERE)
