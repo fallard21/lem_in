@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 16:30:27 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/05 13:23:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			main(int ac, char **av)
 		suurballe(stor);
 			// ft_printf("\n"); print_patchs(stor->start);
 		//path = create_paths(stor);
-		//handle_ants_move(stor);
+		handle_ants_move(stor);
 	}
 	// else
 	// 	lem_error(SMTH_HERE)

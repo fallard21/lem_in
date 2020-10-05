@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 17:34:49 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/04 17:41:48 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,7 @@ void	get_path(t_frame *frame);
 t_path	*sort_path(t_path *head);
 
 void	print_recovery(t_recovery *rec);
+
+void	test_move_ants(t_frame *frame, int size);
 
 #endif

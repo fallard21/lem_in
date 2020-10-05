@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 16:32:40 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/03 20:19:39 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ struct				s_path
 	t_link			*start;
 	t_link			*end;
 	t_path			*next;
+	t_link			**arr;
 	int				on_work;
 	int				len;
 	int				ants_togo;

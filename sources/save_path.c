@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 18:44:58 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/05 13:25:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_path(t_path *p)
 	{
 		ft_printf("len: %d\n", p->len);
 		tmp = NULL; 
-		tmp = p->start;
+		//tmp = p->start;
 		print_links(p->start);
 		while (tmp)
 		{
@@ -160,4 +160,105 @@ void	get_path(t_frame *frame)
 	}
 	frame->paths = sort_path(frame->paths);
 		//ft_print_path(frame->paths);	// DELETE
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+void	print_arr(int *arr, int size)
+{
+	int i = 0;
+
+	while (i < size)
+	{
+		ft_printf("%3d ", arr[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
+void	ft_moving(t_frame *frame)
+{
+	t_path *path;
+	int i = 0;
+
+	while (frame->start->ants != 0)
+	{
+		path = frame->paths;
+		while (path)
+		{
+			i = path->len + 2 - 1;
+			if (path->arr[i])
+			path = path->next;
+		}
+	}
+}
+
+void	calcul_ants(t_frame *frame, int size)
+{
+	int		*sizes;
+	int		*ants;
+	t_path	*tmp;
+	int		count;
+	int		i;
+
+	count = frame->num_ants;
+	tmp = frame->paths;
+	sizes = ft_calloc(size, sizeof(int));
+	ants = ft_calloc(size, sizeof(int));
+	i = 0;
+	while (tmp)
+	{
+		sizes[i] = tmp->len;
+		tmp = tmp->next;
+		i++;
+	}
+	
+	while (count != 0)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if ((i + 1) == size)
+				break ;
+			if (sizes[i + 1] + ants[i + 1] > sizes[i] + ants[i])
+				break;
+			i++;
+		}
+		ants[i] = ants[i] + 1;
+		
+		count--;
+	}
+	print_arr(sizes, size);
+	print_arr(ants, size);
+
+	// tmp = frame->paths;
+	// i = 0;
+	// while (tmp)
+	// {
+	// 	tmp->ants_togo = ants[i++];
+	// 	tmp = tmp->next;
+	// }
+	// ft_moving(frame);
+}
+
+void	test_move_ants(t_frame *frame, int size)
+{
+	t_path *tmp;
+	t_link *link;
+	int i;
+
+	
+	while (tmp)
+	{
+		i = 0;
+		link = tmp->start;
+		tmp->arr = ft_calloc(tmp->len + 2, sizeof(t_room*));
+		while (link)
+		{
+			tmp->arr[i++] = link;
+			link = link->next;
+		}
+		tmp = tmp->next;
+	}
+	calcul_ants(frame, size);
 }

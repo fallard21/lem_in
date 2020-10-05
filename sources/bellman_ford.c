@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 18:45:15 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/05 13:25:23 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,7 @@ void	suurballe(t_frame *frame)
 	t_recovery	*p;
 	int i = 0;
 	p = NULL;
+	//print_suurb(frame->map);
 	while (bellman_ford(frame, frame->start) == 0)
 	{
 		i++;
@@ -248,7 +249,9 @@ void	suurballe(t_frame *frame)
 	get_path(frame);
 	//print_suurb(frame->start);
 	//check_alg(frame);
-	//ft_printf("LINES: %d\n", i);
+	ft_printf("LINES: %d\n", i);
+
+	//test_move_ants(frame, i);
 	return ;
 }
 

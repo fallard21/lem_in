@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/09/21 22:28:32 by user             ###   ########.fr       */
+/*   Updated: 2020/10/05 13:26:57 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,33 @@ void		set_ants_on_paths(t_frame *stor)
 	int			ants_ct;
 
 	ants_ct = stor->start->ants;
-	path_copy = stor->paths;
+	
 	while (ants_ct != 0)
 	{
-		while (path_copy->next && path_copy->len + path_copy->ants_togo <=
-		path_copy->next->len + path_copy->next->ants_togo)
+		path_copy = stor->paths;
+		while (path_copy)
 		{
-			path_copy->ants_togo++;
-			ants_ct--;
+			if (!path_copy->next)
+				break;
+			if (path_copy->next->len + path_copy->next->ants_togo > 
+					path_copy->len + path_copy->ants_togo)
+				break;
+			path_copy = path_copy->next;
 		}
-		if (!path_copy->next)
-		{
-			path_copy->ants_togo++;
-			ants_ct--;
-		}
-		path_copy = path_copy->next ? path_copy->next : stor->paths;
+		path_copy->ants_togo++;
+		ants_ct--;
+		// while (path_copy->next && path_copy->len + path_copy->ants_togo <=
+		// path_copy->next->len + path_copy->next->ants_togo)
+		// {
+		// 	path_copy->ants_togo++;
+		// 	ants_ct--;
+		// }
+		// if (!path_copy->next)
+		// {
+		// 	path_copy->ants_togo++;
+		// 	ants_ct--;
+		// }
+		// path_copy = path_copy->next ? path_copy->next : stor->paths;
 	}
 }
 
@@ -87,8 +99,9 @@ void		handle_ants_move(t_frame *stor)
 			if (is_used == 0)
 				move_through_path(path_copy, stor);
 			path_copy = stor->paths;
-			printf("\n");				// refactore to ft_printf
+			printf("\n");			// refactore to ft_printf
 		}
+		ft_printf("%d\n", stor->end->ants);
 	}
 	if (stor->end->ants != stor->num_ants)
 		lem_error(MOVE_RES_ERR, stor);
