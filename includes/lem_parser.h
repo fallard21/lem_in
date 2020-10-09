@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 21:38:15 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:51:12 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,21 +118,15 @@ void		set_levels(t_frame *stor);			// emulate bfs levels
 
 
 
-
-
 /*
 ** >-----------------< BFS >-----------------<
 */
 int			bfs(t_frame *frame, t_room *start);
-int			is_empty(t_link *queue);
-void		queue_push(t_frame *frame, t_link **queue, t_room *room);
-t_room		*queue_pop(t_link **queue);
 
 /*
 ** >-----------------< Bellman-Ford >-----------------<
 */
 int			bellman_ford(t_frame *frame, t_room *start);
-void		bellman_ford_2(t_link **tmp, t_room **current, int *flag);
 t_find		*restore_path(t_room *end);
 int			insert_recovery(t_find **head, t_room *room);
 void		reinit_sizes(t_room *start);

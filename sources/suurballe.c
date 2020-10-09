@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:14:32 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 19:54:22 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:51:59 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	suurballe(t_frame *frame)
 	}
 		//print_suurb(frame->map);
 		//print_patchs(frame->end);
-		//ft_printf("FINAL:\n");calculate_flow(frame);
+		//ft_printf("FINAL:\n"); calculate_steps(frame);
 	get_all_paths(frame);
 	//test_move_ants(frame, i);
 	return ;
