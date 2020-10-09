@@ -12,7 +12,7 @@ INC_DIR = includes/
 LIB_DIR = libft/
 
 SRC = print.c \
-bfs_queue.c \
+bfs.c \
 free_mem.c \
 lem_in.c \
 read_input.c \
@@ -29,7 +29,7 @@ direct_graph.c \
 duplicate_rooms.c \
 redirect_links.c \
 save_path.c \
-calculate_flow.c \
+calculate_step.c \
 sorting.c \
 suurballe.c
 
