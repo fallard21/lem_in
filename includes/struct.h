@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/08 21:16:45 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 17:48:42 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ typedef struct s_room		t_room;
 typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
-typedef struct s_recovery	t_recovery;
-typedef struct s_optimize	t_optimize;
+typedef struct s_find		t_find;
 
 struct				s_input
 {
@@ -108,20 +107,15 @@ struct				s_frame
 	t_input			*input;
 	t_room			*map;
 	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
+	t_find			*find_way;
+	int				current_steps;
 	t_path			*paths;
 };
 
-struct				s_recovery
+struct				s_find
 {
 	t_room			*room;
-	t_recovery		*next;
-};
-
-struct s_optimize
-{
-	t_recovery		*rec;
-	int				size;
-	t_optimize		*next;
+	t_find			*next;
 };
 
 #endif

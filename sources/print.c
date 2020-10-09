@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/08 21:31:50 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 17:51:46 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	print_patchs(t_room *end)
 	}
 }
 
-void	print_recovery(t_recovery *rec)
+void	print_recovery(t_find *rec)
 {
 	while (rec)
 	{
@@ -160,4 +160,36 @@ void	print_recovery(t_recovery *rec)
 		rec = rec->next;
 	}
 	ft_printf("\n");
+}
+
+void	ft_print_path(t_path *p)
+{
+	t_link *tmp;
+
+	while (p)
+	{
+		ft_printf("len: %d\n", p->len);
+		tmp = NULL; 
+		//tmp = p->start;
+		print_links(p->start);
+		while (tmp)
+		{
+			ft_printf("link: %-10s ", tmp->room->name);
+
+			if (tmp->prev)
+				ft_printf("prev: %-10s ", tmp->prev->room->name);
+			else
+				ft_printf("prev: %-10s ", NULL);
+
+			if (tmp->next)
+				ft_printf("next: %-10s ", tmp->next->room->name);
+			else
+				ft_printf("next: %-10s ", NULL);
+	
+			tmp = tmp->next;
+			ft_printf("\n");
+		}
+		p = p->next;
+		ft_printf("\n\n");
+	}
 }

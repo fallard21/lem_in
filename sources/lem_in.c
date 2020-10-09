@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/08 22:15:36 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 18:15:54 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int			main(int ac, char **av)
 	t_frame		*stor;
 	t_path		*path;
 
-	// ft_memset(&stor, 0, sizeof(stor));
 	errno = 0;
 	//  if (ac >= 2) 	// Here is to handle possible bonus-flags
 	//  {				// --help, --verbose, --debug, etc
@@ -38,9 +37,7 @@ int			main(int ac, char **av)
 		set_direct_graph(stor);
 
 		suurballe(stor);
-			// ft_printf("\n"); print_patchs(stor->start);
-		//path = create_paths(stor);
-		//handle_ants_move(stor);
+		handle_ants_move(stor);
 	}
 	// else
 	// 	lem_error(SMTH_HERE)

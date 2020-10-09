@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/08 21:23:30 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 18:24:04 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,51 +120,59 @@ void		set_levels(t_frame *stor);			// emulate bfs levels
 
 
 
+void	free_all(t_room *start);
+int		free_link(t_link **link);
+void	free_room(t_room **room);
+t_find	*free_prev_list(t_find **head);
+
+/*
+** >-----------------< BFS >-----------------<
+*/
+int			bfs_queue(t_room *start);
+int			is_empty(t_link *queue);
+void		queue_push(t_link **queue, t_room *room);
+t_room		*queue_pop(t_link **queue);
+
+/*
+** >-----------------< Bellman-Ford >-----------------<
+*/
+int			bellman_ford(t_frame *frame, t_room *start);
+void		bellman_ford_2(t_link **tmp, t_room **current, int *flag);
+t_find		*restore_path(t_room *end);
+int			insert_recovery(t_find **head, t_room *room);
+void		reinit_sizes(t_room *start);
+
+/*
+** >-----------------< Suurballe >-----------------<
+*/
+void	suurballe(t_frame *frame);
+void	reverse_path(t_find *p, t_room *current);
+void	in_to_out(t_room *current, char *name);
+void	out_to_in(t_room *current, char *name);
+void	find_link(t_link **tmp, t_link **prev, char *name);
+
+
+t_path	*sort_path(t_path *head);
+t_find	*ft_reverse_list(t_find *head);
+
+void	get_all_paths(t_frame *frame);
+
+t_path	*sort_path(t_path *head);
+
+t_link	*get_status_link(t_link *link);
+
+int		calculate_flow(t_frame *frame);
+
+///////////////////////////////////////////////
+void	print_suurb(t_room *start);
+void	print_recovery(t_find *rec);
+void	print_patchs(t_room *start);
+
 void	print_graf(t_frame *frame);
 void	print_rooms(t_room *room);
 void	print_links(t_link *links);
 void	print_all_info(t_room *room);
 
 
-void	bfs_list(t_frame *frame);
-void	delete_link(t_room *head, t_link *where, char *name);
-void	del_links(t_room *room, t_link **head);
-void	del_all_links(t_link **link);
-
-void	ft_exit(char *error);
-int		free_link(t_link **link);
-void	free_room(t_room **room);
-
-int		bfs_queue(t_room *start);
-int		is_empty(t_link *queue);
-void	queue_push(t_link **queue, t_room *room);
-t_room	*queue_pop(t_link **queue);
-
-void	free_all(t_room *start);
-
-t_link	*check_path(t_room *current);
-t_link	*get_out_path(t_room *current);
-
-void	del_head(t_link **head, t_link **tmp);
-void	del_middle(t_link *prev, t_link **tmp);
-void	del_all_links(t_link **link);
-
-void	print_patchs(t_room *start);
-
-
-void	suurballe(t_frame *frame);
-void	print_suurb(t_room *start);
-
-void	get_path(t_frame *frame);
-
-t_path	*sort_path(t_path *head);
-
-void	print_recovery(t_recovery *rec);
-
-void	test_move_ants(t_frame *frame, int size);
-
-t_link	*get_status_link(t_link *link);
-
-void	calculate_flow(t_frame *frame);
 
 #endif

@@ -6,71 +6,40 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/08 22:15:51 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 18:22:51 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_parser.h"
 
-static int global = 1;
-
-void	check_alg(t_frame *frame)
+void	reinit_sizes(t_room *start)
 {
-	t_room *start;
-	t_path *p_tmp;
-	t_link *l_tmp;
+	t_room *tmp;
 
-	p_tmp = frame->paths;
-	while (p_tmp)
+	tmp = start;
+	while (tmp)
 	{
-		l_tmp = p_tmp->start;
-		while (l_tmp)
-		{
-			if (l_tmp->room->level == 0 || l_tmp->room->level == INT_MAX)
-			{
-				l_tmp = l_tmp->next;
-				continue ;
-			}
-			if (l_tmp->room->check == 5)
-			{
-				ft_printf("%s\n",l_tmp->room->name);
-				ft_printf("ERROR!!!!!\n");
-				exit (1);
-			}
-			l_tmp->room->check = 5;
-			l_tmp = l_tmp->next;
-		}
-		p_tmp = p_tmp->next;
+		tmp->vertex_size = INT_MAX;
+		tmp->prev = NULL;
+		tmp = tmp->next;
 	}
+	start->vertex_size = 0;
 }
 
-t_recovery	*free_prev_list(t_recovery **head)
+int		insert_recovery(t_find **head, t_room *room)
 {
-	t_recovery	*next;
-
-	while (*head)
-	{
-		next = (*head)->next;
-		free(*head);
-		*head = next;
-	}
-	return (NULL);
-}
-
-int		insert_recovery(t_recovery **head, t_room *room)
-{
-	t_recovery	*tmp;
+	t_find	*tmp;
 
 	if (*head == NULL)
 	{
-		if (!(*head = ft_calloc(1, sizeof(t_recovery))))
+		if (!(*head = ft_calloc(1, sizeof(t_find))))
 			return (1);
 		(*head)->room = room;
 	}
 	else
 	{
-		if (!(tmp = ft_calloc(1, sizeof(t_recovery))))
+		if (!(tmp = ft_calloc(1, sizeof(t_find))))
 			return (1);
 		tmp->room = room;
 		tmp->next = *head;
@@ -79,102 +48,41 @@ int		insert_recovery(t_recovery **head, t_room *room)
 	return (0);
 }
 
-t_recovery	*restore_path(t_room *end)
+t_find	*restore_path(t_room *end)
 {
-	t_room *tmp;
-	t_recovery *rec;
-	
-	rec = NULL;
+	t_room	*tmp;
+	t_find	*way;
+
+	way = NULL;
 	tmp = end;
 	while (tmp)
 	{
-		if (insert_recovery(&rec, tmp) == 1)
-			return (free_prev_list(&rec));
+		if (insert_recovery(&way, tmp) == 1)
+			return (free_prev_list(&way));
 		tmp = tmp->prev;
 	}
-	//print_recovery(rec);
-	return (rec);
+	//print_recovery(way);
+	return (way);
 }
 
-void	out_to_in(t_room *current, char *name)
+void	bellman_ford_2(t_link **tmp, t_room **current, int *flag)
 {
-	t_link	*tmp;
-	t_link	*prev;
+	int n;
 
-	tmp = current->output;
-	prev = NULL;
-	while (tmp)
+	n = 0;
+	while (*tmp)
 	{
-		if (ft_strcmp(name, tmp->room->name) == 0)
+		if ((*current)->vertex_size == INT_MAX)
 			break ;
-		prev = tmp;
-		tmp = tmp->next;
+		n = (*current)->vertex_size + (*tmp)->edge_size;
+		if (n < (*tmp)->room->vertex_size)
+		{
+			(*tmp)->room->vertex_size = n;
+			(*tmp)->room->prev = *current;
+			*flag = 1;
+		}
+		*tmp = (*tmp)->next;
 	}
-
-	if (!prev)
-		current->output = tmp->next;
-	else
-		prev->next = tmp->next;
-	
-	prev = current->input;
-	while (prev && prev->next)
-		prev = prev->next;
-	if (!prev)
-		current->input = tmp;
-	else
-		prev->next = tmp;
-	
-	tmp->next = NULL;
-	// if (tmp->status)
-	// 	ft_printf("ПЕРЕСЕЧЕНИЕ %s -> %s\n", current->name, name);
-	tmp->edge_size = tmp->edge_size * -1;
-	tmp->status = (tmp->status) ? 0 : 1;
-}
-
-void	in_to_out(t_room *current, char *name)
-{
-	t_link	*tmp;
-	t_link	*prev;
-
-	tmp = current->input;
-	prev = NULL;
-	while (tmp)
-	{
-		if (ft_strcmp(name, tmp->room->name) == 0)
-			break ;
-		prev = tmp;
-		tmp = tmp->next;
-	}
-	if (!prev)
-		current->input = tmp->next;
-	else
-		prev->next = tmp->next;
-
-	prev = current->output;
-	while (prev && prev->next)
-		prev = prev->next;
-	if (!prev)
-		current->output = tmp;
-	else
-		prev->next = tmp;
-	tmp->next = NULL;
-	tmp->edge_size = tmp->edge_size * -1;
-	tmp->status = (tmp->status) ? 0 : 1;
-}
-
-void	reverse_path(t_recovery *p, t_room *current) //
-{
-	t_link *tmp;
-	t_room *next;
-
-	while (p && p->next)
-	{
-			//ft_printf("%s -> ", p->room->name);
-		out_to_in(p->room, p->next->room->name);
-		in_to_out(p->next->room, p->room->name);
-		p = p->next;
-	}
-		//ft_printf("\n");
 }
 
 int		bellman_ford(t_frame *frame, t_room *start)
@@ -193,18 +101,7 @@ int		bellman_ford(t_frame *frame, t_room *start)
 		while (current)
 		{
 			tmp = current->output;
-			while (tmp)
-			{
-				if (current->vertex_size == INT_MAX)
-					break ;
-				if (current->vertex_size + tmp->edge_size < tmp->room->vertex_size)
-				{
-					tmp->room->vertex_size = current->vertex_size + tmp->edge_size;
-					tmp->room->prev = current;
-					flag = 1;
-				}
-				tmp = tmp->next;
-			}
+			bellman_ford_2(&tmp, &current, &flag);
 			current = current->next;
 		}
 		if (!flag)
@@ -214,70 +111,3 @@ int		bellman_ford(t_frame *frame, t_room *start)
 		return (1);
 	return (0);
 }
-
-void	reinit_sizes(t_room *start)
-{
-	t_room *tmp;
-
-	tmp = start;
-	while (tmp)
-	{
-		tmp->vertex_size = INT_MAX;
-		tmp->prev = NULL;
-		tmp = tmp->next;
-	}
-	start->vertex_size = 0;
-}
-
-void	suurballe(t_frame *frame)
-{
-	t_optimize	*opt;
-	t_optimize **tmp;
-	int i = 0;
-	int	path = 0;
-	opt = NULL;
-	tmp = &opt;
-
-	while (bellman_ford(frame, frame->start) == 0)
-	{
-		i++;
-		*tmp = ft_calloc(1, sizeof(t_optimize));
-		if (!((*tmp)->rec = restore_path(frame->end)))
-			lem_error(ALLOC_ERR, frame);
-		reverse_path((*tmp)->rec,  frame->start);
-
-		//print_patchs(frame->end);
-		calculate_flow(frame);
-
-		reinit_sizes(frame->map);
-		//free_prev_list(&p);
-		tmp = &(*tmp)->next;
-	}
-	//print_suurb(frame->map);
-
-	//print_patchs(frame->end);
-	//calculate_flow(frame);
-
-	get_path(frame);
-	//print_suurb(frame->start);
-	//check_alg(frame);
-	//ft_printf("LINES: %d\n", i);
-
-	test_move_ants(frame, i);
-	return ;
-}
-
-
-/*
-Ants 10;
-1) 1 путь - 17 шагов.
-st - 10 - 9 - 8 - 7 - 1 - 26 - 4 - end;
-
-2) 2 пути - 14 шагов. - улучшение ЕСТЬ.
-st - 10 - 16 - 17 - 18 - 19 - 5 - 27 - 6 - end;
-st - 24 - 11 - 25 - 12 - 30 - 1 - 26 - 4 - end;
-
-3) 3 пути - 15 шагов - улучшения НЕТ. Остановка.
-4)
-5)
-*/

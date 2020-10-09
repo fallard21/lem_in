@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:56:58 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/08 22:17:13 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 18:10:35 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		find_max(int *arr, int size)
 	return (max);	
 }
 
-void	flow_2(t_frame *frame, int *path, int size)
+int		flow_2(t_frame *frame, int *path, int size)
 {
 	int *ants;
 	int *diff;
@@ -62,15 +62,20 @@ void	flow_2(t_frame *frame, int *path, int size)
         diff[i] = path[i] + ants[i];
         num_ants--;
     }
-	ft_printf("Max steps: %d\n", find_max(diff, size));
+	int n = find_max(diff, size);
+		//ft_printf("Max steps: %d\n", n);
 	free(path);
     free(ants);
     free(diff);
-	ft_printf("|----------------------------------------------------|\n");
+		//ft_printf("|----------------------------------------------------|\n");
+	if (n > frame->current_steps)
+		return (1);
+	frame->current_steps = n;
+	return (0);
 }
 
 
-void	calculate_flow(t_frame *frame)
+int	calculate_flow(t_frame *frame)
 {
 	t_link	*tmp;
 	t_room	*current;
@@ -88,7 +93,7 @@ void	calculate_flow(t_frame *frame)
 		tmp = tmp->next;
 	}
 
-		ft_printf("Numbers of path: %d\n", size);
+		//ft_printf("Numbers of path: %d\n", size);
 
 	arr = ft_calloc(size , sizeof(int));
 	tmp = frame->end->output;
@@ -106,7 +111,7 @@ void	calculate_flow(t_frame *frame)
 				current = tmp_2->room;
 				j++;
 			}
-			//ft_printf("Path size: %d\n", j / 2);
+				//ft_printf("Path size: %d\n", j / 2);
 			arr[i] = j / 2;
 			i++;
 		}
@@ -121,5 +126,5 @@ void	calculate_flow(t_frame *frame)
 	// }
 	// ft_printf("\n");
 	
-	flow_2(frame, arr, size);
+	return (flow_2(frame, arr, size));
 }

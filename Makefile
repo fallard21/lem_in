@@ -12,7 +12,6 @@ INC_DIR = includes/
 LIB_DIR = libft/
 
 SRC = print.c \
-del_list.c \
 bfs_queue.c \
 free_mem.c \
 lem_in.c \
@@ -30,7 +29,9 @@ direct_graph.c \
 duplicate_rooms.c \
 redirect_links.c \
 save_path.c \
-calculate_flow.c
+calculate_flow.c \
+sorting.c \
+suurballe.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))
