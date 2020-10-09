@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 21:09:50 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:41:53 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int			main(int ac, char **av)
 
 		suurballe(stor);
 		handle_ants_move(stor);
-		ft_printf("\n");
 	}
 	// else
 	// 	lem_error(SMTH_HERE)

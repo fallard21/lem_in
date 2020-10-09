@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:48:37 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 20:51:01 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:29:58 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int		free_link(t_link **link)
 	while (*link)
 	{
 		next = (*link)->next;
-		free((*link)->room->name);
-		free((*link)->room);
 		free(*link);
 		*link = next;
 	}

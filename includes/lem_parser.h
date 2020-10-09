@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 21:13:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:38:15 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ void		set_levels(t_frame *stor);			// emulate bfs levels
 /*
 ** >-----------------< BFS >-----------------<
 */
-int			bfs_queue(t_room *start);
+int			bfs(t_frame *frame, t_room *start);
 int			is_empty(t_link *queue);
-void		queue_push(t_link **queue, t_room *room);
+void		queue_push(t_frame *frame, t_link **queue, t_room *room);
 t_room		*queue_pop(t_link **queue);
 
 /*

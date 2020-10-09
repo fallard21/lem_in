@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 19:58:53 by user             ###   ########.fr       */
+/*   Updated: 2020/10/09 21:41:30 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_frame		*create_map(void)
 	}
 	stor = init_storage(&input);
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor) ||
-	!bfs_queue(stor->start))
+	!bfs(stor, stor->start))
 		lem_error(NOT_ENOUGH_ERR, stor);
 	// input_print_and_free(stor);
 	// print_room_list(stor, stor->map);
