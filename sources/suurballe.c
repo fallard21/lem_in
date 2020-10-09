@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:14:32 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 18:10:10 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 19:54:22 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	suurballe(t_frame *frame)
 			lem_error(ALLOC_ERR, frame);
 		reverse_path(frame->find_way, frame->start);
 			//print_patchs(frame->end); ft_printf("\n");
-		if (calculate_flow(frame) == 1)
+		if (calculate_steps(frame) == 1)
 		{
 			frame->find_way = ft_reverse_list(frame->find_way);
 			reverse_path(frame->find_way, frame->start);

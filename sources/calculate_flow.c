@@ -6,125 +6,125 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:56:58 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 18:10:35 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:08:30 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_parser.h"
 
-void	bubble_sort(int *arr, int size)
+int		get_num_paths(t_link *output)
 {
-	for (int i = 0; i < size; i++)
+	int count;
+
+	count = 0;
+	while (output)
 	{
-		for (int j = 0; j < size - i - 1; j++)
-			if (arr[j] >  arr[j + 1])
-				ft_swap(&arr[j], &arr[j + 1]);
+		if (output->status)
+			count++;
+		output = output->next;
 	}
+	return (count);
 }
 
 int		find_max(int *arr, int size)
 {
-	int i = 0;
-	int max  = arr[0];
+	int i;
+	int max;
+
+	i = 0;
+	max = arr[0];
 	while (i < size)
 	{
 		if (arr[i] > max)
 			max = arr[i];
 		i++;
 	}
-	return (max);	
+	return (max);
 }
 
-int		flow_2(t_frame *frame, int *path, int size)
+int		calculate_max_step(t_frame *frame, t_flow *flow)
 {
-	int *ants;
-	int *diff;
 	int num_ants;
 	int i;
+	int step;
 
-    ants = calloc(size, sizeof(int));
-    diff = calloc(size, sizeof(int));
-    
 	num_ants = frame->num_ants;
-    while (num_ants != 0)
-    {
-        i = 0;
-        while (i < size)
-        {
-            if (i + 1 == size)
-                break;
-            if (path[i + 1] + ants[i + 1] > path[i] + ants[i])
-                break;
-            i++;
-        }
-        ants[i] = ants[i] + 1;
-        diff[i] = path[i] + ants[i];
-        num_ants--;
-    }
-	int n = find_max(diff, size);
-		//ft_printf("Max steps: %d\n", n);
-	free(path);
-    free(ants);
-    free(diff);
-		//ft_printf("|----------------------------------------------------|\n");
-	if (n > frame->current_steps)
+	while (num_ants != 0)
+	{
+		i = 0;
+		while (i < flow->size)
+		{
+			if (i + 1 == flow->size)
+				break ;
+			if (flow->path[i + 1] + flow->ants[i + 1] > 
+					flow->path[i] + flow->ants[i])
+				break ;
+			i++;
+		}
+		flow->ants[i] = flow->ants[i] + 1;
+		flow->diff[i] = flow->path[i] + flow->ants[i];
+		num_ants--;
+	}
+	step = find_max(flow->diff, flow->size);
+	if (step > frame->current_steps)
 		return (1);
-	frame->current_steps = n;
+	frame->current_steps = step;
 	return (0);
 }
 
-
-int	calculate_flow(t_frame *frame)
+int		calculate_path_len(t_flow *flow, t_link *link)
 {
-	t_link	*tmp;
 	t_room	*current;
-	t_link	*tmp_2;
-	int		size;
+	t_link	*tmp;
 	int		i;
 	int		j;
-	int		*arr;
 
-	tmp = frame->end->output;
-	size = 0;
-	while (tmp)
-	{
-		size = (tmp->status) ? size + 1 : size;
-		tmp = tmp->next;
-	}
-
-		//ft_printf("Numbers of path: %d\n", size);
-
-	arr = ft_calloc(size , sizeof(int));
-	tmp = frame->end->output;
 	i = 0;
-	while (tmp)
+	while (link)
 	{
 		j = 0;
-		if (tmp->status)
+		if (link->status)
 		{
-			current = tmp->room;
+			current = link->room;
 			while (1)
 			{
-				if (!(tmp_2 = get_status_link(current->output)))
-					break;
-				current = tmp_2->room;
+				if (!(tmp = get_status_link(current->output)))
+					break ;
+				current = tmp->room;
 				j++;
 			}
-				//ft_printf("Path size: %d\n", j / 2);
-			arr[i] = j / 2;
+			flow->path[i] = j / 2;
 			i++;
 		}
-		tmp = tmp->next;
+		link = link->next;
 	}
-	bubble_sort(arr, size);
-	// i = 0;
-	// while (i < size)
-	// {
-	// 	ft_printf("%d ", arr[i]);
-	// 	i++;
-	// }
-	// ft_printf("\n");
+}
+
+int		calculate_steps(t_frame *frame)
+{
+	t_flow	*flow;
+	int		flag;
+
+	flag = 0;
 	
-	return (flow_2(frame, arr, size));
+	if (!(frame->flow = ft_calloc(1, sizeof(t_flow))))
+		lem_error(ALLOC_ERR, frame);
+	flow = frame->flow;
+	if (!(flow->size = get_num_paths(frame->end->output)))
+		return (0);
+	//ft_printf("Numbers of path: %d\n", flow.size);
+	if (!(flow->path = ft_calloc(flow->size, sizeof(int))))
+		lem_error(ALLOC_ERR, frame);
+	if (!(flow->ants = ft_calloc(flow->size, sizeof(int))))
+		lem_error(ALLOC_ERR, frame);
+	if (!(flow->diff = ft_calloc(flow->size, sizeof(int))))
+		lem_error(ALLOC_ERR, frame);
+	calculate_path_len(flow, frame->end->output);
+	//bubble_sort(flow->path, flow->size);	// CHANGE TO QS
+	ft_quick_sort(flow->path, 0, flow->size - 1);
+	if (calculate_max_step(frame, flow))
+		flag = 1;
+	free_flow(&frame->flow);
+	return (flag);
 }

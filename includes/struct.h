@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 17:48:42 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:44:49 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
 typedef struct s_find		t_find;
+typedef struct s_flow		t_flow;
 
 struct				s_input
 {
@@ -110,12 +111,22 @@ struct				s_frame
 	t_find			*find_way;
 	int				current_steps;
 	t_path			*paths;
+	t_flow			*flow;
 };
 
 struct				s_find
 {
 	t_room			*room;
 	t_find			*next;
+};
+
+struct				s_flow
+{
+	int				size;
+	int				step;
+	int				*ants;
+	int				*path;
+	int				*diff;
 };
 
 #endif

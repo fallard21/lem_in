@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:48:37 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 18:08:05 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:51:01 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,15 @@ t_find	*free_prev_list(t_find **head)
 		*head = next;
 	}
 	return (NULL);
+}
+
+void	free_flow(t_flow **flow)
+{
+	if (*flow)
+	{
+		ft_memdel((void**)&(*flow)->ants);
+		ft_memdel((void**)&(*flow)->path);
+		ft_memdel((void**)&(*flow)->diff);
+	}
+	ft_memdel((void**)&(*flow));
 }

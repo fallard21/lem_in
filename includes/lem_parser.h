@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 18:24:04 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:13:31 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,6 @@ void		set_levels(t_frame *stor);			// emulate bfs levels
 
 
 
-void	free_all(t_room *start);
-int		free_link(t_link **link);
-void	free_room(t_room **room);
-t_find	*free_prev_list(t_find **head);
-
 /*
 ** >-----------------< BFS >-----------------<
 */
@@ -145,23 +140,38 @@ void		reinit_sizes(t_room *start);
 /*
 ** >-----------------< Suurballe >-----------------<
 */
-void	suurballe(t_frame *frame);
-void	reverse_path(t_find *p, t_room *current);
-void	in_to_out(t_room *current, char *name);
-void	out_to_in(t_room *current, char *name);
-void	find_link(t_link **tmp, t_link **prev, char *name);
+void		suurballe(t_frame *frame);
+void		reverse_path(t_find *p, t_room *current);
+void		in_to_out(t_room *current, char *name);
+void		out_to_in(t_room *current, char *name);
+void		find_link(t_link **tmp, t_link **prev, char *name);
+int			calculate_steps(t_frame *frame);
+
+/*
+** >-----------------< Sorting algorithm's >-----------------<
+*/
+t_path		*sort_path(t_path *head);
+t_find		*ft_reverse_list(t_find *head);
+void		bubble_sort(int *arr, int size);
+void		ft_quick_sort(int *arr, int first, int last);
+
+/*
+** >-----------------< Recovery all paths >-----------------<
+*/
+void		get_all_paths(t_frame *frame);
+t_link		*get_status_link(t_link *link);
+
+/*
+** >-----------------< Memory menagement >-----------------<
+*/
+void		free_all(t_room *start);
+int			free_link(t_link **link);
+void		free_room(t_room **room);
+void		free_flow(t_flow **flow);
+t_find		*free_prev_list(t_find **head);
 
 
-t_path	*sort_path(t_path *head);
-t_find	*ft_reverse_list(t_find *head);
 
-void	get_all_paths(t_frame *frame);
-
-t_path	*sort_path(t_path *head);
-
-t_link	*get_status_link(t_link *link);
-
-int		calculate_flow(t_frame *frame);
 
 ///////////////////////////////////////////////
 void	print_suurb(t_room *start);
