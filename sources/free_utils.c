@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 22:57:54 by user             ###   ########.fr       */
+/*   Updated: 2020/10/09 14:38:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ void		free_paths(t_path *paths)
 	}
 }
 
+void		del_links_list(t_link *link)
+{
+	t_link	*tmp;
+
+	while (link)
+	{
+		tmp = link;
+		link = link->next;
+		free(link);
+	}
+}
+
 void		del_room(t_room **room)
 {
 	t_link		*tmp_link;
@@ -76,21 +88,41 @@ void		free_map(t_room *room)
 	t_room		*tmp_room;
 	t_link		*tmp_link;
 
+	// printf("{ 3.1 }\n");
+
+	// t_room	*pr = room;
+	// while (pr)
+	// {
+	// 	printf("name = %s\t suur =%d\n", pr->name, pr->suur_type);
+	// 	pr = pr->next;
+	// }
+	
 	if (!room)
 		lem_error(MEM_FREE_ERR, NULL);
 	while (room)
 	{
+		// printf("in free | room->name = %s\t suur =%d\n", room->name, room->suur_type);
+		// if (room->suur_type == IN || room->suur_type == 0)
 		free(room->name);
 		tmp_room = room;
-		while (room->links)
-		{
-			tmp_link = room->links;
-			room->links = room->links->next;
-			free(tmp_link);
-		}
+		if (room->links)
+			del_links_list(room->links);
+		if (room->input)
+			del_links_list(room->input);
+		if (room->output)
+			del_links_list(room->output);
+		// while (room->links)
+		// {
+		// 	tmp_link = room->links;
+		// 	room->links = room->links->next;
+		// 	free(tmp_link);
+		// 	// printf("{ 3.2 }\n");
+		// }
+		// printf("{ 3.3 }\n");
 		room = room->next;
 		free(tmp_room);
 	}
+	// printf("{ 3.10 }\n");
 	ft_memdel((void*)room);
 }
 
@@ -127,11 +159,16 @@ void		lem_free(t_frame *stor)
 {
 	if (!stor)
 		lem_error(MEM_FREE_ERR, NULL);
+	// printf("{ 1 }\n");
 	if (stor->input)
 		free_input(stor->input);
+	// printf("{ 2 }\n");
 	if (stor->map)
-		free_map(stor->map_copy);
+		free_map(stor->map);
+	// printf("{ 3 }\n");
 	if (stor->paths)
 		free_paths(stor->paths);
+	// printf("{ 4 }\n");
 	free_stor(stor);
+	// printf("{ 5 }\n");
 }

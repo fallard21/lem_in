@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/05 17:19:08 by user             ###   ########.fr       */
+/*   Updated: 2020/10/09 17:45:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,10 @@ int			move_through_path(t_path *path, t_frame *stor)
 	// if (!path->on_work || link->room->level == INT_MAX)
 	if (link->room->level == INT_MAX)
 	{
-		// printf("SIMPLE!!!!!!!!!!!!\n");
 		link->room->level == INT_MAX ? move_simple_path(path, stor) :
 		move_from_start(path, stor);
 		return (1);
 	}
-
 	while (link)
 	{
 		if (link->room->level == 0 && link->room->ants)
@@ -65,8 +63,6 @@ int			move_through_path(t_path *path, t_frame *stor)
 		}
 		link = link->prev;
 	}
-	// printf("\n");
-	// cur_state(path, stor);
 	return (1);
 }
 
@@ -79,8 +75,9 @@ void		handle_ants_move(t_frame *stor)
 		lem_error(ANTS_MOVE_ERR, stor);
 	path_copy = stor->paths;
 	set_ants_on_paths(stor);
-	// print_path_list(stor);
-	// return ; 
+	if (stor->num_rooms == 2)
+		while (stor->end->ants < stor->num_ants)
+			move_simple_path(stor->paths, stor);
 	while (stor->end->ants < stor->num_ants)
 	{
 		is_used = 0;
@@ -96,14 +93,6 @@ void		handle_ants_move(t_frame *stor)
 			printf("\n");				// refactore to ft_printf
 		}
 	}
-	// t_path *print = stor->paths;
-	// printf("\nLAST STATE\n");
-	// while(print)
-	// {
-	// 	printf("\n");
-	// 	cur_state(print, stor);
-	// 	print = print->next;
-	// }
 	if (stor->end->ants != stor->num_ants)
 		lem_error(MOVE_RES_ERR, stor);
 }

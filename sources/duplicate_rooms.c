@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 20:13:59 by user             ###   ########.fr       */
+/*   Updated: 2020/10/09 14:18:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_room		*create_out_room(t_room *room)
 
 	if (!(new = ft_calloc(1, sizeof(t_room))))
 		return (NULL);
-	new->name = room->name;
+	new->name = ft_strdup(room->name);
 	new->coord[0] = room->coord[0];
 	new->coord[1] = room->coord[1];
 	set_out_room_params(new, room);
