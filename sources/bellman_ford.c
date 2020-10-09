@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/05 13:25:23 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/08 22:15:51 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,9 @@ void	out_to_in(t_room *current, char *name)
 	else
 		prev->next = tmp;
 	
-	tmp->next  = NULL;
+	tmp->next = NULL;
+	// if (tmp->status)
+	// 	ft_printf("ПЕРЕСЕЧЕНИЕ %s -> %s\n", current->name, name);
 	tmp->edge_size = tmp->edge_size * -1;
 	tmp->status = (tmp->status) ? 0 : 1;
 }
@@ -155,7 +157,6 @@ void	in_to_out(t_room *current, char *name)
 		current->output = tmp;
 	else
 		prev->next = tmp;
-	
 	tmp->next = NULL;
 	tmp->edge_size = tmp->edge_size * -1;
 	tmp->status = (tmp->status) ? 0 : 1;
@@ -230,35 +231,53 @@ void	reinit_sizes(t_room *start)
 
 void	suurballe(t_frame *frame)
 {
-	t_recovery	*p;
+	t_optimize	*opt;
+	t_optimize **tmp;
 	int i = 0;
-	p = NULL;
-	//print_suurb(frame->map);
+	int	path = 0;
+	opt = NULL;
+	tmp = &opt;
+
 	while (bellman_ford(frame, frame->start) == 0)
 	{
 		i++;
-		if (!(p = restore_path(frame->end)))
+		*tmp = ft_calloc(1, sizeof(t_optimize));
+		if (!((*tmp)->rec = restore_path(frame->end)))
 			lem_error(ALLOC_ERR, frame);
-		reverse_path(p,  frame->start);
+		reverse_path((*tmp)->rec,  frame->start);
+
+		//print_patchs(frame->end);
+		calculate_flow(frame);
+
 		reinit_sizes(frame->map);
-		free_prev_list(&p);
+		//free_prev_list(&p);
+		tmp = &(*tmp)->next;
 	}
 	//print_suurb(frame->map);
+
 	//print_patchs(frame->end);
+	//calculate_flow(frame);
 
 	get_path(frame);
 	//print_suurb(frame->start);
 	//check_alg(frame);
-	ft_printf("LINES: %d\n", i);
+	//ft_printf("LINES: %d\n", i);
 
-	//test_move_ants(frame, i);
+	test_move_ants(frame, i);
 	return ;
 }
 
 
-// 1) Цикл Беллмана-Форда, пока есть пути // DONE ?
-	// 1.1) Восстановление пути после Б-Ф // DONE ?
-	// 1.2) Реверс ребер (отрицательная стоимость + status link = 1) // DONE ??
-	// 1.3) Обновление prev и vertex_size // DONE ??
-// 2) Поиск и удаление встречных ребер // NOT
-// 3) Восстановление всех путей по status = 1 линкам. // NOT
+/*
+Ants 10;
+1) 1 путь - 17 шагов.
+st - 10 - 9 - 8 - 7 - 1 - 26 - 4 - end;
+
+2) 2 пути - 14 шагов. - улучшение ЕСТЬ.
+st - 10 - 16 - 17 - 18 - 19 - 5 - 27 - 6 - end;
+st - 24 - 11 - 25 - 12 - 30 - 1 - 26 - 4 - end;
+
+3) 3 пути - 15 шагов - улучшения НЕТ. Остановка.
+4)
+5)
+*/

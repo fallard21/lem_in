@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/02 17:37:41 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/08 21:31:50 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,29 +120,30 @@ void	print_patchs(t_room *end)
 	t_link *link;
 	t_link	*tmp;
 	t_room	*room;
-	int i = 1;
+	int i = 0;
 
 	tmp = end->output;
 	while (tmp)
 	{
-		ft_printf("patch %d: %s", i, end->name);
+		if (!tmp->status)
+		{
+			tmp = tmp->next;
+			continue ;
+		}
 		(i++ % 2) ? ft_printf("{3}") : ft_printf("{2}");
+		ft_printf("Path %d: %s", i, end->name);
 		room = tmp->room;
 		ft_printf(" <- %s", tmp->room->name);
-		while (room->level != 0)
+		while (1)
 		{
-			link = room->output;
-			while (link)
-			{
-				if (link->status == 1)
-					break;
-				link = link->next;
-			}
+			link = get_status_link(room->output);
+			if (!link)
+				break ;
 			ft_printf(" <- %s", link->room->name);
 			room = link->room;
 		}
 		tmp = tmp->next;
-		ft_printf("{0}\n\n");
+		ft_printf("{0}\n");
 	}
 }
 

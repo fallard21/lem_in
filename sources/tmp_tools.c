@@ -149,6 +149,7 @@ void		print_path_list(t_frame *stor)
 	{
 		print_path(copy, ct);
 		// printf_path_rev(copy, ct);
+		// printf("path = %s\n", copy->end->room->name);
 		printf("----- ants_togo = %d -----\n", copy->ants_togo);
 		copy = copy->next;
 		ct++;
@@ -184,4 +185,20 @@ void		set_levels(t_frame *stor)
 
 	// printf("\n***** IN SET LEVELS*****\n");
 	// print_room_list(stor, stor->map);
+}
+
+void	cur_state(t_path *path, t_frame *stor)
+{
+	t_link	*print;
+	print = path->end;
+	if (path->ants_togo)
+	{
+		printf("PATH CURRENT STATE\n");
+		printf("path %s togo %d on_work %d pass %d\n", path->end->room->name, path->ants_togo, path->on_work, path->ants_pass);
+		while (print)
+		{
+			printf("room = %s is ants = %d ant_name = %d\n", print->room->name, print->room->ants, print->room->ant_name);
+			print = print->prev;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:01:42 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 02:04:00 by user             ###   ########.fr       */
+/*   Updated: 2020/10/05 16:36:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void		print_ant_action(int ant_name, char *room_name)
 {
+	// return ;
 	printf("L%d-%s ", ant_name, room_name);		// refactore to ft_printf
 }
 
@@ -30,7 +31,7 @@ void		move_simple_path(t_path *path, t_frame *stor)
 		stor->ant_name++;
 		path->ants_pass++;
 		stor->end->ants++;
-		path->on_work = 1;
+		path->on_work++;
 		if (stor->end->ants != stor->num_ants)
 			printf("\n");						// refactore to ft_printf
 	}
@@ -41,14 +42,14 @@ void		move_from_start(t_path *path, t_frame *stor)
 	t_link		*link;
 
 	link = path->start;
-	if (!link->next->room->ants)
+	if (!link->next->room->ants && path->on_work < path->ants_togo)
 	{
 		link->next->room->ants = 1;
 		link->next->room->ant_name = stor->ant_name;
 		print_ant_action(stor->ant_name, link->next->room->name);
 		stor->ant_name++;
 		link->room->ants--;
-		path->on_work = 1;
+		path->on_work++;
 	}
 }
 

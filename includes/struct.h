@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/03 20:19:39 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/08 21:16:45 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
 typedef struct s_path		t_path;
 typedef struct s_recovery	t_recovery;
+typedef struct s_optimize	t_optimize;
 
 struct				s_input
 {
@@ -116,5 +117,11 @@ struct				s_recovery
 	t_recovery		*next;
 };
 
+struct s_optimize
+{
+	t_recovery		*rec;
+	int				size;
+	t_optimize		*next;
+};
 
 #endif

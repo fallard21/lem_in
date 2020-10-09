@@ -29,7 +29,8 @@ bellman_ford.c \
 direct_graph.c \
 duplicate_rooms.c \
 redirect_links.c \
-save_path.c
+save_path.c \
+calculate_flow.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))
