@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:15:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 21:33:22 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include <termio.h>
 
 # include "libft.h"
 # include "struct.h"
@@ -124,7 +125,7 @@ void		get_all_paths(t_frame *frame);
 t_link		*get_status_link(t_link *link);
 
 /*
-** >-----------------< Memory menagement >-----------------<
+** >-----------------< Memory management >-----------------<
 */
 void		lem_error(char *str, t_frame *stor);
 void		lem_free(t_frame *stor);
@@ -140,7 +141,13 @@ void		del_room(t_room **room);
 void		free_paths(t_path *paths);
 void		input_print_and_free(t_frame *stor);
 
-void	ft_parse_flags(int *key_p, char *av);
+/*
+** >-----------------< Bonus >-----------------<
+*/
+void		ft_parse_flags(int *key_p, char *av);
+void		ft_print_path(t_path *p);
+void		ft_print_color_path(t_path *p);
+
 
 ///////////////////////////////////////////////
 void		print_suurb(t_room *start);
@@ -151,7 +158,8 @@ void		print_graf(t_frame *frame);
 void		print_rooms(t_room *room);
 void		print_links(t_link *links);
 void		print_all_info(t_room *room);
-void	ft_print_path(t_path *p);
+
+
 
 /*
 **	JUST FOR TESTING ********************** DELETE
