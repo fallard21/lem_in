@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:51:40 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 22:41:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ void		del_room(t_room **room)
 
 void		free_paths(t_path *paths)
 {
-	t_link		*lev1;
-	t_path		*path_copy;
+	//t_link		*lev1;
+	t_path		*next;
 
-	if (!paths)
-		lem_error(MEM_FREE_ERR, NULL);
+	//if (!paths)
+	//	lem_error(MEM_FREE_ERR, NULL);
 	while (paths)
 	{
-		path_copy = paths;
-		lev1 = path_copy->start;
-		free_link(&lev1);
-		paths = paths->next;
-		free(path_copy);
+		next = paths->next;
+		free_link(&paths->start);
+		ft_memdel((void**)&paths);
+		paths = next;
+		
 	}
 }

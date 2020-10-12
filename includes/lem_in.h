@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:15:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 23:04:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		redirect_output_links(t_room *room, t_frame *stor);
 void		redirect_end(t_frame *stor);
 void		redirect_end_input(t_link **head, t_link *link, t_frame *stor);
 void		redirect_start(t_frame *stor);
+void		redirect_start_output(t_link **head, t_frame *stor);
 
 /*
 ** >-----------------< BFS >-----------------<

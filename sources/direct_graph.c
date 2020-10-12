@@ -6,12 +6,31 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:49:35 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 23:04:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "struct.h"
+
+void		redirect_start_output(t_link **head, t_frame *stor)
+{
+	t_link		*link;
+
+	link = stor->start->links;
+	while (link)
+	{
+		if (!stor->start->output &&
+		(stor->start->output = create_link(link->room, stor, 1)))
+			(*head) = stor->start->output;
+		else
+		{
+			stor->start->output->next = create_link(link->room, stor, 1);
+			stor->start->output = stor->start->output->next;
+		}
+		link = link->next;
+	}
+}
 
 int			check_only_start_end(t_room *room)
 {

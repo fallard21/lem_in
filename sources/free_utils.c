@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:29:46 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 22:41:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,21 @@ void		lem_error(char *str, t_frame *stor)
 
 void		free_map(t_room *room)
 {
-	t_room		*tmp_room;
+	t_room		*next;
 
-	if (!room)
-		lem_error(MEM_FREE_ERR, NULL);
+	//if (!room)
+	//	lem_error(MEM_FREE_ERR, NULL);
 	while (room)
 	{
-		free(room->name);
-		tmp_room = room;
+		next = room->next;
+		ft_memdel((void**)&room->name);
 		free_link(&room->links);
 		free_link(&room->input);
 		free_link(&room->output);
-		room = room->next;
-		free(tmp_room);
+		ft_memdel((void**)&room);
+		room = next;
 	}
-	ft_memdel((void*)room);
-}
-
-void		free_stor(t_frame *stor)
-{
-	if (!stor)
-		lem_error(MEM_FREE_ERR, NULL);
-	free(stor->start);
-	free(stor->end);
-	stor->input = NULL;
-	stor->map = NULL;
-	stor->paths = NULL;
-	stor->find_way = NULL;
-	stor->flow = NULL;
-	free(stor);
+	//ft_memdel((void*)room);
 }
 
 void		free_input(t_input *input)
@@ -89,5 +75,6 @@ void		lem_free(t_frame *stor)
 		free_flow(&stor->flow);
 	if (stor->find_way)
 		free_prev_list(&stor->find_way);
-	free_stor(stor);
+	///free_stor(stor);
+	ft_memdel((void**)&stor);
 }

@@ -6,27 +6,27 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:58:10 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 23:01:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "struct.h"
 
-void		set_out_room_params(t_room *new, t_room *room)
-{
-	new->ants = room->ants;
-	new->ant_name = room->ant_name;
-	new->level = room->level;
-	new->vertex_size = room->vertex_size;
-	new->num_links = 0;
-	new->suur_type = OUT;
-	new->prev = NULL;
-	new->links = NULL;
-	new->output = NULL;
-	new->input = NULL;
-	new->next = NULL;
-}
+// void		set_out_room_params(t_room *new, t_room *room)
+// {
+// 	new->ants = room->ants;
+// 	new->ant_name = room->ant_name;
+// 	new->level = room->level;
+// 	new->vertex_size = room->vertex_size;
+// 	new->num_links = 0;
+// 	new->suur_type = OUT;
+// 	new->prev = NULL;
+// 	new->links = NULL;
+// 	new->output = NULL;
+// 	new->input = NULL;
+// 	new->next = NULL;
+// }
 
 t_room		*create_out_room(t_room *room)
 {
@@ -37,7 +37,9 @@ t_room		*create_out_room(t_room *room)
 	new->name = ft_strdup(room->name);
 	new->coord[0] = room->coord[0];
 	new->coord[1] = room->coord[1];
-	set_out_room_params(new, room);
+	new->level = room->level;
+	new->vertex_size = room->vertex_size;
+	// set_out_room_params(new, room);
 	return (new);
 }
 
