@@ -1,0 +1,160 @@
+## basic map
+123
+##end
+end 8 4
+##start
+start 4 2
+r12 7 4
+end-r12
+end-start
+
+## start - end map
+123
+##end
+end 8 4
+##start
+start 4 2
+r12 7 4
+end-start
+
+
+## mid map
+123
+r1 9 4
+r2 4 6
+r3 1 0
+##end
+r5 8 8
+r6 9 9
+r10 11 113
+##start
+r9 10 11
+r7 10 4
+r8 11 4
+r9-r1
+r1-r7
+r7-r5
+r3-r1
+r2-r3
+r5-r9
+r3-r5
+
+r6-r5
+r6-r9
+
+r1: r9, r7, r3
+r2: r3
+r3: r1, r2, r5
+r7: r1, r5
+r9 (start): r1
+r5 (end): r7, r3
+
+## mid map
+123
+##end
+r5 8 8
+r1 9 4
+##start
+r9 10 11
+r2 4 6
+r6 9 9
+r3 1 0
+r7 10 4
+r8 11 4
+r9-r1
+r1-r7
+r7-r5
+r3-r1
+r2-r3
+r3-r5
+
+
+
+
+
+
+## new
+123
+##start
+start 1 0
+##end
+end 10 1
+1 1 1
+2 2 2
+3 3 3
+4 4 4
+5 5 5
+6 6 6
+7 7 7
+8 8 8
+start-1
+start-3
+1-2
+1-3
+2-5
+2-6
+2-7
+3-4
+4-5
+4-7
+4-8
+7-end
+8-end
+
+
+
+20
+##start
+start 0 0 
+##end
+end 1 1 
+middle 2 2
+middle2 3 3 
+start-middle
+middle-end
+start-middle2
+middle2-end
+
+
+40
+##start
+0 0 0
+##end
+99 99 99
+1 1 1
+2 2 2
+3 3 3
+4 4 4
+5 5 5
+6 6 6
+7 7 7
+8 8 8
+9 9 9
+10 10 10
+11 11 11
+12 12 12
+13 13 13
+14 14 14
+15 15 15
+0-1
+0-2
+0-3
+0-4
+1-6
+2-5
+3-6
+4-7
+7-9
+5-8
+8-12
+12-13
+12-99
+3-13
+6-9
+9-11
+11-99
+13-14
+6-10
+10-15
+15-99
+14-99
