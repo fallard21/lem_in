@@ -6,11 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 23:05:32 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_parser.h"
+#include "lem_in.h"
 #include "struct.h"
 
 void		redirect_start(t_frame *stor)
@@ -19,7 +19,6 @@ void		redirect_start(t_frame *stor)
 	t_link		*tmp;
 
 	stor->start->output = stor->start->links;
-	stor->start->output_links = stor->start->num_links;
 	link = stor->start->links;
 	while (link)
 	{
@@ -32,7 +31,6 @@ void		redirect_start(t_frame *stor)
 				tmp = tmp->next;
 			tmp->next = create_link(stor->start, stor, 1);
 		}
-		link->room->input_links++;
 		link = link->next;
 	}
 }
@@ -57,14 +55,14 @@ void		redirect_end(t_frame *stor)
 	t_link		*head;
 	t_link		*tmp;
 
-	stor->end->input_links = stor->end->num_links;
+
 	link = stor->end->links;
 	while (link)
 	{
 		if (!(link = link->room->level == 0 ? link->next : link))
 			break ;
 		redirect_end_input(&head, link, stor);
-		if (!link->room->next->output || link->room->next->output_links == 1)
+		if (!link->room->next->output)
 			link->room->next->output = create_link(stor->end, stor, 1);
 		else if (link)
 		{
@@ -73,7 +71,6 @@ void		redirect_end(t_frame *stor)
 				tmp = tmp->next;
 			tmp->next = create_link(stor->end, stor, 1);
 		}
-		link->room->next->output_links++;
 		link = link->next;
 	}
 	stor->end->input = head;
@@ -88,7 +85,6 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 	out = room->next;
 	link = room->links;
 	out->input = create_link(room, stor, 0);
-	out->input_links++;
 	if (check_only_start_end(room))
 		return ;
 	while (link)
@@ -99,12 +95,9 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 			head_out = out->output;
 		else if (out->output->next = create_link(link->room, stor, 1))
 			out->output = out->output->next;
-		out->output_links++;
 		link = link->next;
 	}
 	out->output = head_out;
-	if (!room->input_links)
-		room->input = NULL;
 }
 
 void		redirect_input_links(t_room *room, t_frame *stor)
@@ -114,7 +107,6 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 
 	link = room->links;
 	room->output = create_link(room->next, stor, 0);
-	room->output_links++;
 	if (check_only_start_end(room))
 		return ;
 	while (link)
@@ -125,7 +117,6 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 			head_inp = room->input;
 		else if (room->input->next = create_link(link->room->next, stor, 1))
 			room->input = room->input->next;
-		room->input_links++;
 		link = link->next;
 	}
 	room->input = head_inp;

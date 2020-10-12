@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 20:13:50 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 static int		is_room_duplicates(t_room *room, t_room *new_room)
 {
@@ -48,9 +48,6 @@ static void		set_room_params(t_room *room, char **split)
 	room->ant_name = 0;
 	room->level = -1;
 	room->num_links = 0;
-	room->output_links = 0;
-	room->input_links = 0;
-	room->visit = 0;
 	room->suur_type = 0;
 	room->vertex_size = INT_MAX;
 	room->next = NULL;

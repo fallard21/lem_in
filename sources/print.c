@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/09 17:51:46 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 void	print_rooms(t_room *room)
 {
@@ -52,7 +52,7 @@ void	print_all_info(t_room *room)
 	while (tmp)
 	{
 		tmp_1 = tmp->links;
-		ft_printf("{3}[%2s]{1}(%10d){0}  ({6}in: %d, out: %d{0}): ", tmp->name, tmp->level, tmp->input_links, tmp->output_links);
+		// ft_printf("{3}[%2s]{1}(%10d){0}  ({6}in: %d, out: %d{0}): ", tmp->name, tmp->level, tmp->input_links, tmp->output_links);
 		while (tmp_1)
 		{
 			if (!tmp_1->next)

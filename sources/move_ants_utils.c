@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:01:42 by user              #+#    #+#             */
-/*   Updated: 2020/10/05 16:36:28 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 void		print_ant_action(int ant_name, char *room_name)
 {

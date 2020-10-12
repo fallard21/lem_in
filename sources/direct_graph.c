@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   direct_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 07:09:07 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_parser.h"
+#include "lem_in.h"
 #include "struct.h"
 
 int			check_only_start_end(t_room *room)
@@ -39,9 +39,7 @@ int			check_skiping(t_room *room, int check_links)
 void		set_simplest_grapth(t_frame *stor)
 {
 	stor->start->output = create_link(stor->end, stor, 1);
-	stor->start->output_links++;
 	stor->end->input = create_link(stor->start, stor, 1);
-	stor->end->input_links++;
 	stor->end->next = NULL;
 	stor->map = stor->start;
 	stor->map->next = stor->end;

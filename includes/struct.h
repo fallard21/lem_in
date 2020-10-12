@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 20:44:49 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 16:30:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,6 @@ struct				s_room
 	int				level;
 	int				vertex_size;
 	int				num_links;
-	int				output_links;
-	int				input_links;
-	int				visit;
 	int				suur_type;
 	t_room			*prev;
 	t_link			*links;
@@ -90,7 +87,6 @@ struct				s_path
 	t_link			*start;
 	t_link			*end;
 	t_path			*next;
-	t_link			**arr;
 	int				on_work;
 	int				len;
 	int				ants_togo;
@@ -107,7 +103,6 @@ struct				s_frame
 	int				num_rooms;
 	t_input			*input;
 	t_room			*map;
-	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
 	t_find			*find_way;
 	int				current_steps;
 	t_path			*paths;

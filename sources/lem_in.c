@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 21:41:53 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 /*
 **	TODO:

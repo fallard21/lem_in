@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/05 17:19:08 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 void		set_ants_on_paths(t_frame *stor)
 {

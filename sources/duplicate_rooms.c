@@ -6,11 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/02 20:13:59 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_parser.h"
+#include "lem_in.h"
 #include "struct.h"
 
 void		set_out_room_params(t_room *new, t_room *room)
@@ -20,9 +20,6 @@ void		set_out_room_params(t_room *new, t_room *room)
 	new->level = room->level;
 	new->vertex_size = room->vertex_size;
 	new->num_links = 0;
-	new->input_links = 0;
-	new->output_links = 0;
-	new->visit = room->visit;
 	new->suur_type = OUT;
 	new->prev = NULL;
 	new->links = NULL;
