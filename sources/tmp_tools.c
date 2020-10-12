@@ -1,6 +1,6 @@
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 /*
 **		JUST FOR TESTING**********************
@@ -39,9 +39,9 @@ void		print_room(t_room *room)
 	printf("level = %d\n", room->level);
 	printf("vertex_size = %d\n", room->vertex_size);
 	printf("num_links = %d\n", room->num_links);
-	printf("input links = %d\n", room->input_links);
-	printf("output links = %d\n", room->output_links);
-	printf("visit = %d\n", room->visit);
+	// printf("input links = %d\n", room->input_links);
+	// printf("output links = %d\n", room->output_links);
+	// printf("visit = %d\n", room->visit);
 	printf("is_link = %s\n", room->links ? "YES" : "NO");
 	t_link	*lcopy;
 	if (room->links)
@@ -54,9 +54,9 @@ void		print_room(t_room *room)
 		}
 	}
 	t_link	*out;
-	if (room->output && room->output_links)
+	if (room->output) // && room->output_links)
 	{
-		printf("room output ct = %d\n", room->output_links);
+		// printf("room output ct = %d\n", room->output_links);
 		out = room->output;
 		while (out)
 		{
@@ -65,9 +65,9 @@ void		print_room(t_room *room)
 		}
 	}
 	t_link *in;
-	if (room->input && room->input_links)
+	if (room->input) // && room->input_links)
 	{
-		printf("room input ct = %d\n", room->input_links);
+		// printf("room input ct = %d\n", room->input_links);
 		in = room->input;
 		while (in)
 		{

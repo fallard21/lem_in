@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/28 22:14:01 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 t_path		*create_path_node(t_frame *stor)
 {

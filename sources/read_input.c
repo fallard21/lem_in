@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 22:56:17 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 t_input		*create_input_item(char *line)
 {

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/10/09 21:41:30 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 void		parse_start_end(char *line, t_frame *stor)
 {
@@ -34,7 +34,6 @@ void		parse_start_end(char *line, t_frame *stor)
 static void	set_stor_params(t_frame *stor)
 {
 	stor->map = NULL;
-	stor->map_copy = NULL;
 	stor->num_rooms = 0;
 	stor->ant_name = 1;
 	stor->cmd = NO_SIG;
@@ -87,7 +86,7 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		}
 		input = input->next;
 	}
-	return (stor->map_copy = stor->map);
+	return (stor->map);
 }
 
 t_frame		*create_map(void)

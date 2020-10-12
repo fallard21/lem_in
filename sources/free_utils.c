@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/01 22:57:54 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "lem_parser.h"
+#include "lem_in.h"
 
 void		lem_error(char *str, t_frame *stor)
 {
@@ -102,7 +102,6 @@ void		free_stor(t_frame *stor)
 	free(stor->end);
 	stor->input = NULL;
 	stor->map = NULL;
-	stor->map_copy = NULL;
 	stor->paths = NULL;
 	free(stor);
 }
@@ -130,7 +129,7 @@ void		lem_free(t_frame *stor)
 	if (stor->input)
 		free_input(stor->input);
 	if (stor->map)
-		free_map(stor->map_copy);
+		free_map(stor->map);
 	if (stor->paths)
 		free_paths(stor->paths);
 	free_stor(stor);
