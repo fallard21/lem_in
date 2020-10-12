@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 03:35:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:14 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 20:55:36 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,45 +27,29 @@ void	print_rooms(t_room *room)
 	ft_printf("\n\n");
 }
 
-void print_links(t_link *links)
-{
-	t_link *tmp;
+// void	print_all_info(t_room *room)
+// {
+// 	t_room *tmp;
+// 	t_link *tmp_1;
 
-	tmp = links;
-	while (tmp)
-	{
-		if (!tmp->next)
-			ft_printf("{2}%s{0}", tmp->room->name);
-		else
-			ft_printf("{2}%s{0} -> ", tmp->room->name);
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-}
-
-void	print_all_info(t_room *room)
-{
-	t_room *tmp;
-	t_link *tmp_1;
-
-	tmp = room;
-	while (tmp)
-	{
-		tmp_1 = tmp->links;
-		// ft_printf("{3}[%2s]{1}(%10d){0}  ({6}in: %d, out: %d{0}): ", tmp->name, tmp->level, tmp->input_links, tmp->output_links);
-		while (tmp_1)
-		{
-			if (!tmp_1->next)
-				ft_printf("{2}%s{1}(%d){0}", tmp_1->room->name, tmp_1->room->level);
-			else
-				ft_printf("{2}%s{1}(%d){0} -> ", tmp_1->room->name, tmp_1->room->level);
-			tmp_1 = tmp_1->next;
-		}
-		tmp = tmp->next;
-		ft_printf("\n");
-	}
-	ft_printf("{4}----------------------- END -----------------------{0}\n\n");
-}
+// 	tmp = room;
+// 	while (tmp)
+// 	{
+// 		tmp_1 = tmp->links;
+// 		// ft_printf("{3}[%2s]{1}(%10d){0}  ({6}in: %d, out: %d{0}): ", tmp->name, tmp->level, tmp->input_links, tmp->output_links);
+// 		while (tmp_1)
+// 		{
+// 			if (!tmp_1->next)
+// 				ft_printf("{2}%s{1}(%d){0}", tmp_1->room->name, tmp_1->room->level);
+// 			else
+// 				ft_printf("{2}%s{1}(%d){0} -> ", tmp_1->room->name, tmp_1->room->level);
+// 			tmp_1 = tmp_1->next;
+// 		}
+// 		tmp = tmp->next;
+// 		ft_printf("\n");
+// 	}
+// 	ft_printf("{4}----------------------- END -----------------------{0}\n\n");
+// }
 
 void	print_suurb(t_room *start)
 {
@@ -162,34 +146,18 @@ void	print_recovery(t_find *rec)
 	ft_printf("\n");
 }
 
-void	ft_print_path(t_path *p)
+void print_links(t_link *links)
 {
 	t_link *tmp;
 
-	while (p)
+	tmp = links;
+	while (tmp)
 	{
-		ft_printf("len: %d\n", p->len);
-		tmp = NULL; 
-		//tmp = p->start;
-		print_links(p->start);
-		while (tmp)
-		{
-			ft_printf("link: %-10s ", tmp->room->name);
-
-			if (tmp->prev)
-				ft_printf("prev: %-10s ", tmp->prev->room->name);
-			else
-				ft_printf("prev: %-10s ", NULL);
-
-			if (tmp->next)
-				ft_printf("next: %-10s ", tmp->next->room->name);
-			else
-				ft_printf("next: %-10s ", NULL);
-	
-			tmp = tmp->next;
-			ft_printf("\n");
-		}
-		p = p->next;
-		ft_printf("\n\n");
+		if (!tmp->next)
+			ft_printf("%s", tmp->room->name);
+		else
+			ft_printf("%s -> ", tmp->room->name);
+		tmp = tmp->next;
 	}
+	ft_printf("\n");
 }

@@ -30,7 +30,8 @@ redirect_links.c \
 save_path.c \
 calculate_step.c \
 sorting.c \
-suurballe.c
+suurballe.c \
+bonus.c
 
 TMP = $(addprefix $(SRC_DIR), $(SRC:.c=.o))
 HEADER = $(addprefix $(INC_DIR), $(HEADER_1))

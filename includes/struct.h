@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:30:49 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 20:06:00 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,11 @@ struct				s_frame
 	int				num_ants;
 	int				ant_name;
 	int				num_rooms;
+	int				current_steps;
+	int				key_p;
 	t_input			*input;
 	t_room			*map;
 	t_find			*find_way;
-	int				current_steps;
 	t_path			*paths;
 	t_flow			*flow;
 };
