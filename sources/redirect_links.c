@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:35:30 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 23:04:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void		redirect_start(t_frame *stor)
 {
 	t_link		*link;
 	t_link		*tmp;
+	t_link		*head;
 
-	stor->start->output = stor->start->links;
+	redirect_start_output(&head, stor);
 	link = stor->start->links;
 	while (link)
 	{
@@ -33,6 +34,7 @@ void		redirect_start(t_frame *stor)
 		}
 		link = link->next;
 	}
+	stor->start->output = head;
 }
 
 void		redirect_end_input(t_link **head, t_link *link, t_frame *stor)
