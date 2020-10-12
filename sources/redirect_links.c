@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:22 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 20:35:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		redirect_start(t_frame *stor)
 		if (!link->room->input || link->room->num_links == 1)
 			link->room->input = create_link(stor->start, stor, 1);
 		else
-		{				
+		{
 			tmp = link->room->input;
 			while (tmp && tmp->next)
 				tmp = tmp->next;
@@ -54,7 +54,6 @@ void		redirect_end(t_frame *stor)
 	t_link		*link;
 	t_link		*head;
 	t_link		*tmp;
-
 
 	link = stor->end->links;
 	while (link)
@@ -113,7 +112,8 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 	{
 		if (!(link = check_skiping(link->room, 0) ? link->next : link))
 			break ;
-		if (!room->input &&(room->input = create_link(link->room->next, stor, 1)))
+		if (!room->input &&
+		(room->input = create_link(link->room->next, stor, 1)))
 			head_inp = room->input;
 		else if (room->input->next = create_link(link->room->next, stor, 1))
 			room->input = room->input->next;

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:01:42 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 17:23:58 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:58:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void		print_ant_action(int ant_name, char *room_name)
 {
-	ft_printf("L%d-%s ", ant_name, room_name);		// refactore to ft_printf
+	ft_printf("L%d-%s ", ant_name, room_name);
 }
 
 /*
@@ -24,11 +24,11 @@ void		print_ant_action(int ant_name, char *room_name)
 
 void		move_simple_path(t_path *path, t_frame *stor)
 {
-		print_ant_action(stor->ant_name, stor->end->name);
-		stor->ant_name++;
-		path->ants_pass++;
-		stor->end->ants++;
-		path->on_work++;
+	print_ant_action(stor->ant_name, stor->end->name);
+	stor->ant_name++;
+	path->ants_pass++;
+	stor->end->ants++;
+	path->on_work++;
 }
 
 void		move_from_start(t_path *path, t_frame *stor)

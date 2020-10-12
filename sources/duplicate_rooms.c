@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 17:42:41 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:58:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		skip_room(t_frame *stor, t_room **map, int frst)
 	t_room		*copy;
 
 	tmp = frst ? (*map) : (*map)->next;
-	while(tmp && check_skiping(tmp, 1))
+	while (tmp && check_skiping(tmp, 1))
 	{
 		if (tmp && !tmp->links)
 		{
@@ -84,7 +84,7 @@ void		duplicate_rooms(t_frame *stor)
 	t_room		*head;
 
 	if (stor->map && check_skiping(stor->map, 1))
-			skip_room(stor, &stor->map, 1);
+		skip_room(stor, &stor->map, 1);
 	head = stor->map;
 	while (stor->map)
 	{
