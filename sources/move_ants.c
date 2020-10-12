@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:13 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 17:18:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,13 @@ int			move_through_path(t_path *path, t_frame *stor)
 {
 	t_link		*link;
 
-	link = path->end;
-	// if (!path->on_work || link->room->level == INT_MAX)
-	if (link->room->level == INT_MAX)
+	link = path->end;	
+	if (link->room->level == INT_MAX || !path->len)
 	{
-		// printf("SIMPLE!!!!!!!!!!!!\n");
-		link->room->level == INT_MAX ? move_simple_path(path, stor) :
+		!path->len ? move_simple_path(path, stor) :
 		move_from_start(path, stor);
 		return (1);
 	}
-
 	while (link)
 	{
 		if (link->room->level == 0 && link->room->ants)
@@ -65,8 +62,6 @@ int			move_through_path(t_path *path, t_frame *stor)
 		}
 		link = link->prev;
 	}
-	// printf("\n");
-	// cur_state(path, stor);
 	return (1);
 }
 
@@ -79,8 +74,6 @@ void		handle_ants_move(t_frame *stor)
 		lem_error(ANTS_MOVE_ERR, stor);
 	path_copy = stor->paths;
 	set_ants_on_paths(stor);
-	// print_path_list(stor);
-	// return ; 
 	while (stor->end->ants < stor->num_ants)
 	{
 		is_used = 0;
@@ -93,17 +86,10 @@ void		handle_ants_move(t_frame *stor)
 			if (is_used == 0 && path_copy->ants_togo != 0)
 				move_through_path(path_copy, stor);
 			path_copy = stor->paths;
+			// ft_printf('\n');
 			printf("\n");				// refactore to ft_printf
 		}
 	}
-	// t_path *print = stor->paths;
-	// printf("\nLAST STATE\n");
-	// while(print)
-	// {
-	// 	printf("\n");
-	// 	cur_state(print, stor);
-	// 	print = print->next;
-	// }
 	if (stor->end->ants != stor->num_ants)
 		lem_error(MOVE_RES_ERR, stor);
 }
