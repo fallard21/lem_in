@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:07 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:49:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void		set_simplest_grapth(t_frame *stor)
 	stor->map->next = stor->end;
 }
 
-// Обработать случай для графа из двух комнат start-end. Сразу отправляем в печать
-
 void		set_direct_graph(t_frame *stor)
 {
 	t_room		*copy;
@@ -66,5 +64,4 @@ void		set_direct_graph(t_frame *stor)
 	}
 	redirect_start(stor);
 	redirect_end(stor);
-	//print_room_list(stor, stor->map);
 }

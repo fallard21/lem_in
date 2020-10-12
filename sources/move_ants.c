@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 17:22:03 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:49:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void		handle_ants_move(t_frame *stor)
 				move_through_path(path_copy, stor);
 			path_copy = stor->paths;
 			ft_printf("\n");
-			// printf("\n");				// refactore to ft_printf
 		}
 	}
 	if (stor->end->ants != stor->num_ants)

@@ -13,14 +13,13 @@ LIB_DIR = libft/
 
 SRC = print.c \
 bfs.c \
-free_mem.c \
 lem_in.c \
 read_input.c \
 parse.c utils.c \
 free_utils.c \
+free_utils_2.c \
 handle_rooms.c \
 handle_links.c \
-create_path.c \
 tmp_tools.c \
 move_ants.c \
 move_ants_utils.c \

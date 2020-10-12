@@ -6,14 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:31:35 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:51:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_in.h"
 
-int		free_link(t_link **link)
+int			free_link(t_link **link)
 {
 	t_link	*next;
 
@@ -26,7 +26,7 @@ int		free_link(t_link **link)
 	return (1);
 }
 
-t_find	*free_prev_list(t_find **head)
+t_find		*free_prev_list(t_find **head)
 {
 	t_find	*next;
 
@@ -39,7 +39,7 @@ t_find	*free_prev_list(t_find **head)
 	return (NULL);
 }
 
-void	free_flow(t_flow **flow)
+void		free_flow(t_flow **flow)
 {
 	if (*flow)
 	{
@@ -54,7 +54,6 @@ void		del_room(t_room **room)
 {
 	if (!(*room))
 		lem_error(MEM_FREE_ERR, NULL);
-	if ((*room)->links)
 	free((*room)->name);
 	(*room)->next = NULL;
 	(*room)->prev = NULL;

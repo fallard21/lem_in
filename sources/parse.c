@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:27 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:49:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_frame		*create_map(void)
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor) ||
 	!bfs(stor, stor->start))
 		lem_error(NOT_ENOUGH_ERR, stor);
-	// input_print_and_free(stor);
-	// print_room_list(stor, stor->map);
+	input_print_and_free(stor);
 	return (stor);
 }
