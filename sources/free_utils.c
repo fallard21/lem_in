@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:08 by user             ###   ########.fr       */
+/*   Updated: 2020/10/12 18:29:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,55 +26,9 @@ void		lem_error(char *str, t_frame *stor)
 	exit(EXIT_FAILURE);
 }
 
-void		free_paths(t_path *paths)
-{
-	t_link		*lev1;
-	t_path		*path_copy;
-	t_link		*lev1_copy;
-
-	if (!paths)
-		lem_error(MEM_FREE_ERR, NULL);
-	while (paths)
-	{
-		path_copy = paths;
-		lev1 = path_copy->start;
-		while (lev1)
-		{
-			lev1_copy = lev1;
-			lev1 = lev1->next;
-			free(lev1_copy);
-		}
-		paths = paths->next;
-		free(path_copy);
-	}
-}
-
-void		del_room(t_room **room)
-{
-	t_link		*tmp_link;
-
-	if (!(*room))
-		lem_error(MEM_FREE_ERR, NULL);
-	if ((*room)->links)
-	free((*room)->name);
-	(*room)->next = NULL;
-	(*room)->prev = NULL;
-	while((*room)->links)
-	{
-		tmp_link = (*room)->links;
-		(*room)->links = (*room)->links->next;
-		free(tmp_link);
-	}
-	(*room)->links = NULL;
-	(*room)->input = NULL;
-	(*room)->output = NULL;
-	free(*room);
-}
-
 void		free_map(t_room *room)
 {
 	t_room		*tmp_room;
-	t_link		*tmp_link;
 
 	if (!room)
 		lem_error(MEM_FREE_ERR, NULL);
@@ -82,12 +36,9 @@ void		free_map(t_room *room)
 	{
 		free(room->name);
 		tmp_room = room;
-		while (room->links)
-		{
-			tmp_link = room->links;
-			room->links = room->links->next;
-			free(tmp_link);
-		}
+		free_link(&room->links);
+		free_link(&room->input);
+		free_link(&room->output);
 		room = room->next;
 		free(tmp_room);
 	}
@@ -103,6 +54,8 @@ void		free_stor(t_frame *stor)
 	stor->input = NULL;
 	stor->map = NULL;
 	stor->paths = NULL;
+	stor->find_way = NULL;
+	stor->flow = NULL;
 	free(stor);
 }
 
@@ -132,5 +85,9 @@ void		lem_free(t_frame *stor)
 		free_map(stor->map);
 	if (stor->paths)
 		free_paths(stor->paths);
+	if (stor->flow)
+		free_flow(&stor->flow);
+	if (stor->find_way)
+		free_prev_list(&stor->find_way);
 	free_stor(stor);
 }
