@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 20:56:29 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 21:06:18 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ void	get_all_paths(t_frame *frame)
 		links = next;
 	}
 	frame->paths = sort_path(frame->paths);
-		//ft_print_path(frame->paths);	// DELETE
+	if (frame->key_p)
+		ft_print_path(frame->paths);	// DELETE
 }

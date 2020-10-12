@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:10:19 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/12 21:06:33 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,11 @@ int			main(int ac, char **av)
 	t_path		*path;
 	int			key_p;
 
-	errno = 0;
-	//  if (ac >= 2) 	// Here is to handle possible bonus-flags
-	//  {				// --help, --verbose, --debug, etc
-	//  }
-
 	key_p = 0;
 	if (ac == 2)
 		ft_parse_flags(&key_p, av[1]);
-
 	stor = create_map();
+	stor->key_p = key_p;
 	set_direct_graph(stor);
 	suurballe(stor);
 	handle_ants_move(stor);
