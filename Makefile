@@ -15,7 +15,9 @@ SRC = print.c \
 bfs.c \
 lem_in.c \
 read_input.c \
-parse.c utils.c \
+parse.c \
+utils.c \
+utils_2.c \
 free_utils.c \
 free_utils_2.c \
 handle_rooms.c \
