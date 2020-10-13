@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 21:57:14 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 22:17:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void		free_paths(t_path *paths)
 		next = paths->next;
 		free_link(&paths->start);
 		ft_memdel((void**)&paths);
-		paths = next;
-		
+		paths = next;	
 	}
 }
