@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 23:15:03 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 16:23:39 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,9 +145,8 @@ void		input_print_and_free(t_frame *stor);
 /*
 ** >-----------------< Bonus >-----------------<
 */
-void		ft_parse_flags(int *key_p, char *av);
-void		ft_print_path(t_path *p);
-void		ft_print_color_path(t_path *p);
+void		ft_parse_flags(int *key_p, int ac, char *av);
+void		ft_print_path(t_frame *frame, t_path *p);
 
 
 ///////////////////////////////////////////////

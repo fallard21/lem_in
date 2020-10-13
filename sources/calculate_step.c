@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_step.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:56:58 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:06 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 16:17:41 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,14 @@ int		calculate_max_step(t_frame *frame, t_flow *flow)
 	num_ants = frame->num_ants;
 	while (num_ants != 0)
 	{
-		i = 0;
-		while (i < flow->size)
+		i = -1;
+		while (i++ < flow->size)
 		{
 			if (i + 1 == flow->size)
 				break ;
-			if (flow->path[i + 1] + flow->ants[i + 1] > 
+			if (flow->path[i + 1] + flow->ants[i + 1] >
 					flow->path[i] + flow->ants[i])
 				break ;
-			i++;
 		}
 		flow->ants[i] = flow->ants[i] + 1;
 		flow->diff[i] = flow->path[i] + flow->ants[i];
@@ -107,13 +106,11 @@ int		calculate_steps(t_frame *frame)
 	int		flag;
 
 	flag = 0;
-
 	if (!(frame->flow = ft_calloc(1, sizeof(t_flow))))
 		lem_error(ALLOC_ERR, frame);
 	flow = frame->flow;
 	if (!(flow->size = get_num_paths(frame->end->output)))
 		return (0);
-	//ft_printf("Numbers of path: %d\n", flow.size);
 	if (!(flow->path = ft_calloc(flow->size, sizeof(int))))
 		lem_error(ALLOC_ERR, frame);
 	if (!(flow->ants = ft_calloc(flow->size, sizeof(int))))
@@ -121,8 +118,7 @@ int		calculate_steps(t_frame *frame)
 	if (!(flow->diff = ft_calloc(flow->size, sizeof(int))))
 		lem_error(ALLOC_ERR, frame);
 	calculate_path_len(flow, frame->end->output);
-	//bubble_sort(flow->path, flow->size);	// CHANGE TO QS
-	ft_quick_sort(flow->path, 0, flow->size - 1);
+	bubble_sort(flow->path, flow->size);
 	if (calculate_max_step(frame, flow))
 		flag = 1;
 	free_flow(&frame->flow);

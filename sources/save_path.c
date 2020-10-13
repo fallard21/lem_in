@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 21:06:18 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 16:12:39 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,25 @@ int		init_link_list(t_link *link, t_link **path, int *len)
 	return (0);
 }
 
+void	init_start(t_frame *frame, t_link **start, t_link *links)
+{
+	if (!(*start = ft_calloc(1, sizeof(t_link))))
+		lem_error(ALLOC_ERR, frame);
+	(*start)->room = links->room;
+	if (!((*start)->next = ft_calloc(1, sizeof(t_link))))
+	{
+		ft_memdel((void**)&(*start));
+		lem_error(ALLOC_ERR, frame);
+	}
+	(*start)->next->room = frame->end;
+}
+
 void	get_all_paths(t_frame *frame)
 {
 	t_path	**tmp;
 	t_link	*links;
 	t_link	*next;
+	t_link	*start;
 
 	tmp = &frame->paths;
 	links = frame->end->output;
@@ -91,11 +105,9 @@ void	get_all_paths(t_frame *frame)
 		next = links->next;
 		if (!(*tmp = ft_calloc(1, sizeof(t_path))))
 			lem_error(ALLOC_ERR, frame);
-		if (!(links->next = ft_calloc(1, sizeof(t_link))))
-			lem_error(ALLOC_ERR, frame);
-		links->next->room = frame->end;
-		(*tmp)->end = links;
-		(*tmp)->start = links;
+		init_start(frame, &start, links);
+		(*tmp)->end = start;
+		(*tmp)->start = start;
 		if (init_link_list(links, &(*tmp)->start, &(*tmp)->len))
 			lem_error(ALLOC_ERR, frame);
 		tmp = &(*tmp)->next;
@@ -103,5 +115,5 @@ void	get_all_paths(t_frame *frame)
 	}
 	frame->paths = sort_path(frame->paths);
 	if (frame->key_p)
-		ft_print_path(frame->paths);	// DELETE
+		ft_print_path(frame, frame->paths);
 }

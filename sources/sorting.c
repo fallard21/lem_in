@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:17:15 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:23 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 16:21:01 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,34 +77,5 @@ void	bubble_sort(int *arr, int size)
 			j++;
 		}
 		i++;
-	}
-}
-
-void	ft_quick_sort(int *arr, int first, int last)
-{
-	int left;
-	int right;
-	int middle;
-	int tmp;
-
-	left = first;
-	right = last;
-	middle = arr[(left + right) / 2];
-	while (left <= right)
-	{
-		while (arr[left] < middle)
-			left++;
-		while (arr[right] > middle)
-			right--;
-		if (left <= right)
-		{
-			tmp = arr[left];
-			arr[left] = arr[right];
-			arr[right] = tmp;
-			left++;
-			right--;
-		}
-		ft_quick_sort(arr, first, right);
-		ft_quick_sort(arr, left, last);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 22:54:38 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 16:24:17 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@ int			main(int ac, char **av)
 	int			key_p;
 
 	key_p = 0;
-	if (ac == 2)
-		ft_parse_flags(&key_p, av[1]);
+	if (ac > 1)
+		ft_parse_flags(&key_p, ac, av[1]);
 	stor = create_map();
 	stor->key_p = key_p;
 	set_direct_graph(stor);
 	suurballe(stor);
 	handle_ants_move(stor);
-	// else
-	// 	lem_error(SMTH_HERE)
-
 	lem_free(stor);
 	return (0);
 }

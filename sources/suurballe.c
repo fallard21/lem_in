@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:14:32 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 20:15:00 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 16:23:19 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	suurballe(t_frame *frame)
 		if (!(frame->find_way = restore_path(frame->end)))
 			lem_error(ALLOC_ERR, frame);
 		reverse_path(frame->find_way, frame->start);
-			//print_patchs(frame->end); ft_printf("\n");
 		if (calculate_steps(frame) == 1)
 		{
 			frame->find_way = ft_reverse_list(frame->find_way);
@@ -103,10 +102,6 @@ void	suurballe(t_frame *frame)
 		reinit_sizes(frame->map);
 		free_prev_list(&frame->find_way);
 	}
-		//print_suurb(frame->map);
-		//print_patchs(frame->end);
-		//ft_printf("FINAL:\n"); calculate_steps(frame);
 	get_all_paths(frame);
-	//test_move_ants(frame, i);
 	return ;
 }

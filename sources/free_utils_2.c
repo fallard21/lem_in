@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 22:41:28 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 16:23:04 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_find		*free_prev_list(t_find **head)
 		free(*head);
 		*head = next;
 	}
+	*head = NULL;
 	return (NULL);
 }
 

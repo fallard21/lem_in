@@ -6,29 +6,38 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 21:23:03 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 16:13:38 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_in.h"
 
-void	ft_parse_flags(int *key_p, char *av)
+void	put_usage(char *av)
 {
-	if (ft_strcmp(av, "-p") == 0)
-		*key_p = 1;
-	else
+	if (av)
 	{
 		write(2, "Invalid key: '", 15);
 		write(2, av, ft_strlen(av));
-		write(2, "'.\nUsage:\n", 11);
-		write(2, "\t./lem_in < map\n\t./lem_in -p < map\n", 36);
-		write(2, "\t-p\tprint all path's\n", 22);
-		exit(1);
+		write(2, "'.\n", 4);
 	}
+	write(2, "Usage:\n", 8);
+	write(2, "\t./lem_in < map\n\t./lem_in -p < map\n", 36);
+	write(2, "\t-p\tprint all path's\n", 22);
+	exit(1);
 }
 
-void	ft_print_path(t_path *p)
+void	ft_parse_flags(int *key_p, int ac, char *av)
+{
+	if (ac > 2)
+		put_usage(NULL);
+	else if (ft_strcmp(av, "-p") == 0)
+		*key_p = 1;
+	else
+		put_usage(av);
+}
+
+void	ft_print_path(t_frame *frame, t_path *p)
 {
 	t_link	*tmp;
 	int		i;
@@ -50,7 +59,8 @@ void	ft_print_path(t_path *p)
 		i++;
 		ft_printf("\n");
 	}
-	ft_printf("\n");
+	ft_printf("Number of steps: %d\n\n", frame->current_steps);
+	//ft_printf("\n");
 }
 
 void	ft_print_color_path(t_path *p)

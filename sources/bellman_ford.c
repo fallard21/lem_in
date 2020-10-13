@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bellman_ford.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 20:02:05 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:05 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 16:16:01 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_find	*restore_path(t_room *end)
 			return (free_prev_list(&way));
 		tmp = tmp->prev;
 	}
-	//print_recovery(way);
 	return (way);
 }
 
