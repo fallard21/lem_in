@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:10 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 19:13:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ t_room			*add_room(t_room *room, t_room *new_room, t_frame *stor)
 	while (tmp)
 	{
 		if (is_room_duplicates(tmp, new_room))
+		{
+			del_room(&new_room);
 			lem_error(ROOM_DUPL_ERR, stor);
+		}
 		if (tmp->next)
 			tmp = tmp->next;
 		else

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:36:20 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 20:20:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			is_link(char *line, t_frame *stor)
 	int		res;
 
 	res = 1;
-	if (!line)
+	if (!line || line[0] == '\0')
 		lem_error(READ_ERR, stor);
 	if (!(split = ft_strsplit(line, '-')))
 	{
@@ -44,7 +44,7 @@ int			is_link(char *line, t_frame *stor)
 
 int			is_hash(char *line, t_frame *stor)
 {
-	if (!line)
+	if (!line || line[0] == '\0')
 		lem_error(READ_ERR, stor);
 	return (line[0] == '#');
 }
@@ -64,7 +64,7 @@ int			is_room(char *line, t_frame *stor)
 	int		res;
 
 	res = 1;
-	if (!line)
+	if (!line || line[0] == '\0')
 		lem_error(READ_ERR, stor);
 	if (!(split = ft_strsplit(line, ' ')))
 	{

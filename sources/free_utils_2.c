@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 16:23:04 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 19:05:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,8 @@ void		del_room(t_room **room)
 
 void		free_paths(t_path *paths)
 {
-	//t_link		*lev1;
 	t_path		*next;
 
-	//if (!paths)
-	//	lem_error(MEM_FREE_ERR, NULL);
 	while (paths)
 	{
 		next = paths->next;
