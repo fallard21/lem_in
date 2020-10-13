@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 16:24:17 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/13 16:32:39 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 int			main(int ac, char **av)
 {
-	t_frame		*stor;
-	t_path		*path;
-	int			key_p;
+	t_frame	*stor;
+	t_path	*path;
+	int		key_p;
 
 	key_p = 0;
 	if (ac > 1)
