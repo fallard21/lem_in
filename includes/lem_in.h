@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 20:06:26 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 22:03:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void		duplicate_rooms(t_frame *stor);
 int			split_room(t_frame *stor, t_room **map);
 void		skip_room(t_frame *stor, t_room **map, int frst);
 t_room		*create_out_room(t_room *room);
-void		set_out_room_params(t_room *new, t_room *room);
 void		redirect_input_links(t_room *room, t_frame *stor);
 void		redirect_output_links(t_room *room, t_frame *stor);
 void		redirect_end(t_frame *stor);

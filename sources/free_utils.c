@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 20:28:06 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 21:47:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ void		free_map(t_room *room)
 	{
 		next = room->next;
 		ft_memdel((void**)&room->name);
-		free_link(&room->links);
-		free_link(&room->input);
-		free_link(&room->output);
+		if (room->links)
+			free_link(&room->links);
+		if (room->input)
+			free_link(&room->input);
+		if (room->output)
+			free_link(&room->output);
 		ft_memdel((void**)&room);
 		room = next;
 	}

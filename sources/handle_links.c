@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 20:09:38 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 22:05:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 	{
 		if (!(room1->links = create_link(room2,
 		stor, room1->level == 0 ? 1 : 0)))
-		{
-			printf("WE ARE HERE 4\n");
 			lem_error(LINKS_ERR, stor);
-		}
 		room1->num_links++;
 		return ;
 	}
@@ -47,10 +44,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 	{
 		if (!ft_strcmp(link->room->name, room1->name) ||
 		!ft_strcmp(link->room->name, room2->name))
-		{
-			printf("WE ARE HERE 10\n");
 			lem_error(LINKS_DUPL_ERR, stor);
-		}
 		if (link->next)
 			link = link->next;
 		else
@@ -58,10 +52,7 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 	}
 	room1->num_links++;
 	if (!(link->next = create_link(room2, stor, room1->level == 0 ? 1 : 0)))
-	{
-		printf("WE ARE HERE 3\n");
 		lem_error(LINKS_ERR, stor);
-	}
 	return ;
 }
 

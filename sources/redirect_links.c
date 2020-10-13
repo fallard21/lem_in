@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 23:04:52 by user             ###   ########.fr       */
+/*   Updated: 2020/10/13 22:01:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 	t_link		*head_out;
 	t_room		*out;
 
+	head_out = NULL;
 	out = room->next;
 	link = room->links;
 	out->input = create_link(room, stor, 0);
@@ -106,6 +107,7 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 	t_link		*link;
 	t_link		*head_inp;
 
+	head_inp = NULL;
 	link = room->links;
 	room->output = create_link(room->next, stor, 0);
 	if (check_only_start_end(room))
