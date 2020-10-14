@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 22:03:28 by user             ###   ########.fr       */
+/*   Updated: 2020/10/14 20:28:03 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include <termio.h>
 
 # include "libft.h"
 # include "struct.h"
@@ -157,7 +156,6 @@ void		print_graf(t_frame *frame);
 void		print_rooms(t_room *room);
 void		print_links(t_link *links);
 void		print_all_info(t_room *room);
-
 
 
 /*
