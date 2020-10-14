@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:56:58 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/13 16:17:41 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 01:11:04 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		calculate_max_step(t_frame *frame, t_flow *flow)
 	return (0);
 }
 
-int		calculate_path_len(t_flow *flow, t_link *link)
+void	calculate_path_len(t_flow *flow, t_link *link)
 {
 	t_room	*current;
 	t_link	*tmp;

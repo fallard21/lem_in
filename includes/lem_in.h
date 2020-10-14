@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/14 20:28:03 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 01:15:53 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		reinit_sizes(t_room *start);
 ** >-----------------< Suurballe >-----------------<
 */
 void		suurballe(t_frame *frame);
-void		reverse_path(t_find *p, t_room *current);
+void		reverse_path(t_find *p);
 void		in_to_out(t_room *current, char *name);
 void		out_to_in(t_room *current, char *name);
 void		find_link(t_link **tmp, t_link **prev, char *name);

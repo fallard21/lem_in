@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 00:02:26 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:06 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 01:12:28 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ int		bfs(t_frame *frame, t_room *start)
 	t_link	*queue;
 	t_link	*tmp;
 	t_room	*current;
-	int		count;
 
 	queue = NULL;
-	count = 0;
 	queue_push(frame, &queue, start);
 	while (!is_empty(queue))
 	{

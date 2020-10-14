@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:14:32 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/13 16:23:19 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 01:16:07 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,8 @@ void	in_to_out(t_room *current, char *name)
 	tmp->status = (tmp->status) ? 0 : 1;
 }
 
-void	reverse_path(t_find *p, t_room *current)
+void	reverse_path(t_find *p)
 {
-	t_link *tmp;
-	t_room *next;
-
 	while (p && p->next)
 	{
 		out_to_in(p->room, p->next->room->name);
@@ -92,11 +89,11 @@ void	suurballe(t_frame *frame)
 	{
 		if (!(frame->find_way = restore_path(frame->end)))
 			lem_error(ALLOC_ERR, frame);
-		reverse_path(frame->find_way, frame->start);
+		reverse_path(frame->find_way);
 		if (calculate_steps(frame) == 1)
 		{
 			frame->find_way = ft_reverse_list(frame->find_way);
-			reverse_path(frame->find_way, frame->start);
+			reverse_path(frame->find_way);
 			break ;
 		}
 		reinit_sizes(frame->map);
