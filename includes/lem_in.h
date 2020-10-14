@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 01:15:53 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 01:42:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ void		input_print_and_free(t_frame *stor);
 void		ft_parse_flags(int *key_p, int ac, char *av);
 void		ft_print_path(t_frame *frame, t_path *p);
 
-
 ///////////////////////////////////////////////
 void		print_suurb(t_room *start);
 void		print_recovery(t_find *rec);
@@ -156,7 +155,6 @@ void		print_graf(t_frame *frame);
 void		print_rooms(t_room *room);
 void		print_links(t_link *links);
 void		print_all_info(t_room *room);
-
 
 /*
 **	JUST FOR TESTING ********************** DELETE
