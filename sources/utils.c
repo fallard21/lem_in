@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 20:20:54 by user             ###   ########.fr       */
+/*   Updated: 2020/10/14 23:57:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int			is_room(char *line, t_frame *stor)
 	char	**split;
 	int		res;
 
+	printf("is_room line = %s\n", line);
 	res = 1;
 	if (!line || line[0] == '\0')
 		lem_error(READ_ERR, stor);
@@ -73,7 +74,13 @@ int			is_room(char *line, t_frame *stor)
 	}
 	if (ft_len_splited(split) != 3 || !is_room_name(split[0]) ||
 	!ft_isint_str(split[1]) || !ft_isint_str(split[2]))
+	{
+		printf("we are in is_room fail\n");
+		printf("sp[0] = %s sp[1] = %s sp[2] = %s\n", split[0], split[1], split[2]);
+		printf("check room name = %s\n", !is_room_name(split[0]) ? "INCORRECT" : "CORRECT");
+		printf("check split len %s\n", ft_len_splited(split) != 3 ? "!=3" : "=3");
 		res = 0;
+	}
 	ft_free_splited(split);
 	return (res);
 }

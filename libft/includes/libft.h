@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/09/12 00:40:13 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/14 20:28:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void			*ft_memalloc(size_t size);
 void			*ft_calloc(size_t num, size_t size);
 void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
-void				ft_swap(int *a, int *b);
-int					ft_splitdel(char ***str);
+void			ft_swap(int *a, int *b);
+int				ft_splitdel(char ***str);
 
 /*
 **	STRING FUNCTIONS
