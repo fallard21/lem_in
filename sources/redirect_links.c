@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:47:06 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 22:01:21 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 01:33:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void		redirect_output_links(t_room *room, t_frame *stor)
 			break ;
 		if (!out->output && (out->output = create_link(link->room, stor, 1)))
 			head_out = out->output;
-		else if (out->output->next = create_link(link->room, stor, 1))
+		else if ((out->output->next = create_link(link->room, stor, 1)))
 			out->output = out->output->next;
 		link = link->next;
 	}
@@ -119,7 +119,7 @@ void		redirect_input_links(t_room *room, t_frame *stor)
 		if (!room->input &&
 		(room->input = create_link(link->room->next, stor, 1)))
 			head_inp = room->input;
-		else if (room->input->next = create_link(link->room->next, stor, 1))
+		else if ((room->input->next = create_link(link->room->next, stor, 1)))
 			room->input = room->input->next;
 		link = link->next;
 	}
