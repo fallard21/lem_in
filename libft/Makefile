@@ -6,7 +6,7 @@
 #    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 15:43:25 by fallard           #+#    #+#              #
-#    Updated: 2020/09/11 23:43:33 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 02:01:27 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,13 +143,13 @@ CN = \033[036m
 EOC = \033[0m
 
 all: $(NAME)
-	@printf "\n$(GR) >> $(NAME) created! <<$(EOC)\n"
 
 $(NAME): $(TMP_LIB) $(TMP_PF)
 	@ar rc $(NAME) $(TMP_LIB) $(TMP_PF)
-	
+	@printf "\n$(GR) >> $(NAME) created! <<$(EOC)\n"
+
 %.o:%.c $(HEAD_LIB) $(HEAD_PF)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@ 
 	@printf "$(CN).$(EOC)"
 
 clean:
