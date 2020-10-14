@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 20:29:29 by user             ###   ########.fr       */
+/*   Updated: 2020/10/14 20:18:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_input		*read_input(void)
 				return (NULL);
 		}
 	}
+	free(line);
 	get_next_line(0, NULL, 1);
 	return (input);
 }

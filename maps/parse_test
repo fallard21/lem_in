@@ -1,10 +1,10 @@
 2
 ##start
-st 5 6
+st 5 5
 ##end
-end 5 6
-st-end
-
+r1 6 6
+st-r1
+st-r1
 
 ## basic map
 123
