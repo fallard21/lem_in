@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/10/14 20:28:51 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 01:41:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "ft_printf.h"
+
 /*
 **	MEM FUNCTIONS
 */
@@ -115,10 +116,10 @@ int				ft_isposint_str(char *str);
 /*
 ** >>-------------------------------<< MATH >>-------------------------------<<
 */
-long long			ft_llfactorial(long long nb);
-long long			ft_llabs(long long nb);
-long				ft_labs(long nb);
-int					ft_abs(int nb);
+long long		ft_llfactorial(long long nb);
+long long		ft_llabs(long long nb);
+long			ft_labs(long nb);
+int				ft_abs(int nb);
 
 /*
 **	LIST FUNCTIONS
