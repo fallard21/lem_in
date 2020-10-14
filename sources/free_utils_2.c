@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 22:17:57 by user             ###   ########.fr       */
+/*   Updated: 2020/10/14 22:01:22 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void		free_paths(t_path *paths)
 		next = paths->next;
 		free_link(&paths->start);
 		ft_memdel((void**)&paths);
-		paths = next;	
+		paths = next;
 	}
 }
