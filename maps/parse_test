@@ -2,8 +2,14 @@
 ##start
 st 5 5
 ##end
-r1 6 6
+r1 6 2147483648
 st-r1
+
+2
+##start
+st 5 5
+##end
+r1 6 -2147483649
 st-r1
 
 ## basic map
