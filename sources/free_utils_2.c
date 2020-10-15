@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:31:01 by user              #+#    #+#             */
-/*   Updated: 2020/10/14 22:01:22 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 17:30:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void		free_flow(t_flow **flow)
 
 void		del_room(t_room **room)
 {
-	if (!(*room))
-		lem_error(MEM_FREE_ERR, NULL);
 	free((*room)->name);
 	(*room)->next = NULL;
 	(*room)->prev = NULL;

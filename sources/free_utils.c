@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 21:47:26 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 17:31:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void		free_input(t_input *input)
 
 void		lem_free(t_frame *stor)
 {
-	if (!stor)
-		lem_error(MEM_FREE_ERR, NULL);
 	if (stor->input)
 		free_input(stor->input);
 	if (stor->map)

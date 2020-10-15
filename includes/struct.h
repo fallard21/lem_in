@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 17:22:45 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 17:32:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # define LINKS_DUPL_ERR "ERROR: Duplicate links"
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
-# define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
-# define ANTS_MOVE_ERR	"ERROR: Ants moving error"
 
 # define IN 1
 # define OUT 2

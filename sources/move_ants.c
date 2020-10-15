@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 14:47:53 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 17:32:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void		handle_ants_move(t_frame *stor)
 	t_path		*tmp;
 	int			is_used;
 
-	if (!stor)
-		lem_error(ANTS_MOVE_ERR, stor);
 	tmp = stor->paths;
 	set_ants_on_paths(stor);
 	if (stor->key_p)
