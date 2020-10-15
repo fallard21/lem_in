@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 01:58:14 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 17:22:45 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define NOT_ENOUGH_ERR	"ERROR"
 # define READ_ERR		"ERROR: Reading error occured"
 # define INPUT_ERR		"ERROR: Incorrect input"
-# define ROOM_DUPL_ERR	"ERROR: Room name or coords duplicate"
+# define ROOM_DUPL_ERR	"ERROR: Room name or coords has duplicate"
 # define NO_ANTS_ERR	"ERROR: Incorrect number of ants on input"
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
 # define ALLOC_ERR		"ERROR: Allocation error"
@@ -29,10 +29,7 @@
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
 # define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
-# define PATH_ERR		"ERROR: Path creation error"
-# define NO_PATHS_ERR	"ERROR: No paths constructed"
 # define ANTS_MOVE_ERR	"ERROR: Ants moving error"
-# define MOVE_RES_ERR	"ERROR: Not all ants have reached the end"
 
 # define IN 1
 # define OUT 2

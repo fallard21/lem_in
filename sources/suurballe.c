@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 17:14:32 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/15 01:16:07 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 17:12:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,4 @@ void	suurballe(t_frame *frame)
 		free_prev_list(&frame->find_way);
 	}
 	get_all_paths(frame);
-	return ;
 }

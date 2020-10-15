@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/13 16:13:38 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 17:00:00 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	put_usage(char *av)
 {
 	if (av)
 	{
-		write(2, "Invalid key: '", 15);
+		write(2, "lem-in: invalid key: '", 23);
 		write(2, av, ft_strlen(av));
-		write(2, "'.\n", 4);
+		write(2, "'\n", 3);
 	}
 	write(2, "Usage:\n", 8);
-	write(2, "\t./lem_in < map\n\t./lem_in -p < map\n", 36);
-	write(2, "\t-p\tprint all path's\n", 22);
-	exit(1);
+	write(2, "\t./lem-in < map\n\t./lem-in -p < map\n", 36);
+	write(2, "\t-p\tprint path's\n", 18);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_parse_flags(int *key_p, int ac, char *av)
@@ -45,7 +45,8 @@ void	ft_print_path(t_frame *frame, t_path *p)
 	i = 0;
 	while (p)
 	{
-		ft_printf("%d) Path size: %d\n\t", i + 1, p->len);
+		ft_printf("%d) Path size: %d | %s\n\t", i + 1, p->len,
+			(p->ants_togo) ? "USED" : "UNUSED");
 		tmp = p->start;
 		while (tmp)
 		{
@@ -60,7 +61,6 @@ void	ft_print_path(t_frame *frame, t_path *p)
 		ft_printf("\n");
 	}
 	ft_printf("Number of steps: %d\n\n", frame->current_steps);
-	//ft_printf("\n");
 }
 
 void	ft_print_color_path(t_path *p)

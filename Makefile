@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/10/15 13:57:18 by user             ###   ########.fr        #
+#    Updated: 2020/10/15 17:07:59 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ OBJ			= $(addprefix $(OBJ_DIR), $(FUNCS:.c=.o))
 # -------------
 INCLUDES	= -I $(INC_DIR) -I $(LIBFT_INC) 
 
-CC			= gcc
+CC			= gcc -g
 CFLAGS		= -Wall #-Wextra -Werror
 LFT			= -L $(LIBFT_DIR) -lft
 
