@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 20:02:22 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 21:17:32 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <errno.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 # include "libft.h"
