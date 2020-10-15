@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/15 17:00:00 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 19:59:32 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,4 @@ void	ft_print_path(t_frame *frame, t_path *p)
 		ft_printf("\n");
 	}
 	ft_printf("Number of steps: %d\n\n", frame->current_steps);
-}
-
-void	ft_print_color_path(t_path *p)
-{
-	t_link	*tmp;
-	int		i;
-
-	i = 0;
-	while (p)
-	{
-		ft_printf("{3}%d) Path size: %d{0}\n\t", i + 1, p->len);
-		tmp = p->start;
-		while (tmp)
-		{
-			if (!tmp->next)
-				ft_printf("{2}%s{0}", tmp->room->name);
-			else
-				ft_printf("{2}%s -> {0}", tmp->room->name);
-			tmp = tmp->next;
-		}
-		p = p->next;
-		i++;
-		ft_printf("\n");
-	}
-	ft_printf("\n");
 }
