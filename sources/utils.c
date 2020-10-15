@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 01:17:22 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 18:29:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int			is_link(char *line, t_frame *stor)
 		ft_free_splited(split);
 		lem_error(ALLOC_ERR, stor);
 	}
-	if (ft_len_splited(split) != 2 || !is_room_name(split[0]) ||
-	!is_room_name(split[1]))
+	if (ft_str_charcount(line, '-') > 1 || ft_len_splited(split) != 2 ||
+	!is_room_name(split[0]) || !is_room_name(split[1]))
 		res = 0;
 	ft_free_splited(split);
 	return (res);
@@ -60,7 +60,7 @@ int			is_room_name(char *line)
 		return (0);
 	while (line[i])
 	{
-		if (line[i] == ' ')
+		if (line[i] == ' ' || line[i] == '-')
 			return (0);
 		i++;
 	}

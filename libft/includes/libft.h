@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/10/15 01:41:25 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 18:29:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char			*ft_strtrim(char const *s);
 int				ft_iswspace(int c);
 char			*ft_strrev(char *str);
 int				ft_word_count(char const *s, char c);
+int				ft_str_charcount(const char *str, char c);
 
 char			**ft_strsplit(char const *s, char c);
 int				ft_len_splited(char **split);

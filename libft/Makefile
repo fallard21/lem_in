@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 15:43:25 by fallard           #+#    #+#              #
-#    Updated: 2020/10/15 02:01:27 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 18:25:53 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,8 @@ ft_putstr_color.c \
 ft_word_count.c \
 get_next_line_clean.c \
 ft_strsdup.c \
-ft_strrev.c
+ft_strrev.c \
+ft_str_charcount.c \
 
 SRC_PF = ft_printf.c \
 parse.c \
