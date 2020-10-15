@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 02:04:21 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 20:02:22 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int			calculate_steps(t_frame *frame);
 t_path		*sort_path(t_path *head);
 t_find		*ft_reverse_list(t_find *head);
 void		bubble_sort(int *arr, int size);
-void		ft_quick_sort(int *arr, int first, int last);
 
 /*
 ** >-----------------< Recovery all paths >-----------------<
