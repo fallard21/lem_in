@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/10/15 02:00:03 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 13:48:53 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- Name -----
-NAME 		= lem_in
+NAME 		= lem-in
 HEADER_NAME	= lem_in.h struct.h
 LIBFT_NAME	= libft.a
 
