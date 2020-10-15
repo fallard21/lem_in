@@ -6,7 +6,7 @@
 #    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/10/15 17:07:59 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 20:06:56 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ OBJ_DIR		= ./obj/
 INC_DIR 	= ./includes/
 
 # ----- Lists -----
-FUNCS		= print.c tmp_tools.c \
-				bfs.c lem_in.c read_input.c parse.c \
+FUNCS		= 	bfs.c lem_in.c read_input.c parse.c \
 				utils.c utils_2.c free_utils.c free_utils_2.c \
 				handle_rooms.c handle_links.c move_ants.c \
 				move_ants_utils.c bellman_ford.c direct_graph.c \
@@ -41,8 +40,8 @@ OBJ			= $(addprefix $(OBJ_DIR), $(FUNCS:.c=.o))
 # -------------
 INCLUDES	= -I $(INC_DIR) -I $(LIBFT_INC) 
 
-CC			= gcc -g
-CFLAGS		= -Wall #-Wextra -Werror
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
 LFT			= -L $(LIBFT_DIR) -lft
 
 # --- Colors ---
@@ -55,7 +54,8 @@ EOC				= "\033[0m"
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LFT) -o $(NAME)
+	@echo $(GREEN) "Program $(NAME) created" #(EOC)
 
 $(OBJ_DIR):
 	@mkdir -p ./obj/
