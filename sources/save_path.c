@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:44:09 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/13 16:12:39 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/15 14:46:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,4 @@ void	get_all_paths(t_frame *frame)
 		links = next;
 	}
 	frame->paths = sort_path(frame->paths);
-	if (frame->key_p)
-		ft_print_path(frame, frame->paths);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 19:04:49 by user             ###   ########.fr       */
+/*   Updated: 2020/10/15 14:47:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void		handle_ants_move(t_frame *stor)
 		lem_error(ANTS_MOVE_ERR, stor);
 	tmp = stor->paths;
 	set_ants_on_paths(stor);
+	if (stor->key_p)
+		ft_print_path(stor, stor->paths);
 	while (stor->end->ants < stor->num_ants)
 	{
 		is_used = 0;
@@ -87,6 +89,4 @@ void		handle_ants_move(t_frame *stor)
 			ft_printf("\n");
 		}
 	}
-	if (stor->end->ants != stor->num_ants)
-		lem_error(MOVE_RES_ERR, stor);
 }
