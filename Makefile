@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/10/15 20:12:20 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 21:26:13 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ LFT			= -L $(LIBFT_DIR) -lft
 RED				= "\033[0;31m"
 GREEN			= "\033[0;32m"
 CYAN			= "\033[0;36m"
+YELLOW			= "\033[0;33m"
 EOC				= "\033[0m"
 # =================
 
@@ -71,12 +72,12 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 
 clean:
 	@/bin/rm -rf $(OBJ_DIR)
-	@echo $(RED) "$(NAME) object files deleted"$(EOC)
+	@echo $(YELLOW)"$(NAME):"$(EOC) $(RED)"Object files deleted."$(EOC)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
-	@echo $(RED) "$(NAME) executable file deleted"$(EOC)
+	@echo $(YELLOW)"$(NAME):"$(EOC) $(RED)"Executable file deleted."$(EOC)
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
