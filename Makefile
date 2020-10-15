@@ -6,7 +6,7 @@
 #    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/10/15 20:11:15 by fallard          ###   ########.fr        #
+#    Updated: 2020/10/15 20:12:20 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LFT) -o $(NAME)
-	@echo $(GREEN) "Program $(NAME) created" #(EOC)
+	@echo $(GREEN) "Program $(NAME) created" $(EOC)
 
 $(OBJ_DIR):
 	@mkdir -p ./obj/
