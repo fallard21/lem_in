@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 21:31:19 by user             ###   ########.fr       */
+/*   Updated: 2020/10/16 13:50:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_room		*create_room(t_frame *stor, char *line);
 t_room		*add_room(t_room *room, t_room *new_room, t_frame *stor);
 int			handle_links(t_room *room, char *line, t_frame *stor);
 int			find_rooms(t_room *room, char *r1, char *r2, t_frame *stor);
-void		set_links(t_room *room1, t_room *room2, t_frame *stor);
+int			set_links(t_room *room1, t_room *room2, t_frame *stor);
 t_link		*create_link(t_room *room, t_frame *stor, int weight);
 
 /*

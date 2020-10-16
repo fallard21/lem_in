@@ -12,6 +12,15 @@ st 5 5
 r1 -2147483649 -2147483649
 st-r1
 
+2
+##start
+st 5 5
+##end
+end 6 6
+st-end
+end-st
+
+
 ## basic map
 10
 ##end
