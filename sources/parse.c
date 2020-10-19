@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:49:59 by user             ###   ########.fr       */
+/*   Updated: 2020/10/16 18:42:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ t_frame		*init_storage(t_input **input)
 	t_frame		*stor;
 
 	if (!(stor = ft_calloc(1, sizeof(t_frame))))
+	{
+		free_input((*input));
 		return (NULL);
+	}
 	stor->input = (*input);
 	set_stor_params(stor);
 	while (*input && is_hash((*input)->line, stor))
@@ -95,12 +98,14 @@ t_frame		*create_map(void)
 	t_input		*input;
 	t_frame		*stor;
 
+	map = NULL;
 	if (!(input = read_input()))
 	{
 		free_input(input);
 		lem_error(READ_ERR, NULL);
 	}
-	stor = init_storage(&input);
+	if (!(stor = init_storage(&input)))
+		return (NULL);
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor) ||
 	!bfs(stor, stor->start))
 		lem_error(NOT_ENOUGH_ERR, stor);

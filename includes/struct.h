@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 17:32:17 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 12:43:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ struct				s_frame
 	t_room			*start;
 	t_room			*end;
 	int				cmd;
+	char			**split;
 	int				num_ants;
 	int				ant_name;
 	int				num_rooms;

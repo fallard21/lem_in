@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 22:02:42 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 12:43:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ void		skip_room(t_frame *stor, t_room **map, int frst)
 		(*map)->next = tmp;
 }
 
-int			split_room(t_frame *stor, t_room **map)
+int			split_room(t_frame *stor, t_room **map, t_room *mcopy)
 {
 	t_room		*tmp;
+	t_room		*next;
 
 	tmp = (*map)->next;
 	(*map)->suur_type = IN;
-	(*map)->next = create_out_room((*map));
+	if (!(next = create_out_room((*map))))
+	{
+		stor->map = mcopy;
+		lem_error(ALLOC_ERR, stor);
+	}
+	(*map)->next = next;
 	(*map)->next->next = tmp ? tmp : stor->end;
 	(*map) = (*map)->next->next;
 	if ((*map)->level == INT_MAX)
@@ -68,7 +74,9 @@ int			split_room(t_frame *stor, t_room **map)
 void		duplicate_rooms(t_frame *stor)
 {
 	t_room		*head;
+	t_room		*mcopy;
 
+	mcopy = stor->map;
 	if (stor->map && check_skiping(stor->map, 1))
 		skip_room(stor, &stor->map, 1);
 	head = stor->map;
@@ -76,7 +84,7 @@ void		duplicate_rooms(t_frame *stor)
 	{
 		if (stor->map->next && check_skiping(stor->map->next, 1))
 			skip_room(stor, &stor->map, 0);
-		else if (stor->map && split_room(stor, &stor->map))
+		else if (stor->map && split_room(stor, &stor->map, mcopy))
 			break ;
 	}
 	stor->num_rooms = (stor->num_rooms * 2) - 2;

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 17:31:03 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 13:09:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ void		free_map(t_room *room)
 	}
 }
 
+void		*free_input_error(t_input *input, char *line)
+{
+	if (input)
+		free_input(input);
+	if (line)
+		free(line);
+	return (NULL);
+}
+
 void		free_input(t_input *input)
 {
 	t_input		*tmp;
@@ -68,5 +77,7 @@ void		lem_free(t_frame *stor)
 		free_flow(&stor->flow);
 	if (stor->find_way)
 		free_prev_list(&stor->find_way);
+	if (stor->split)
+		ft_free_splited(stor->split);
 	ft_memdel((void**)&stor);
 }

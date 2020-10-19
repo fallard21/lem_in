@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/16 13:50:34 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 13:09:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		set_simplest_grapth(t_frame *stor);
 int			check_only_start_end(t_room *room);
 int			check_skiping(t_room *room, int check_links);
 void		duplicate_rooms(t_frame *stor);
-int			split_room(t_frame *stor, t_room **map);
+int			split_room(t_frame *stor, t_room **map, t_room *mcopy);
 void		skip_room(t_frame *stor, t_room **map, int frst);
 t_room		*create_out_room(t_room *room);
 void		redirect_input_links(t_room *room, t_frame *stor);
@@ -136,6 +136,7 @@ void		free_map(t_room *room);
 void		del_room(t_room **room);
 void		free_paths(t_path *paths);
 void		input_print_and_free(t_frame *stor);
+void		*free_input_error(t_input *input, char *line);
 
 /*
 ** >-----------------< Bonus >-----------------<

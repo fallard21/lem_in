@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/10/14 20:23:04 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 13:08:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ t_input		*read_input(void)
 		{
 			if ((!(input = create_input_item(line)) &&
 			get_next_line(0, NULL, 1)) || !(tmp = input))
-				return (NULL);
+				return (free_input_error(input, line));
 		}
 		else
 		{
 			if ((!(tmp->next = create_input_item(line)) &&
 			get_next_line(0, NULL, 1)) || !(tmp = tmp->next))
-				return (NULL);
+				return (free_input_error(input, line));
 		}
 	}
 	free(line);

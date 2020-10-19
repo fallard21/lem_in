@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/10/16 13:53:53 by user             ###   ########.fr       */
+/*   Updated: 2020/10/16 19:05:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,18 @@ int			handle_links(t_room *room, char *line, t_frame *stor)
 {
 	char		*room1;
 	char		*room2;
-	char		**split;
 	int			res;
 
-	if (!(split = ft_strsplit(line, '-')))
-	{
-		ft_free_splited(split);
+	if (!(stor->split = ft_strsplit(line, '-')))
 		lem_error(ALLOC_ERR, stor);
-	}
-	if (!(room1 = split[0]) ||
-	!(room2 = split[1]) ||
+	if (!(room1 = stor->split[0]) ||
+	!(room2 = stor->split[1]) ||
 	(res = find_rooms(room, room1, room2, stor)))
 	{
-		ft_free_splited(split);
 		res == 1 ? lem_error(LINKS_ERR, stor) :
 		lem_error(LINKS_DUPL_ERR, stor);
 	}
-	ft_free_splited(split);
+	ft_free_splited(stor->split);
+	stor->split = NULL;
 	return (1);
 }
