@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:36:04 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 20:37:15 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 16:20:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ void		input_print_and_free(t_frame *stor)
 	ft_putchar_fd('\n', 1);
 	free_input(stor->input);
 	stor->input = NULL;
+}
+
+int			is_lead_zero(char *str)
+{
+	if (str)
+		return ((ft_strlen(str) > 1 && str[0] == '0') ||
+			(str[0] == '-' && ft_strlen(str) > 2 && str[1] == '0'));
+	else
+		return (1);
 }
 
 int			is_valid_map(t_frame *stor)

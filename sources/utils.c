@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 18:29:25 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 16:21:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int			is_room(char *line, t_frame *stor)
 		lem_error(ALLOC_ERR, stor);
 	}
 	if (ft_len_splited(split) != 3 || !is_room_name(split[0]) ||
-	!ft_isint_str(split[1]) || !ft_isint_str(split[2]))
+	!ft_isint_str(split[1]) || !ft_isint_str(split[2]) ||
+	is_lead_zero(split[1]) || is_lead_zero(split[2]))
 		res = 0;
 	ft_free_splited(split);
 	return (res);

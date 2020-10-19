@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/19 13:09:42 by user             ###   ########.fr       */
+/*   Updated: 2020/10/19 16:17:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		parse_start_end(char *line, t_frame *stor);
 int			is_valid_ants(char *str, t_frame *stor);
 int			is_room(char *line, t_frame *stor);
 int			is_hash(char *line, t_frame *stor);
+int			is_lead_zero(char *str);
 int			is_room_name(char *line);
 int			is_link(char *line, t_frame *stor);
 int			is_valid_map(t_frame *stor);
