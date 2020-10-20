@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/10/16 18:42:12 by user             ###   ########.fr       */
+/*   Updated: 2020/10/20 15:42:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,7 @@ t_frame		*create_map(void)
 
 	map = NULL;
 	if (!(input = read_input()))
-	{
-		free_input(input);
 		lem_error(READ_ERR, NULL);
-	}
 	if (!(stor = init_storage(&input)))
 		return (NULL);
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor) ||

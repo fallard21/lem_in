@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/10/19 13:08:08 by user             ###   ########.fr       */
+/*   Updated: 2020/10/20 15:43:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_input		*read_input(void)
 	char		*line;
 
 	input = NULL;
+	line = NULL;
 	while (get_next_line(0, &line, 0) > 0)
 	{
 		if (!input)
