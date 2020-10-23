@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/19 12:43:23 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 00:44:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_input		t_input;
 typedef struct s_path		t_path;
 typedef struct s_find		t_find;
 typedef struct s_flow		t_flow;
+typedef struct s_stat		t_stat;
 
 struct				s_input
 {
@@ -120,5 +121,22 @@ struct				s_flow
 	int				*path;
 	int				*diff;
 };
+
+struct				s_stat
+{
+	int				key_map;
+	int				key_move;
+	int				key_stat;
+	int				key_all;
+	int				steps_rqrd;
+	int				steps_act;
+	int				dead_ends;
+	int				vrtx_orig;
+	int				vrtx_in_all;
+	int				vrtx_in_used;
+	int				all_paths;
+	int				used_paths;
+};
+
 
 #endif
