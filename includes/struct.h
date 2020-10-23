@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 00:44:33 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 02:21:42 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,22 @@ struct				s_path
 	int				ants_pass;
 };
 
+struct				s_stat
+{
+	int				key_map;
+	int				key_move;
+	int				key_stat;
+	int				key_all;
+	int				steps_rqrd;
+	int				steps_act;
+	int				dead_ends;
+	int				vrtx_orig;
+	int				vrtx_in_all;
+	int				vrtx_in_used;
+	int				all_paths;
+	int				used_paths;
+};
+
 struct				s_frame
 {
 	t_room			*start;
@@ -99,7 +115,7 @@ struct				s_frame
 	int				ant_name;
 	int				num_rooms;
 	int				current_steps;
-	int				key_p;
+	t_stat			stat;
 	t_input			*input;
 	t_room			*map;
 	t_find			*find_way;
@@ -121,22 +137,5 @@ struct				s_flow
 	int				*path;
 	int				*diff;
 };
-
-struct				s_stat
-{
-	int				key_map;
-	int				key_move;
-	int				key_stat;
-	int				key_all;
-	int				steps_rqrd;
-	int				steps_act;
-	int				dead_ends;
-	int				vrtx_orig;
-	int				vrtx_in_all;
-	int				vrtx_in_used;
-	int				all_paths;
-	int				used_paths;
-};
-
 
 #endif

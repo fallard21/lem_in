@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/20 14:54:04 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 01:27:13 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void		*free_input_error(t_input *input, char *line);
 /*
 ** >-----------------< Bonus >-----------------<
 */
-void		ft_parse_flags(int *key_p, int ac, char *av);
+void		ft_parse_flags(t_stat *stat, int ac, char **av);
 void		ft_print_path(t_frame *frame, t_path *p);
 
 ///////////////////////////////////////////////

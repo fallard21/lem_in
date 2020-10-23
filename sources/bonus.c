@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/15 19:59:32 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 02:18:03 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,47 @@ void	put_usage(char *av)
 		write(2, "lem-in: invalid key: '", 23);
 		write(2, av, ft_strlen(av));
 		write(2, "'\n", 3);
+		write(2, "Usage:\n", 8);
+		write(2, "\t./lem-in [option 1] [option 2] [...] < map\n", 45);
+		write(2, "\t--help\t\t output manual\n", 25);
 	}
-	write(2, "Usage:\n", 8);
-	write(2, "\t./lem-in < map\n\t./lem-in -p < map\n", 36);
-	write(2, "\t-p\tprint path's\n", 18);
+	else
+	{
+		write(2, "options:\n", 10);
+		write(2, "\t--help\t\toutput manual\n", 24);
+		write(2, "\t--map\t\toutput graph map\n", 26);
+		write(2, "\t--move\t\toutput ant's moving\n", 30);
+		write(2, "\t--stat\t\toutput graph statistic\n", 33);
+		write(2, "\t--all\t\tuse all options (except --help)\n", 41);
+	}
 	exit(EXIT_FAILURE);
 }
 
-void	ft_parse_flags(int *key_p, int ac, char *av)
+void	ft_parse_flags(t_stat *stat, int ac, char **av)
 {
-	if (ac > 2)
-		put_usage(NULL);
-	else if (ft_strcmp(av, "-p") == 0)
-		*key_p = 1;
-	else
-		put_usage(av);
+	int i;
+
+	ft_memset(stat, 0, sizeof(t_stat));
+	stat->key_map = 1;
+	if (ac > 1)
+		stat->key_map = 0;
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_strcmp(av[i], "--help") == 0)
+			put_usage(NULL);
+		if (ft_strcmp(av[i], "--map") == 0)
+			stat->key_map = 1;
+		else if (ft_strcmp(av[i], "--stat") == 0)
+			stat->key_stat = 1;
+		else if (ft_strcmp(av[i], "--move") == 0)
+			stat->key_move = 1;
+		else if (ft_strcmp(av[i], "--all") == 0)
+			stat->key_all = 1;
+		else
+			put_usage(av[i]);
+		i++;
+	}
 }
 
 void	ft_print_path(t_frame *frame, t_path *p)
@@ -45,8 +71,8 @@ void	ft_print_path(t_frame *frame, t_path *p)
 	i = 0;
 	while (p)
 	{
-		ft_printf("%d) Path size: %d | %s\n\t", i + 1, p->len,
-			(p->ants_togo) ? "USED" : "UNUSED");
+		ft_printf("%d) Path size: %d | %s | ants on path: %d\n\t", i + 1,
+		p->len, (p->ants_togo) ? "USED" : "UNUSED", p->ants_togo);
 		tmp = p->start;
 		while (tmp)
 		{
