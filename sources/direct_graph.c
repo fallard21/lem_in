@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:13:02 by user              #+#    #+#             */
-/*   Updated: 2020/10/13 22:02:14 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 14:31:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		set_direct_graph(t_frame *stor)
 {
 	t_room		*copy;
 
+	stor->stat.vrtx_orig = stor->num_rooms;
 	duplicate_rooms(stor);
 	if (stor->num_rooms == 2)
 	{

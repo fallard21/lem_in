@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 02:12:20 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 15:57:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		handle_ants_move(t_frame *stor)
 	tmp = stor->paths;
 	set_ants_on_paths(stor);
 	if (stor->stat.key_stat)
-		ft_print_path(stor, stor->paths);
+		put_stat(stor);
 	while (stor->end->ants < stor->num_ants)
 	{
 		is_used = 0;
@@ -84,7 +84,7 @@ void		handle_ants_move(t_frame *stor)
 			if (is_used == 0 && tmp->ants_togo != 0)
 				move_through_path(tmp, stor);
 			tmp = stor->paths;
-			ft_printf("\n");
+			// ft_printf("\n");
 		}
 	}
 }

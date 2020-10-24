@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:01:42 by user              #+#    #+#             */
-/*   Updated: 2020/10/12 18:58:48 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 15:42:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void		print_ant_action(int ant_name, char *room_name)
 {
+	return ;
 	ft_printf("L%d-%s ", ant_name, room_name);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/24 16:14:23 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 17:20:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,28 +67,51 @@ void	ft_parse_flags(t_stat *stat, int ac, char **av)
 	}
 }
 
-void	ft_print_path(t_frame *frame, t_path *p)
+void	put_stat(t_frame *frame)
+{
+	float	dead_per;
+	float	all_per;
+	float	used_per;
+
+	ft_print_path(frame, frame->paths, 1);
+	dead_per = frame->stat.dead_ends / (float)frame->stat.vrtx_orig * 100;
+	all_per = frame->stat.vrtx_in_all / (float)frame->stat.vrtx_orig * 100;
+	used_per = frame->stat.vrtx_in_used / (float)frame->stat.vrtx_orig * 100;
+	ft_printf("\n------------- Graph Statistic -------------\n\n");	
+	ft_printf("Total vertices\t\t%d\n", frame->stat.vrtx_orig);
+	ft_printf("Dead ends\t\t%4d (%.2f%% of all)\n",
+	frame->stat.dead_ends, dead_per);
+	ft_printf("Vertices in all paths\t%4d (%.2f%% of all)\n",
+	frame->stat.vrtx_in_all, all_per);
+	ft_printf("Vertices in used paths\t%4d (%.2f%% of all)\n\n",
+	frame->stat.vrtx_in_used, used_per);
+	ft_printf("Paths\t\t\t%4d\n", frame->stat.all_paths);
+	ft_printf("Used paths\t\t%4d\n", frame->stat.used_paths);
+	ft_printf("Required steps\t\t%4d\n", frame->stat.steps_rqrd);
+	ft_printf("Actual steps\t\t%4d\n", frame->current_steps);
+	ft_printf("\n-------------------------------------------\n");
+}
+
+void	ft_print_path(t_frame *frame, t_path *p, int i)
 {
 	t_link	*tmp;
-	int		i;
 
-	i = 0;
 	while (p)
 	{
-		ft_printf("%d) Path size: %d | %s | ants on path: %d\n\t", i + 1,
+		ft_printf("%d) Path size: %d | %s | ants on path: %d\n\t", i++,
 		p->len, (p->ants_togo) ? "USED" : "UNUSED", p->ants_togo);
 		tmp = p->start;
 		while (tmp)
 		{
-			if (!tmp->next)
-				ft_printf("%s", tmp->room->name);
-			else
-				ft_printf("%s -> ", tmp->room->name);
+			!tmp->next ? ft_printf("%s", tmp->room->name) :
+			ft_printf("%s -> ", tmp->room->name);
 			tmp = tmp->next;
 		}
+		frame->stat.vrtx_in_all += p->len;
+		frame->stat.all_paths++;
+		frame->stat.vrtx_in_used += p->ants_togo ? p->len : 0;
+		frame->stat.used_paths += p->ants_togo ? 1 : 0;
 		p = p->next;
-		i++;
 		ft_printf("\n");
 	}
-	ft_printf("Number of steps: %d\n\n", frame->current_steps);
 }

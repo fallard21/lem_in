@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/19 12:43:06 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 14:33:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		skip_room(t_frame *stor, t_room **map, int frst)
 	{
 		if (tmp && !tmp->links)
 		{
+			stor->stat.dead_ends++;
 			copy = tmp;
 			tmp = tmp->next;
 			del_room(&copy);
@@ -58,6 +59,8 @@ int			split_room(t_frame *stor, t_room **map, t_room *mcopy)
 
 	tmp = (*map)->next;
 	(*map)->suur_type = IN;
+	if ((*map)->num_links == 1)
+		stor->stat.dead_ends++;
 	if (!(next = create_out_room((*map))))
 	{
 		stor->map = mcopy;
@@ -70,6 +73,12 @@ int			split_room(t_frame *stor, t_room **map, t_room *mcopy)
 		return (1);
 	return (0);
 }
+
+
+
+
+
+
 
 void		duplicate_rooms(t_frame *stor)
 {
