@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 18:29:37 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 19:19:25 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 	// ft_printf("map: %d\n", stat.key_map);
 	// ft_printf("move: %d\n", stat.key_move);
 	// ft_printf("stat: %d\n", stat.key_stat);
-	// ft_printf("all: %d\n", stat.key_all);
 	if (!(stor = create_map()))
 		lem_error(ALLOC_ERR, stor);
 	stor->stat = stat;

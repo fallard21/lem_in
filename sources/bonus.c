@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/24 18:27:20 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 19:18:28 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_in.h"
+
+void	init_stat(t_stat *stat, int flag)
+{
+	if (!flag)
+	{
+		stat->key_move = 1;
+		stat->key_map = 1;
+	}
+	else
+	{
+		stat->key_move = 1;
+		stat->key_map = 1;
+		stat->key_stat = 1;
+	}
+}
 
 void	put_usage(char *av)
 {
@@ -41,21 +56,19 @@ void	ft_parse_flags(t_stat *stat, int ac, char **av)
 	int i;
 
 	if (ac == 1)
-	{
-		stat->key_move = 1;
-		stat->key_map = 1;
-		return ;
-	}
+		return (init_stat(stat, 0));
 	i = 1;
 	while (i < ac)
 	{
 		if (!ft_strcmp(av[i], "--help"))
 			put_usage(NULL);
-		if (!ft_strcmp(av[i], "--map") || !ft_strcmp(av[i], "--all"))
+		if (!ft_strcmp(av[i], "--all"))
+			init_stat(stat, 1);
+		else if (!ft_strcmp(av[i], "--map"))
 			stat->key_map = 1;
-		else if (!ft_strcmp(av[i], "--stat") || !ft_strcmp(av[i], "--all"))
+		else if (!ft_strcmp(av[i], "--stat"))
 			stat->key_stat = 1;
-		else if (!ft_strcmp(av[i], "--move") || !ft_strcmp(av[i], "--all"))
+		else if (!ft_strcmp(av[i], "--move"))
 			stat->key_move = 1;
 		else
 			put_usage(av[i]);
@@ -73,7 +86,7 @@ void	put_stat(t_frame *frame)
 	dead_per = frame->stat.dead_ends / (float)frame->stat.vrtx_orig * 100;
 	all_per = frame->stat.vrtx_in_all / (float)frame->stat.vrtx_orig * 100;
 	used_per = frame->stat.vrtx_in_used / (float)frame->stat.vrtx_orig * 100;
-	ft_printf("\n------------- Graph Statistic -------------\n\n");	
+	ft_printf("\n------------- Graph Statistic -------------\n\n");
 	ft_printf("Total vertices\t\t%4d\n", frame->stat.vrtx_orig);
 	ft_printf("Dead ends\t\t%4d (%.2f%% of all)\n",
 	frame->stat.dead_ends, dead_per);
