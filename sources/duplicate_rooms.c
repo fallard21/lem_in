@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   duplicate_rooms.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 14:33:17 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 19:25:53 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,6 @@ int			split_room(t_frame *stor, t_room **map, t_room *mcopy)
 		return (1);
 	return (0);
 }
-
-
-
-
-
-
 
 void		duplicate_rooms(t_frame *stor)
 {
