@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:36:04 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 18:29:01 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 22:37:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		input_print_and_free(t_frame *stor)
 	input = stor->input;
 	while (input)
 	{
-		if ((ft_strstr(input->line, "#Here is the number of lines required:")))
+		if (ft_strstr(input->line, "#Here is the number of lines required: "))
 		{
 			rqrd = input->line + 39;
 			if (ft_isint_str(rqrd))
@@ -30,7 +30,7 @@ void		input_print_and_free(t_frame *stor)
 		if (stor->stat.key_map)
 			ft_putendl_fd(input->line, 1);
 		if (!stor->stat.key_map && stor->stat.steps_rqrd)
-			break ; 
+			break ;
 		input = input->next;
 	}
 	if (stor->stat.key_map && !stor->stat.key_stat)
