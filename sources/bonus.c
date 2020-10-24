@@ -6,7 +6,7 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/24 19:18:28 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 23:36:31 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,18 @@ void	put_stat(t_frame *frame)
 	all_per = frame->stat.vrtx_in_all / (float)frame->stat.vrtx_orig * 100;
 	used_per = frame->stat.vrtx_in_used / (float)frame->stat.vrtx_orig * 100;
 	ft_printf("\n------------- Graph Statistic -------------\n\n");
-	ft_printf("Total vertices\t\t%4d\n", frame->stat.vrtx_orig);
-	ft_printf("Dead ends\t\t%4d (%.2f%% of all)\n",
+	ft_printf("%-25s%5d\n", "Total vertices", frame->stat.vrtx_orig);
+	ft_printf("%-25s%5d (%.2f%% of all)\n", "Dead ends",
 	frame->stat.dead_ends, dead_per);
-	ft_printf("Vertices in all paths\t%4d (%.2f%% of all)\n",
+	ft_printf("%-25s%5d (%.2f%% of all)\n", "Vertices in all paths",
 	frame->stat.vrtx_in_all, all_per);
-	ft_printf("Vertices in used paths\t%4d (%.2f%% of all)\n\n",
+	ft_printf("%-25s%5d (%.2f%% of all)\n\n", "Vertices in used paths",
 	frame->stat.vrtx_in_used, used_per);
-	ft_printf("Ants count\t\t%4d\n", frame->num_ants);
-	ft_printf("All paths\t\t%4d\n", frame->stat.all_paths);
-	ft_printf("Used paths\t\t%4d\n", frame->stat.used_paths);
-	ft_printf("Required steps\t\t%4d\n", frame->stat.steps_rqrd);
-	ft_printf("Actual steps\t\t%4d\n", frame->current_steps);
+	ft_printf("%-25s%5d\n", "Ants count", frame->num_ants);
+	ft_printf("%-25s%5d\n", "All paths ", frame->stat.all_paths);
+	ft_printf("%-25s%5d\n", "Used paths", frame->stat.used_paths);
+	ft_printf("%-25s%5d\n", "Required steps", frame->stat.steps_rqrd);
+	ft_printf("%-25s%5d\n", "Actual steps", frame->current_steps);
 	ft_printf("\n-------------------------------------------\n\n");
 }
 
