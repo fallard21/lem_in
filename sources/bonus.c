@@ -6,12 +6,18 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/24 02:18:03 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 16:14:23 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "lem_in.h"
+
+void	init_stat(t_stat *stat)
+{
+	stat->key_move = 1;
+	stat->key_map = 1;
+}
 
 void	put_usage(char *av)
 {
@@ -21,17 +27,17 @@ void	put_usage(char *av)
 		write(2, av, ft_strlen(av));
 		write(2, "'\n", 3);
 		write(2, "Usage:\n", 8);
-		write(2, "\t./lem-in [option 1] [option 2] [...] < map\n", 45);
+		write(2, "\t./lem-in [--option]... < map\n", 31);
 		write(2, "\t--help\t\t output manual\n", 25);
 	}
 	else
 	{
-		write(2, "options:\n", 10);
-		write(2, "\t--help\t\toutput manual\n", 24);
-		write(2, "\t--map\t\toutput graph map\n", 26);
-		write(2, "\t--move\t\toutput ant's moving\n", 30);
-		write(2, "\t--stat\t\toutput graph statistic\n", 33);
-		write(2, "\t--all\t\tuse all options (except --help)\n", 41);
+		write(1, "options:\n", 10);
+		write(1, "\t--help\t\toutput manual\n", 24);
+		write(1, "\t--map\t\toutput graph map\n", 26);
+		write(1, "\t--move\t\toutput ant's moving\n", 30);
+		write(1, "\t--stat\t\toutput graph statistic\n", 33);
+		write(1, "\t--all\t\tuse all options (except --help)\n", 41);
 	}
 	exit(EXIT_FAILURE);
 }
@@ -40,10 +46,8 @@ void	ft_parse_flags(t_stat *stat, int ac, char **av)
 {
 	int i;
 
-	ft_memset(stat, 0, sizeof(t_stat));
-	stat->key_map = 1;
-	if (ac > 1)
-		stat->key_map = 0;
+	if (ac == 1)
+		return (init_stat(stat));
 	i = 1;
 	while (i < ac)
 	{
