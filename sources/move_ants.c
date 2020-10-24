@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 15:57:54 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 18:07:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			move_through_path(t_path *path, t_frame *stor)
 			if (link->next->room->level == INT_MAX)
 				move_to_end(link, path, stor);
 			else if (!link->next->room->ants)
-				move_by_mid(link);
+				move_by_mid(link, stor);
 		}
 		link = link->prev;
 	}
@@ -84,7 +84,8 @@ void		handle_ants_move(t_frame *stor)
 			if (is_used == 0 && tmp->ants_togo != 0)
 				move_through_path(tmp, stor);
 			tmp = stor->paths;
-			// ft_printf("\n");
+			if (stor->stat.key_move)
+				ft_printf("\n");
 		}
 	}
 }

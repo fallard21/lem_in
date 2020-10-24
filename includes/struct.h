@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 02:21:42 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 18:25:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ struct				s_stat
 	int				key_map;
 	int				key_move;
 	int				key_stat;
-	int				key_all;
 	int				steps_rqrd;
 	int				steps_act;
 	int				dead_ends;

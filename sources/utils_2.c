@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:36:04 by user              #+#    #+#             */
-/*   Updated: 2020/10/19 16:20:56 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 18:29:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,25 @@
 void		input_print_and_free(t_frame *stor)
 {
 	t_input		*input;
+	char		*rqrd;
 
 	input = stor->input;
 	while (input)
 	{
-		ft_putendl_fd(input->line, 1);
+		if ((ft_strstr(input->line, "#Here is the number of lines required:")))
+		{
+			rqrd = input->line + 39;
+			if (ft_isint_str(rqrd))
+				stor->stat.steps_rqrd = ft_atoi(rqrd);
+		}
+		if (stor->stat.key_map)
+			ft_putendl_fd(input->line, 1);
+		if (!stor->stat.key_map && stor->stat.steps_rqrd)
+			break ; 
 		input = input->next;
 	}
-	ft_putchar_fd('\n', 1);
+	if (stor->stat.key_map && !stor->stat.key_stat)
+		ft_putchar_fd('\n', 1);
 	free_input(stor->input);
 	stor->input = NULL;
 }

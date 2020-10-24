@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 15:56:58 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 18:06:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		handle_ants_move(t_frame *stor);
 void		set_ants_on_paths(t_frame *stor);
 int			move_through_path(t_path *path, t_frame *stor);
 void		move_from_start(t_path *path, t_frame *stor);
-void		move_by_mid(t_link *link);
+void		move_by_mid(t_link *link, t_frame *stor);
 void		move_to_end(t_link *link, t_path *path, t_frame *stor);
 void		print_ant_action(int ant_name, char *room_name);
 void		move_simple_path(t_path *path, t_frame *stor);

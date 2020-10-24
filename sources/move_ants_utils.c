@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:01:42 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 15:42:10 by user             ###   ########.fr       */
+/*   Updated: 2020/10/24 18:06:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void		print_ant_action(int ant_name, char *room_name)
 {
-	return ;
 	ft_printf("L%d-%s ", ant_name, room_name);
 }
 
@@ -25,7 +24,8 @@ void		print_ant_action(int ant_name, char *room_name)
 
 void		move_simple_path(t_path *path, t_frame *stor)
 {
-	print_ant_action(stor->ant_name, stor->end->name);
+	if (stor->stat.key_move)
+		print_ant_action(stor->ant_name, stor->end->name);
 	stor->ant_name++;
 	path->ants_pass++;
 	stor->end->ants++;
@@ -41,25 +41,28 @@ void		move_from_start(t_path *path, t_frame *stor)
 	{
 		link->next->room->ants = 1;
 		link->next->room->ant_name = stor->ant_name;
-		print_ant_action(stor->ant_name, link->next->room->name);
+		if (stor->stat.key_move)
+			print_ant_action(stor->ant_name, link->next->room->name);
 		stor->ant_name++;
 		link->room->ants--;
 		path->on_work++;
 	}
 }
 
-void		move_by_mid(t_link *link)
+void		move_by_mid(t_link *link, t_frame *stor)
 {
 	link->next->room->ants = 1;
 	link->next->room->ant_name = link->room->ant_name;
-	print_ant_action(link->room->ant_name, link->next->room->name);
+	if (stor->stat.key_move)
+		print_ant_action(link->room->ant_name, link->next->room->name);
 	link->room->ants = 0;
 	link->room->ant_name = 0;
 }
 
 void		move_to_end(t_link *link, t_path *path, t_frame *stor)
 {
-	print_ant_action(link->room->ant_name, link->next->room->name);
+	if (stor->stat.key_move)
+		print_ant_action(link->room->ant_name, link->next->room->name);
 	link->room->ants = 0;
 	link->room->ant_name = 0;
 	path->ants_pass++;

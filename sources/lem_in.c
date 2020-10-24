@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 16:15:13 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/24 18:29:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 	if (!(stor = create_map()))
 		lem_error(ALLOC_ERR, stor);
 	stor->stat = stat;
+	input_print_and_free(stor);
 	set_direct_graph(stor);
 	suurballe(stor);
 	handle_ants_move(stor);
