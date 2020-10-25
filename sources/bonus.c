@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/24 23:36:31 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/25 19:16:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,4 +125,6 @@ void	ft_print_path(t_frame *frame, t_path *p, int i)
 		p = p->next;
 		ft_printf("\n");
 	}
+	frame->stat.vrtx_in_all += 2;
+	frame->stat.vrtx_in_used += 2;
 }
