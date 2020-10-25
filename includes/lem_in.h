@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 18:06:07 by user             ###   ########.fr       */
+/*   Updated: 2020/10/25 15:57:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 # define LEM_IN_H
 
 # include <stdlib.h>
-# include <limits.h>
 
 # include "libft.h"
 # include "struct.h"
-
-# include <stdio.h>
 
 # define START_SIG	1
 # define END_SIG	2

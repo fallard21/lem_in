@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 15:43:25 by fallard           #+#    #+#              #
-#    Updated: 2020/10/15 18:25:53 by user             ###   ########.fr        #
+#    Updated: 2020/10/25 15:13:44 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ PF_DIR = sources/printf/
 INC_DIR = includes/
 
 SRC_LIB = ft_atoi.c \
+ft_atoi_long.c \
 ft_bzero.c \
 ft_isalnum.c \
 ft_isalpha.c \

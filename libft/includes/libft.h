@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/10/15 18:29:36 by user             ###   ########.fr       */
+/*   Updated: 2020/10/25 15:53:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 # include "ft_printf.h"
 
 /*
@@ -95,10 +96,11 @@ void			ft_putnbr(int n);
 **	NUMBER FUNCTIONS
 */
 
-# define MAXINT_LEN 10
-# define MININT_LEN 11
+# define INT_MAX_LEN 10
+# define INT_MIN_LEN 11
 
 int				ft_atoi(const char *pt);
+long			ft_atoi_long(const char *pt);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);

@@ -6,12 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 20:28:54 by user              #+#    #+#             */
-/*   Updated: 2020/10/15 01:38:40 by user             ###   ########.fr       */
+/*   Updated: 2020/10/25 15:54:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 /*
 **	Functions to check string for the content of
@@ -32,8 +31,8 @@ int			ft_isposint_str(char *str)
 	while (str[i])
 		if (!ft_isdigit(str[i++]))
 			return (0);
-	if (ft_strlen(str) > MAXINT_LEN ||
-		(ft_strlen(str) == MAXINT_LEN && str[MAXINT_LEN - 1] + '0' > 7))
+	if (ft_strlen(str) > INT_MAX_LEN ||
+		(ft_strlen(str) == INT_MAX_LEN && ft_atoi_long(str) > INT_MAX))
 		return (0);
 	return (1);
 }
@@ -54,14 +53,14 @@ int			ft_isint_str(char *str)
 			return (0);
 	if (is_sign)
 	{
-		if (ft_strlen(str) > MININT_LEN ||
-		(ft_strlen(str) == MININT_LEN && str[MININT_LEN - 1] > '8'))
+		if (ft_strlen(str) > INT_MIN_LEN ||
+		(ft_strlen(str) == INT_MIN_LEN && ft_atoi_long(str) < INT_MIN))
 			i = 0;
 	}
 	else
 	{
-		if (ft_strlen(str) > MAXINT_LEN ||
-		(ft_strlen(str) == MAXINT_LEN && str[MAXINT_LEN - 1] > '7'))
+		if (ft_strlen(str) > INT_MAX_LEN ||
+		(ft_strlen(str) == INT_MAX_LEN && ft_atoi_long(str) > INT_MAX))
 			i = 0;
 	}
 	return (i ? 1 : 0);
