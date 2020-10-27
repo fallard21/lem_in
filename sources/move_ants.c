@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/10/27 22:09:17 by user             ###   ########.fr       */
+/*   Updated: 2020/10/28 00:04:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		handle_ants_move(t_frame *stor)
 		is_used = 0;
 		if (tmp->ants_togo != 0 && tmp->ants_pass != tmp->ants_togo)
 			is_used = move_through_path(tmp, stor);
-		if (tmp->next)
+		if (tmp->next && stor->end->ants < stor->num_ants)
 			tmp = tmp->next;
 		else
 		{

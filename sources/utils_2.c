@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:36:04 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 22:37:44 by user             ###   ########.fr       */
+/*   Updated: 2020/10/28 00:05:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void		input_print_and_free(t_frame *stor)
 			break ;
 		input = input->next;
 	}
-	if (stor->stat.key_map && !stor->stat.key_stat)
-		ft_putchar_fd('\n', 1);
+	if (stor->stat.key_map && !stor->stat.key_stat && stor->stat.key_move)
+		ft_printf("\n");
 	free_input(stor->input);
 	stor->input = NULL;
 }

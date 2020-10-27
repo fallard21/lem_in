@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 18:06:30 by user              #+#    #+#             */
-/*   Updated: 2020/10/27 22:08:06 by user             ###   ########.fr       */
+/*   Updated: 2020/10/28 00:05:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int ac, char **av)
 	set_direct_graph(stor);
 	suurballe(stor);
 	handle_ants_move(stor);
-	ft_printf("\n");
 	lem_free(stor);
 	return (0);
 }
