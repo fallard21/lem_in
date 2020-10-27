@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/25 15:57:04 by user             ###   ########.fr       */
+/*   Updated: 2020/10/28 01:12:30 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,7 @@ t_link		*get_status_link(t_link *link);
 */
 void		lem_error(char *str, t_frame *stor);
 void		lem_free(t_frame *stor);
-void		free_all(t_room *start);
 int			free_link(t_link **link);
-void		free_room(t_room **room);
 void		free_flow(t_flow **flow);
 t_find		*free_prev_list(t_find **head);
 void		free_input(t_input *input);
