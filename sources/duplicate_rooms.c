@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   duplicate_rooms.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:44:55 by user              #+#    #+#             */
-/*   Updated: 2020/10/24 19:25:53 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/27 21:47:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		skip_room(t_frame *stor, t_room **map, int frst)
 	{
 		if (tmp && !tmp->links)
 		{
-			stor->stat.dead_ends++;
 			copy = tmp;
 			tmp = tmp->next;
 			del_room(&copy);
