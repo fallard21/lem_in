@@ -6,14 +6,12 @@
 /*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/10/28 01:12:30 by fallard          ###   ########.fr       */
+/*   Updated: 2020/10/28 01:16:16 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-
-# include <stdlib.h>
 
 # include "libft.h"
 # include "struct.h"
