@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:43:44 by fallard           #+#    #+#             */
-/*   Updated: 2020/10/25 19:16:50 by user             ###   ########.fr       */
+/*   Updated: 2020/10/28 00:57:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	put_stat(t_frame *frame)
 	ft_printf("%-25s%5d (%.2f%% of all)\n\n", "Vertices in used paths",
 	frame->stat.vrtx_in_used, used_per);
 	ft_printf("%-25s%5d\n", "Ants count", frame->num_ants);
-	ft_printf("%-25s%5d\n", "All paths ", frame->stat.all_paths);
+	ft_printf("%-25s%5d\n", "Found paths ", frame->stat.all_paths);
 	ft_printf("%-25s%5d\n", "Used paths", frame->stat.used_paths);
 	ft_printf("%-25s%5d\n", "Required steps", frame->stat.steps_rqrd);
 	ft_printf("%-25s%5d\n", "Actual steps", frame->current_steps);
