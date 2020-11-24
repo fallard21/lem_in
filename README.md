@@ -37,4 +37,4 @@ cd ~/lem-in
 *	Detailed error management
 
 ## Speed test
-*	Max ~1.5 seconds on `--big-superposition` _(5k rooms)_
+*	Max ~1.5 seconds on `--big-superposition` _(~5k rooms)_
