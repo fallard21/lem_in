@@ -29,10 +29,11 @@ cd ~/lem-in
 * `./lem-in < MAP_FILE`
 
 ## Bonus
-*	`--help`	- output usage
+*	`--help`	- output manual
 *	`--stat`	- output only found paths and graph statistic
 *	`--map`		- output only map from file _(enabled by default)_
 *	`--move`	- output only moving ants (for easy check steps `wc -l`) _(enabled by default)_
+*	`--all`		- use all options (except --help)
 *	Detailed error management
 
 ## Speed test
